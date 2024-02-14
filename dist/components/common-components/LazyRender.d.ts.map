@@ -1,0 +1,1 @@
+{"version":3,"file":"LazyRender.d.ts","sourceRoot":"","sources":["../../../src/components/common-components/LazyRender.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,KAAK,MAAM,OAAO,CAAC;AAE/B,OAAO,KAAK,EAAE,WAAW,EAAE,MAAM,YAAY,CAAC;;AAG9C,wBAoBE;AAEF;;GAEG;AACH,MAAM,WAAW,KAAM,SAAQ,WAAW,CAAC,QAAQ;IACjD;;;;OAIG;IACH,QAAQ,CAAC,WAAW,EAAE,MAAM,KAAK,CAAC,SAAS,CAAC;CAC7C"}

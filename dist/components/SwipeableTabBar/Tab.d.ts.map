@@ -1,0 +1,1 @@
+{"version":3,"file":"Tab.d.ts","sourceRoot":"","sources":["../../../src/components/SwipeableTabBar/Tab.tsx"],"names":[],"mappings":"AAEA,OAAO,KAAK,EAAE,mBAAmB,EAAE,MAAM,wDAAwD,CAAC;;AAOlG,wBAoCE;AAEF;;GAEG;AACH,MAAM,WAAW,KAAK;IACpB,QAAQ,CAAC,UAAU,EAAE,mBAAmB,CAAC;IACzC,QAAQ,CAAC,MAAM,EAAE,MAAM,CAAC;IACxB,QAAQ,CAAC,QAAQ,EAAE,MAAM,CAAC;CAC3B"}

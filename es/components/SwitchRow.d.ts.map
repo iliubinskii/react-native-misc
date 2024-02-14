@@ -1,0 +1,1 @@
+{"version":3,"file":"SwitchRow.d.ts","sourceRoot":"","sources":["../../src/components/SwitchRow.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,KAAK,MAAM,OAAO,CAAC;AAC/B,OAAO,EAAO,MAAM,EAAQ,MAAM,qBAAqB,CAAC;;AAKxD,wBAKG;AAEH;;GAEG;AACH,MAAM,WAAW,KAAM,SAAQ,KAAK,CAAC,cAAc,CAAC,OAAO,MAAM,CAAC;IAChE,QAAQ,CAAC,KAAK,EAAE,MAAM,CAAC;CACxB"}

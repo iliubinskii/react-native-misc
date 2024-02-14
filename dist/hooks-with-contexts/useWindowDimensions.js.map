@@ -1,0 +1,1 @@
+{"version":3,"file":"useWindowDimensions.js","sourceRoot":"","sources":["../../src/hooks-with-contexts/useWindowDimensions.ts"],"names":[],"mappings":";;;AACA,0CAAyC;AACzC,oCAAqD;AAErD;;;;GAIG;AACH,SAAgB,mBAAmB;IACjC,MAAM,EAAE,WAAW,EAAE,GAAG,IAAA,qBAAU,GAAE,CAAC;IAErC,OAAO,IAAA,iCAAyB,EAAC,WAAW,CAAC,CAAC;AAChD,CAAC;AAJD,kDAIC"}

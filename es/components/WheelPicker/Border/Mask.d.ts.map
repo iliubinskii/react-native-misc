@@ -1,0 +1,1 @@
+{"version":3,"file":"Mask.d.ts","sourceRoot":"","sources":["../../../../src/components/WheelPicker/Border/Mask.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,KAAK,MAAM,OAAO,CAAC;;AAO/B,wBASG;AAEH;;GAEG;AACH,MAAM,WAAW,KAAK;IACpB,QAAQ,CAAC,QAAQ,CAAC,EAAE,KAAK,CAAC,SAAS,CAAC;IACpC,QAAQ,CAAC,MAAM,EAAE,MAAM,CAAC;IACxB,QAAQ,CAAC,KAAK,EAAE,MAAM,CAAC;CACxB"}
