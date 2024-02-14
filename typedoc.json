@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "project-chore/typedoc/recommended"
+  ],
+  "intentionallyNotExported": [],
+  "name": "React Native library",
+  "out": "docs",
+  "tsconfig": "tsconfig-typedoc.json"
+}
