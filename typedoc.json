@@ -2,7 +2,9 @@
   "extends": [
     "project-chore/typedoc/recommended"
   ],
-  "intentionallyNotExported": [],
+  "intentionallyNotExported": [
+    "__global.reactNativeLib.Icon"
+  ],
   "name": "React Native library",
   "out": "docs",
   "tsconfig": "tsconfig-typedoc.json"

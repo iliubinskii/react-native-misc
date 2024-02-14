@@ -1,1 +1,1 @@
-module.exports = { preset: "project-chore/jest" };
+module.exports = { collectCoverage: undefined, preset: "project-chore/jest" };
