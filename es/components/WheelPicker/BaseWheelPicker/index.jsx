@@ -7,11 +7,10 @@ import { memo, useBooleanRef, useRealEffect, useUpdater } from "react-misc";
 import Mask from "./Mask";
 import { View } from "react-native";
 import { consts } from "../../../core";
-import { tick } from "../../../assets";
 import { useSound } from "../../../hooks";
 export default memo("BaseWheelPicker", 
 // eslint-disable-next-line prefer-arrow-callback -- Ok
-function ({ color, customRef, disabled, largeSwipeSize, largeSwipeStopInterval, onChange, onOverflow, onScrollEnd = fn.noop, onScrollStart = fn.noop, options, smallSwipeSize, smallSwipeStopInterval, value }) {
+function ({ color, customRef, disabled, largeSwipeSize, largeSwipeStopInterval, onChange, onOverflow, onScrollEnd = fn.noop, onScrollStart = fn.noop, options, smallSwipeSize, smallSwipeStopInterval, tick, value }) {
     const index = React.useMemo(() => Math.max(options.findIndex(candidate => candidate.value === value), 0), [options, value]);
     const overflowLastPos = React.useRef(index);
     const page = React.useRef(0);

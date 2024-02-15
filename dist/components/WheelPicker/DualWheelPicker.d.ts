@@ -17,6 +17,7 @@ export interface Props<A extends NumStr, B extends NumStr> {
     readonly onChange: (value1: A, value2: B) => void;
     readonly slot1: Slot<A>;
     readonly slot2: Slot<B>;
+    readonly tick: string;
 }
 export interface Slot<T extends NumStr> {
     readonly largeSwipeSize: number;

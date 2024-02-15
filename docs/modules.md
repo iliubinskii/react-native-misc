@@ -6,7 +6,6 @@
 
 ### Modules
 
-- [assets](modules/assets.md)
 - [components](modules/components.md)
 - [components/Balloon](modules/components_Balloon.md)
 - [components/Balloon/BalloonMeter](modules/components_Balloon_BalloonMeter.md)

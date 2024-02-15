@@ -19,6 +19,7 @@
 - [onChange](components_WheelPicker_DualWheelPicker.Props.md#onchange)
 - [slot1](components_WheelPicker_DualWheelPicker.Props.md#slot1)
 - [slot2](components_WheelPicker_DualWheelPicker.Props.md#slot2)
+- [tick](components_WheelPicker_DualWheelPicker.Props.md#tick)
 
 ## Properties
 
@@ -70,3 +71,9 @@ ___
 ### slot2
 
 • `Readonly` **slot2**: [`Slot`](components_WheelPicker_DualWheelPicker.Slot.md)\<`B`\>
+
+___
+
+### tick
+
+• `Readonly` **tick**: `string`

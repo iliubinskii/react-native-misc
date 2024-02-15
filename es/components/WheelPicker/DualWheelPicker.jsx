@@ -7,7 +7,7 @@ import { Row } from "../common-components";
 import { useSharedValue } from "react-native-reanimated";
 export default memo("DualWheelPicker", 
 // eslint-disable-next-line prefer-arrow-callback -- Ok
-function ({ color, onChange, slot1, slot2 }) {
+function ({ color, onChange, slot1, slot2, tick }) {
     const slot1Disabled = useSharedValue(false);
     const slot1Ref = React.useRef(neverDemand());
     const slot1Value = React.useRef(slot1.value);
@@ -64,9 +64,9 @@ function ({ color, onChange, slot1, slot2 }) {
     }, [slot1.value, slot2.value]);
     return (<Row>
         <Border color={color}/>
-        <BaseWheelPicker color={color} customRef={slot1Ref} disabled={slot1Disabled} largeSwipeSize={slot1.largeSwipeSize} largeSwipeStopInterval={slot1.largeSwipeStopInterval} onChange={fn.noop} onScrollEnd={slot1ScrollEndHandler} onScrollStart={slot1ScrollStartHandler} options={slot1.options} smallSwipeSize={slot1.smallSwipeSize} smallSwipeStopInterval={slot1.smallSwipeStopInterval} value={slot1.value}/>
+        <BaseWheelPicker color={color} customRef={slot1Ref} disabled={slot1Disabled} largeSwipeSize={slot1.largeSwipeSize} largeSwipeStopInterval={slot1.largeSwipeStopInterval} onChange={fn.noop} onScrollEnd={slot1ScrollEndHandler} onScrollStart={slot1ScrollStartHandler} options={slot1.options} smallSwipeSize={slot1.smallSwipeSize} smallSwipeStopInterval={slot1.smallSwipeStopInterval} tick={tick} value={slot1.value}/>
         <Border color={color}/>
-        <BaseWheelPicker color={color} disabled={slot2Disabled} largeSwipeSize={slot2.largeSwipeSize} largeSwipeStopInterval={slot2.largeSwipeStopInterval} onChange={fn.noop} onOverflow={slot2OnOverflow} onScrollEnd={slot2ScrollEndHandler} onScrollStart={slot2ScrollStartHandler} options={slot2.options} smallSwipeSize={slot2.smallSwipeSize} smallSwipeStopInterval={slot2.smallSwipeStopInterval} value={slot2.value}/>
+        <BaseWheelPicker color={color} disabled={slot2Disabled} largeSwipeSize={slot2.largeSwipeSize} largeSwipeStopInterval={slot2.largeSwipeStopInterval} onChange={fn.noop} onOverflow={slot2OnOverflow} onScrollEnd={slot2ScrollEndHandler} onScrollStart={slot2ScrollStartHandler} options={slot2.options} smallSwipeSize={slot2.smallSwipeSize} smallSwipeStopInterval={slot2.smallSwipeStopInterval} tick={tick} value={slot2.value}/>
         <Border color={color}/>
       </Row>);
 });

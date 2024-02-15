@@ -10,6 +10,7 @@
 
 - [color](components_MillePicker.Props.md#color)
 - [onChange](components_MillePicker.Props.md#onchange)
+- [tick](components_MillePicker.Props.md#tick)
 - [value](components_MillePicker.Props.md#value)
 
 ## Properties
@@ -45,6 +46,12 @@ Handles value change.
 ##### Returns
 
 `void`
+
+___
+
+### tick
+
+• `Readonly` **tick**: `string`
 
 ___
 

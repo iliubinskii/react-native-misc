@@ -12,6 +12,7 @@ export interface Props {
      * @param value - Value.
      */
     readonly onChange: (value: number) => void;
+    readonly tick: string;
     readonly value: number;
 }
 //# sourceMappingURL=MillePicker.d.ts.map

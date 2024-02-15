@@ -10,11 +10,10 @@ const react_misc_1 = require("react-misc");
 const Mask_1 = tslib_1.__importDefault(require("./Mask"));
 const react_native_1 = require("react-native");
 const core_1 = require("../../../core");
-const assets_1 = require("../../../assets");
 const hooks_1 = require("../../../hooks");
 exports.default = (0, react_misc_1.memo)("BaseWheelPicker", 
 // eslint-disable-next-line prefer-arrow-callback -- Ok
-function ({ color, customRef, disabled, largeSwipeSize, largeSwipeStopInterval, onChange, onOverflow, onScrollEnd = typescript_misc_1.fn.noop, onScrollStart = typescript_misc_1.fn.noop, options, smallSwipeSize, smallSwipeStopInterval, value }) {
+function ({ color, customRef, disabled, largeSwipeSize, largeSwipeStopInterval, onChange, onOverflow, onScrollEnd = typescript_misc_1.fn.noop, onScrollStart = typescript_misc_1.fn.noop, options, smallSwipeSize, smallSwipeStopInterval, tick, value }) {
     const index = React.useMemo(() => Math.max(options.findIndex(candidate => candidate.value === value), 0), [options, value]);
     const overflowLastPos = React.useRef(index);
     const page = React.useRef(0);
@@ -26,7 +25,7 @@ function ({ color, customRef, disabled, largeSwipeSize, largeSwipeStopInterval, 
         .join("\n"), [options]);
     const tickLastPos = React.useRef(index);
     const [tickSkipNext, skipNextTick, skippedTick] = (0, react_misc_1.useBooleanRef)();
-    const tickSound = (0, hooks_1.useSound)(assets_1.tick);
+    const tickSound = (0, hooks_1.useSound)(tick);
     const view = React.useRef((0, typescript_misc_1.neverDemand)());
     const width = React.useMemo(() => Math.max(...options.map(({ label }) => label.length)) *
         fontAspectRatio *

@@ -12,6 +12,7 @@ export interface Props {
      * @param time - Time.
      */
     readonly onChange: (time: number) => void;
+    readonly tick: string;
     readonly time: number;
 }
 //# sourceMappingURL=TimePicker.d.ts.map

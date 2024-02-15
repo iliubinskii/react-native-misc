@@ -6,7 +6,7 @@ const WheelPicker_1 = require("./WheelPicker");
 const typescript_misc_1 = require("typescript-misc");
 const core_1 = require("../core");
 const react_misc_1 = require("react-misc");
-exports.default = (0, react_misc_1.memo)("MillePicker", ({ color, onChange, value }) => {
+exports.default = (0, react_misc_1.memo)("MillePicker", ({ color, onChange, tick, value }) => {
     const save = React.useCallback((value1, value2) => {
         onChange(value1 * 1000 + value2);
     }, [onChange]);
@@ -32,7 +32,7 @@ exports.default = (0, react_misc_1.memo)("MillePicker", ({ color, onChange, valu
         smallSwipeStopInterval: slot2.smallSwipeStopInterval,
         value: value % 1000
     }), [value]);
-    return (<WheelPicker_1.DualWheelPicker color={color} onChange={save} slot1={slot1Prop} slot2={slot2Prop}/>);
+    return (<WheelPicker_1.DualWheelPicker color={color} onChange={save} slot1={slot1Prop} slot2={slot2Prop} tick={tick}/>);
 });
 const { slot1, slot2 } = core_1.consts.MillePicker;
 //# sourceMappingURL=MillePicker.jsx.map

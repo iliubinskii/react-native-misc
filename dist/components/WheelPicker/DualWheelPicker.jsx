@@ -10,7 +10,7 @@ const common_components_1 = require("../common-components");
 const react_native_reanimated_1 = require("react-native-reanimated");
 exports.default = (0, react_misc_1.memo)("DualWheelPicker", 
 // eslint-disable-next-line prefer-arrow-callback -- Ok
-function ({ color, onChange, slot1, slot2 }) {
+function ({ color, onChange, slot1, slot2, tick }) {
     const slot1Disabled = (0, react_native_reanimated_1.useSharedValue)(false);
     const slot1Ref = React.useRef((0, typescript_misc_1.neverDemand)());
     const slot1Value = React.useRef(slot1.value);
@@ -67,9 +67,9 @@ function ({ color, onChange, slot1, slot2 }) {
     }, [slot1.value, slot2.value]);
     return (<common_components_1.Row>
         <Border_1.default color={color}/>
-        <BaseWheelPicker_1.default color={color} customRef={slot1Ref} disabled={slot1Disabled} largeSwipeSize={slot1.largeSwipeSize} largeSwipeStopInterval={slot1.largeSwipeStopInterval} onChange={typescript_misc_1.fn.noop} onScrollEnd={slot1ScrollEndHandler} onScrollStart={slot1ScrollStartHandler} options={slot1.options} smallSwipeSize={slot1.smallSwipeSize} smallSwipeStopInterval={slot1.smallSwipeStopInterval} value={slot1.value}/>
+        <BaseWheelPicker_1.default color={color} customRef={slot1Ref} disabled={slot1Disabled} largeSwipeSize={slot1.largeSwipeSize} largeSwipeStopInterval={slot1.largeSwipeStopInterval} onChange={typescript_misc_1.fn.noop} onScrollEnd={slot1ScrollEndHandler} onScrollStart={slot1ScrollStartHandler} options={slot1.options} smallSwipeSize={slot1.smallSwipeSize} smallSwipeStopInterval={slot1.smallSwipeStopInterval} tick={tick} value={slot1.value}/>
         <Border_1.default color={color}/>
-        <BaseWheelPicker_1.default color={color} disabled={slot2Disabled} largeSwipeSize={slot2.largeSwipeSize} largeSwipeStopInterval={slot2.largeSwipeStopInterval} onChange={typescript_misc_1.fn.noop} onOverflow={slot2OnOverflow} onScrollEnd={slot2ScrollEndHandler} onScrollStart={slot2ScrollStartHandler} options={slot2.options} smallSwipeSize={slot2.smallSwipeSize} smallSwipeStopInterval={slot2.smallSwipeStopInterval} value={slot2.value}/>
+        <BaseWheelPicker_1.default color={color} disabled={slot2Disabled} largeSwipeSize={slot2.largeSwipeSize} largeSwipeStopInterval={slot2.largeSwipeStopInterval} onChange={typescript_misc_1.fn.noop} onOverflow={slot2OnOverflow} onScrollEnd={slot2ScrollEndHandler} onScrollStart={slot2ScrollStartHandler} options={slot2.options} smallSwipeSize={slot2.smallSwipeSize} smallSwipeStopInterval={slot2.smallSwipeStopInterval} tick={tick} value={slot2.value}/>
         <Border_1.default color={color}/>
       </common_components_1.Row>);
 });

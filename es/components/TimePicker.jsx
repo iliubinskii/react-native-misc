@@ -3,7 +3,7 @@ import { DualWheelPicker } from "./WheelPicker";
 import { a } from "typescript-misc";
 import { consts } from "../core";
 import { memo } from "react-misc";
-export default memo("TimePicker", ({ color, onChange, time }) => {
+export default memo("TimePicker", ({ color, onChange, tick, time }) => {
     const save = React.useCallback((hour, minute) => {
         onChange(hour * 60 + minute);
     }, [onChange]);
@@ -29,7 +29,7 @@ export default memo("TimePicker", ({ color, onChange, time }) => {
         smallSwipeStopInterval: slot2.smallSwipeStopInterval,
         value: time % 60
     }), [time]);
-    return (<DualWheelPicker color={color} onChange={save} slot1={slot1Prop} slot2={slot2Prop}/>);
+    return (<DualWheelPicker color={color} onChange={save} slot1={slot1Prop} slot2={slot2Prop} tick={tick}/>);
 });
 const { slot1, slot2 } = consts.TimePicker;
 //# sourceMappingURL=TimePicker.jsx.map

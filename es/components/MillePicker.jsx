@@ -3,7 +3,7 @@ import { DualWheelPicker } from "./WheelPicker";
 import { a } from "typescript-misc";
 import { consts } from "../core";
 import { memo } from "react-misc";
-export default memo("MillePicker", ({ color, onChange, value }) => {
+export default memo("MillePicker", ({ color, onChange, tick, value }) => {
     const save = React.useCallback((value1, value2) => {
         onChange(value1 * 1000 + value2);
     }, [onChange]);
@@ -29,7 +29,7 @@ export default memo("MillePicker", ({ color, onChange, value }) => {
         smallSwipeStopInterval: slot2.smallSwipeStopInterval,
         value: value % 1000
     }), [value]);
-    return (<DualWheelPicker color={color} onChange={save} slot1={slot1Prop} slot2={slot2Prop}/>);
+    return (<DualWheelPicker color={color} onChange={save} slot1={slot1Prop} slot2={slot2Prop} tick={tick}/>);
 });
 const { slot1, slot2 } = consts.MillePicker;
 //# sourceMappingURL=MillePicker.jsx.map

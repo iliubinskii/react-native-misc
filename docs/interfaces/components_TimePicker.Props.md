@@ -10,6 +10,7 @@
 
 - [color](components_TimePicker.Props.md#color)
 - [onChange](components_TimePicker.Props.md#onchange)
+- [tick](components_TimePicker.Props.md#tick)
 - [time](components_TimePicker.Props.md#time)
 
 ## Properties
@@ -45,6 +46,12 @@ Handles time change.
 ##### Returns
 
 `void`
+
+___
+
+### tick
+
+• `Readonly` **tick**: `string`
 
 ___
 

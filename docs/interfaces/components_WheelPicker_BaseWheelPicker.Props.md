@@ -26,6 +26,7 @@
 - [options](components_WheelPicker_BaseWheelPicker.Props.md#options)
 - [smallSwipeSize](components_WheelPicker_BaseWheelPicker.Props.md#smallswipesize)
 - [smallSwipeStopInterval](components_WheelPicker_BaseWheelPicker.Props.md#smallswipestopinterval)
+- [tick](components_WheelPicker_BaseWheelPicker.Props.md#tick)
 - [value](components_WheelPicker_BaseWheelPicker.Props.md#value)
 
 ## Properties
@@ -177,6 +178,12 @@ ___
 ### smallSwipeStopInterval
 
 • `Readonly` **smallSwipeStopInterval**: `number`
+
+___
+
+### tick
+
+• `Readonly` **tick**: `string`
 
 ___
 

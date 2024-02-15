@@ -42,6 +42,7 @@ export interface Props<T extends NumStr> {
     readonly options: Options<T>;
     readonly smallSwipeSize: number;
     readonly smallSwipeStopInterval: number;
+    readonly tick: string;
     readonly value: T;
 }
 export interface Ref {

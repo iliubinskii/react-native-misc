@@ -6,7 +6,7 @@ const WheelPicker_1 = require("./WheelPicker");
 const typescript_misc_1 = require("typescript-misc");
 const core_1 = require("../core");
 const react_misc_1 = require("react-misc");
-exports.default = (0, react_misc_1.memo)("TimePicker", ({ color, onChange, time }) => {
+exports.default = (0, react_misc_1.memo)("TimePicker", ({ color, onChange, tick, time }) => {
     const save = React.useCallback((hour, minute) => {
         onChange(hour * 60 + minute);
     }, [onChange]);
@@ -32,7 +32,7 @@ exports.default = (0, react_misc_1.memo)("TimePicker", ({ color, onChange, time 
         smallSwipeStopInterval: slot2.smallSwipeStopInterval,
         value: time % 60
     }), [time]);
-    return (<WheelPicker_1.DualWheelPicker color={color} onChange={save} slot1={slot1Prop} slot2={slot2Prop}/>);
+    return (<WheelPicker_1.DualWheelPicker color={color} onChange={save} slot1={slot1Prop} slot2={slot2Prop} tick={tick}/>);
 });
 const { slot1, slot2 } = core_1.consts.TimePicker;
 //# sourceMappingURL=TimePicker.jsx.map
