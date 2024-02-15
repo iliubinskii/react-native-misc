@@ -18,7 +18,8 @@ export default memo(
     color,
     onChange,
     slot1,
-    slot2
+    slot2,
+    tick
   }: Props<A, B>) {
     const slot1Disabled = useSharedValue(false);
 
@@ -103,6 +104,7 @@ export default memo(
           options={slot1.options}
           smallSwipeSize={slot1.smallSwipeSize}
           smallSwipeStopInterval={slot1.smallSwipeStopInterval}
+          tick={tick}
           value={slot1.value}
         />
         <Border color={color} />
@@ -118,6 +120,7 @@ export default memo(
           options={slot2.options}
           smallSwipeSize={slot2.smallSwipeSize}
           smallSwipeStopInterval={slot2.smallSwipeStopInterval}
+          tick={tick}
           value={slot2.value}
         />
         <Border color={color} />
@@ -140,6 +143,7 @@ export interface Props<A extends NumStr, B extends NumStr> {
   readonly onChange: (value1: A, value2: B) => void;
   readonly slot1: Slot<A>;
   readonly slot2: Slot<B>;
+  readonly tick: string;
 }
 
 export interface Slot<T extends NumStr> {

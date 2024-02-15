@@ -6,7 +6,7 @@ import { consts } from "../core";
 import { memo } from "react-misc";
 import type { stringU } from "typescript-misc";
 
-export default memo("TimePicker", ({ color, onChange, time }: Props) => {
+export default memo("TimePicker", ({ color, onChange, tick, time }: Props) => {
   const save = React.useCallback(
     (hour: number, minute: number) => {
       onChange(hour * 60 + minute);
@@ -54,6 +54,7 @@ export default memo("TimePicker", ({ color, onChange, time }: Props) => {
       onChange={save}
       slot1={slot1Prop}
       slot2={slot2Prop}
+      tick={tick}
     />
   );
 });
@@ -69,6 +70,7 @@ export interface Props {
    * @param time - Time.
    */
   readonly onChange: (time: number) => void;
+  readonly tick: string;
   readonly time: number;
 }
 

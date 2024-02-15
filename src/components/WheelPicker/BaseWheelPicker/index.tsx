@@ -18,7 +18,6 @@ import Mask from "./Mask";
 import type { SharedValue } from "react-native-reanimated";
 import { View } from "react-native";
 import { consts } from "../../../core";
-import { tick } from "../../../assets";
 import { useSound } from "../../../hooks";
 
 export default memo(
@@ -37,6 +36,7 @@ export default memo(
     options,
     smallSwipeSize,
     smallSwipeStopInterval,
+    tick,
     value
   }: Props<T>) {
     const index = React.useMemo(
@@ -249,6 +249,7 @@ export interface Props<T extends NumStr> {
   readonly options: Options<T>;
   readonly smallSwipeSize: number;
   readonly smallSwipeStopInterval: number;
+  readonly tick: string;
   readonly value: T;
 }
 
