@@ -29,6 +29,8 @@ declare global {
   }
 }
 
+export { default as Calendar } from "./Calendar";
+export { default as Clock } from "./Clock";
 export { Mode } from "./DateTimePicker-common";
 
 export default memo(
