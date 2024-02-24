@@ -48,6 +48,7 @@ export const SnackbarProvider = memo(
     const gesture = React.useMemo(
       () =>
         Gesture.Tap().onEnd(() => {
+          "worklet";
           runOnJS(hideSnackbar)();
         }),
       [hideSnackbar]

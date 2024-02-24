@@ -262,12 +262,15 @@ export default memo(
         Gesture.Pan()
           .minDistance(consts.Gesture.pan.minDistance)
           .onBegin(({ x, y }) => {
+            "worklet";
             setRange(x, y, GestureStep.start);
           })
           .onUpdate(({ x, y }) => {
+            "worklet";
             setRange(x, y, GestureStep.update);
           })
           .onFinalize(({ x, y }) => {
+            "worklet";
             setRange(x, y, GestureStep.end);
           }),
       [setRange]

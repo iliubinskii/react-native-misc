@@ -70,14 +70,18 @@ export default memo(
               .enabled(enabled)
               .minDistance(consts.Gesture.pan.minDistance)
               .onBegin(({ numberOfPointers, translationX }) => {
+                "worklet";
                 pan0.value = pan.value;
                 panNumberOfPointers.value = numberOfPointers;
                 panTranslationX.value = translationX;
               })
               .onStart(() => {
+                "worklet";
                 runOnJS(hideSnackbar)();
               })
               .onUpdate(({ numberOfPointers, translationX }) => {
+                "worklet";
+
                 if (numberOfPointers <= 1) {
                   if (panNumberOfPointers.value === numberOfPointers) {
                     // No need to restart
@@ -118,14 +122,18 @@ export default memo(
             Gesture.Pinch()
               .enabled(enabled)
               .onBegin(({ numberOfPointers, scale }) => {
+                "worklet";
                 pan0.value = pan.value;
                 panNumberOfPointers.value = numberOfPointers;
                 panScale.value = scale;
               })
               .onStart(() => {
+                "worklet";
                 runOnJS(hideSnackbar)();
               })
               .onUpdate(({ numberOfPointers, scale }) => {
+                "worklet";
+
                 if (numberOfPointers >= 2) {
                   if (panNumberOfPointers.value === numberOfPointers) {
                     // No need to restart
@@ -158,6 +166,8 @@ export default memo(
               })
           ),
           Gesture.Tap().onEnd(({ x }) => {
+            "worklet";
+
             const dataWidth = width - paddingStart - paddingEnd;
 
             const barCount = pan0.value[1] - pan0.value[0];

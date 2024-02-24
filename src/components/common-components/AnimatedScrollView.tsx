@@ -151,17 +151,23 @@ export default memo(
         Gesture.Pan()
           .minDistance(consts.Gesture.pan.minDistance)
           .onTouchesDown((_event, { fail }) => {
+            "worklet";
+
             if (disabled && disabled.value) fail();
           })
           .onBegin(() => {
+            "worklet";
             cancelAnimation(pan);
             pan0.value = pan.value;
             panLastStop.value = pan.value;
           })
           .onStart(() => {
+            "worklet";
             runOnJS(hideSnackbar)();
           })
           .onUpdate(event => {
+            "worklet";
+
             const delta = getDelta(event);
 
             const velocity = getVelocity(event);
@@ -176,6 +182,8 @@ export default memo(
             runOnJS(onScroll)(value);
           })
           .onFinalize(event => {
+            "worklet";
+
             const delta = getDelta(event);
 
             const velocity = getVelocity(event);
