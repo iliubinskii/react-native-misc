@@ -80,12 +80,15 @@ exports.default = (0, react_misc_1.memo)("Calendar", ({ SelectDateRangeHint = co
     const gesture = React.useMemo(() => react_native_gesture_handler_1.Gesture.Pan()
         .minDistance(core_1.consts.Gesture.pan.minDistance)
         .onBegin(({ x, y }) => {
+        "worklet";
         setRange(x, y, GestureStep.start);
     })
         .onUpdate(({ x, y }) => {
+        "worklet";
         setRange(x, y, GestureStep.update);
     })
         .onFinalize(({ x, y }) => {
+        "worklet";
         setRange(x, y, GestureStep.end);
     }), [setRange]);
     (0, react_misc_1.useRealEffect)(() => {

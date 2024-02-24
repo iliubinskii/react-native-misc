@@ -10,6 +10,8 @@ import Clock from "./Clock";
 import { JustifyContent } from "../../types";
 import { consts } from "../../core";
 import { useThemeExtended } from "../../contexts";
+export { default as Calendar } from "./Calendar";
+export { default as Clock } from "./Clock";
 export { Mode } from "./DateTimePicker-common";
 export default memo("DateTimePicker", ({ SelectDateRangeHint, SelectTimeRangeHint, date, dateFormat, dateFrom, fullDaysMode, mode = Mode.datetime, onClose = fn.noop, onSave = fn.noop, onSaveTime = fn.noop, time, timeFormat, timeFrom, weekStartsOn, workweekStartsOn }) => {
     const { colors } = useThemeExtended();

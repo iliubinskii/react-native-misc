@@ -10,6 +10,8 @@ declare global {
         }
     }
 }
+export { default as Calendar } from "./Calendar";
+export { default as Clock } from "./Clock";
 export { Mode } from "./DateTimePicker-common";
 declare const _default: FunctionComponent<Props>;
 export default _default;

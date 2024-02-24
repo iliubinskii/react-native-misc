@@ -79,18 +79,22 @@ exports.default = (0, react_misc_1.memo)("AnimatedScrollView", ({ children, cust
     const gesture = React.useMemo(() => react_native_gesture_handler_1.Gesture.Pan()
         .minDistance(core_1.consts.Gesture.pan.minDistance)
         .onTouchesDown((_event, { fail }) => {
+        "worklet";
         if (disabled && disabled.value)
             fail();
     })
         .onBegin(() => {
+        "worklet";
         (0, react_native_reanimated_1.cancelAnimation)(pan);
         pan0.value = pan.value;
         panLastStop.value = pan.value;
     })
         .onStart(() => {
+        "worklet";
         (0, react_native_reanimated_1.runOnJS)(hideSnackbar)();
     })
         .onUpdate(event => {
+        "worklet";
         const delta = getDelta(event);
         const velocity = getVelocity(event);
         const value = Math.min(Math.max(pan0.value + delta, min), max);
@@ -100,6 +104,7 @@ exports.default = (0, react_misc_1.memo)("AnimatedScrollView", ({ children, cust
         (0, react_native_reanimated_1.runOnJS)(onScroll)(value);
     })
         .onFinalize(event => {
+        "worklet";
         const delta = getDelta(event);
         const velocity = getVelocity(event);
         if (velocity > largeSwipeThreshold)

@@ -153,6 +153,7 @@ export default memo("Drawer", ({ children, customRef, dragToOpen = false, drawer
     const gesture = React.useMemo(() => Gesture.Race(Gesture.Pan()
         .minDistance(consts.Gesture.pan.minDistance)
         .onTouchesDown(({ allTouches }, { fail }) => {
+        "worklet";
         if (active.value ||
             (dragToOpen &&
                 allTouches.every(touch => inboundValue(touch.x, touch.y) < dragToOpenThreshold))) {
@@ -162,12 +163,14 @@ export default memo("Drawer", ({ children, customRef, dragToOpen = false, drawer
             fail();
     })
         .onBegin(event => {
+        "worklet";
         cancelAnimation(pan);
         pan0.value =
             pan.value -
                 Math.max(inboundValue(event.x, event.y) / size.value - 1, 0);
     })
         .onStart(() => {
+        "worklet";
         runOnJS(hideSnackbar)();
         if (active.value) {
             // Already active
@@ -180,12 +183,15 @@ export default memo("Drawer", ({ children, customRef, dragToOpen = false, drawer
         busy.value = true;
     })
         .onUpdate(event => {
+        "worklet";
         pan.value = gestureValue(event);
     })
         .onEnd(() => {
+        "worklet";
         busy.value = false;
     })
         .onFinalize(event => {
+        "worklet";
         if (active.value)
             if (pan.value === 1) {
                 active.value = false;
@@ -226,6 +232,7 @@ export default memo("Drawer", ({ children, customRef, dragToOpen = false, drawer
             }
     }), Gesture.Tap()
         .onTouchesDown((_event, { fail }) => {
+        "worklet";
         if (active.value) {
             // Tappable
         }
@@ -233,6 +240,7 @@ export default memo("Drawer", ({ children, customRef, dragToOpen = false, drawer
             fail();
     })
         .onEnd(() => {
+        "worklet";
         runOnJS(hideSnackbar)();
         runOnJS(moveOut)();
     })), [

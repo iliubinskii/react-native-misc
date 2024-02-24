@@ -157,6 +157,7 @@ exports.default = (0, react_misc_1.memo)("Drawer", ({ children, customRef, dragT
     const gesture = React.useMemo(() => react_native_gesture_handler_1.Gesture.Race(react_native_gesture_handler_1.Gesture.Pan()
         .minDistance(core_1.consts.Gesture.pan.minDistance)
         .onTouchesDown(({ allTouches }, { fail }) => {
+        "worklet";
         if (active.value ||
             (dragToOpen &&
                 allTouches.every(touch => inboundValue(touch.x, touch.y) < dragToOpenThreshold))) {
@@ -166,12 +167,14 @@ exports.default = (0, react_misc_1.memo)("Drawer", ({ children, customRef, dragT
             fail();
     })
         .onBegin(event => {
+        "worklet";
         (0, react_native_reanimated_1.cancelAnimation)(pan);
         pan0.value =
             pan.value -
                 Math.max(inboundValue(event.x, event.y) / size.value - 1, 0);
     })
         .onStart(() => {
+        "worklet";
         (0, react_native_reanimated_1.runOnJS)(hideSnackbar)();
         if (active.value) {
             // Already active
@@ -184,12 +187,15 @@ exports.default = (0, react_misc_1.memo)("Drawer", ({ children, customRef, dragT
         busy.value = true;
     })
         .onUpdate(event => {
+        "worklet";
         pan.value = gestureValue(event);
     })
         .onEnd(() => {
+        "worklet";
         busy.value = false;
     })
         .onFinalize(event => {
+        "worklet";
         if (active.value)
             if (pan.value === 1) {
                 active.value = false;
@@ -230,6 +236,7 @@ exports.default = (0, react_misc_1.memo)("Drawer", ({ children, customRef, dragT
             }
     }), react_native_gesture_handler_1.Gesture.Tap()
         .onTouchesDown((_event, { fail }) => {
+        "worklet";
         if (active.value) {
             // Tappable
         }
@@ -237,6 +244,7 @@ exports.default = (0, react_misc_1.memo)("Drawer", ({ children, customRef, dragT
             fail();
     })
         .onEnd(() => {
+        "worklet";
         (0, react_native_reanimated_1.runOnJS)(hideSnackbar)();
         (0, react_native_reanimated_1.runOnJS)(moveOut)();
     })), [

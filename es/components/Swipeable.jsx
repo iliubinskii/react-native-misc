@@ -54,6 +54,7 @@ export default memo("Swipeable", ({ children, failOnSwipeEnd = false, failOnSwip
     const gesture = React.useMemo(() => Gesture.Pan()
         .manualActivation(true)
         .onTouchesDown(({ allTouches }, { fail }) => {
+        "worklet";
         const touch = allTouches[0];
         if (activated.value) {
             // Activated
@@ -68,6 +69,7 @@ export default memo("Swipeable", ({ children, failOnSwipeEnd = false, failOnSwip
             fail();
     })
         .onTouchesMove(({ allTouches }, { activate, fail }) => {
+        "worklet";
         const touch = allTouches[0];
         if (activated.value) {
             // Activated
@@ -90,18 +92,22 @@ export default memo("Swipeable", ({ children, failOnSwipeEnd = false, failOnSwip
             fail();
     })
         .onStart(() => {
+        "worklet";
         cancelAnimation(pan);
         activated.value = true;
         pan0.value = pan.value;
         panOpacity.value = 0;
     })
         .onUpdate(event => {
+        "worklet";
         pan.value = pan0.value + event.translationX;
     })
         .onEnd(event => {
+        "worklet";
         runOnJS(onEnd)(event);
     })
         .onFinalize(() => {
+        "worklet";
         activated.value = false;
     }), [activated, initialTouch, layout, onEnd, pan, pan0, panOpacity, threshold]);
     useRealEffect(() => {

@@ -57,6 +57,7 @@ exports.default = (0, react_misc_1.memo)("Swipeable", ({ children, failOnSwipeEn
     const gesture = React.useMemo(() => react_native_gesture_handler_1.Gesture.Pan()
         .manualActivation(true)
         .onTouchesDown(({ allTouches }, { fail }) => {
+        "worklet";
         const touch = allTouches[0];
         if (activated.value) {
             // Activated
@@ -71,6 +72,7 @@ exports.default = (0, react_misc_1.memo)("Swipeable", ({ children, failOnSwipeEn
             fail();
     })
         .onTouchesMove(({ allTouches }, { activate, fail }) => {
+        "worklet";
         const touch = allTouches[0];
         if (activated.value) {
             // Activated
@@ -93,18 +95,22 @@ exports.default = (0, react_misc_1.memo)("Swipeable", ({ children, failOnSwipeEn
             fail();
     })
         .onStart(() => {
+        "worklet";
         (0, react_native_reanimated_1.cancelAnimation)(pan);
         activated.value = true;
         pan0.value = pan.value;
         panOpacity.value = 0;
     })
         .onUpdate(event => {
+        "worklet";
         pan.value = pan0.value + event.translationX;
     })
         .onEnd(event => {
+        "worklet";
         (0, react_native_reanimated_1.runOnJS)(onEnd)(event);
     })
         .onFinalize(() => {
+        "worklet";
         activated.value = false;
     }), [activated, initialTouch, layout, onEnd, pan, pan0, panOpacity, threshold]);
     (0, react_misc_1.useRealEffect)(() => {

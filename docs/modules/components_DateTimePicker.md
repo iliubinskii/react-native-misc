@@ -6,6 +6,8 @@
 
 ### References
 
+- [Calendar](components_DateTimePicker.md#calendar)
+- [Clock](components_DateTimePicker.md#clock)
 - [Mode](components_DateTimePicker.md#mode)
 
 ### Interfaces
@@ -18,6 +20,18 @@
 - [default](components_DateTimePicker.md#default)
 
 ## References
+
+### Calendar
+
+Renames and re-exports [default](components_DateTimePicker_Calendar.md#default)
+
+___
+
+### Clock
+
+Renames and re-exports [default](components_DateTimePicker_Clock.md#default)
+
+___
 
 ### Mode
 

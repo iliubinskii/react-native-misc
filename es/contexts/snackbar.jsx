@@ -29,6 +29,7 @@ export const SnackbarProvider = memo("SnackbarProvider", ({ children, defaultOff
         transform: [{ translateY: -(options.offset ?? defaultOffset) }]
     }), [options.offset, defaultOffset]);
     const gesture = React.useMemo(() => Gesture.Tap().onEnd(() => {
+        "worklet";
         runOnJS(hideSnackbar)();
     }), [hideSnackbar]);
     const gestureStopPropagation = React.useMemo(() => Gesture.Tap(), []);

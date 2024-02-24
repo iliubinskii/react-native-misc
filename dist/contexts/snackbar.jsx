@@ -33,6 +33,7 @@ exports.SnackbarProvider = (0, react_misc_1.memo)("SnackbarProvider", ({ childre
         transform: [{ translateY: -(options.offset ?? defaultOffset) }]
     }), [options.offset, defaultOffset]);
     const gesture = React.useMemo(() => react_native_gesture_handler_1.Gesture.Tap().onEnd(() => {
+        "worklet";
         (0, react_native_reanimated_1.runOnJS)(hideSnackbar)();
     }), [hideSnackbar]);
     const gestureStopPropagation = React.useMemo(() => react_native_gesture_handler_1.Gesture.Tap(), []);
