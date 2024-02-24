@@ -32,7 +32,7 @@ import { consts } from "../../core";
 import { useIcons } from "../../icons";
 
 declare global {
-  namespace reactNativeLib {
+  namespace reactNativeMisc {
     interface Icon extends ScopedIcon {}
   }
 }

@@ -2,7 +2,7 @@ import type * as React from "react";
 import type { Rec, numberU, stringU, types } from "typescript-misc";
 
 declare global {
-  namespace reactNativeLib {
+  namespace reactNativeMisc {
     // eslint-disable-next-line misc/typescript/no-empty-interfaces -- Ok
     interface Icon {}
   }
@@ -22,7 +22,7 @@ export interface Icon {
  * @internal
  */
 export type IconName = types.object.keys.Pick<
-  reactNativeLib.Icon,
+  reactNativeMisc.Icon,
   true,
   "extends->"
 >;

@@ -37,7 +37,7 @@ declare global {
     }
   }
 
-  namespace reactNativeLib {
+  namespace reactNativeMisc {
     interface Icon extends ScopedIcon {}
   }
 }

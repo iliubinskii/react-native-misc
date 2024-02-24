@@ -24,7 +24,7 @@ import { useIcons } from "../../../icons";
 import { useThemeExtended } from "../../../contexts";
 
 declare global {
-  namespace reactNativeLib {
+  namespace reactNativeMisc {
     interface Icon extends ScopedIcon {}
   }
 }

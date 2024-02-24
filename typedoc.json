@@ -3,7 +3,7 @@
     "project-chore/typedoc/recommended"
   ],
   "intentionallyNotExported": [
-    "__global.reactNativeLib.Icon"
+    "__global.reactNativeMisc.Icon"
   ],
   "name": "React Native library",
   "out": "docs",
