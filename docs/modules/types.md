@@ -16,6 +16,7 @@
 - [ExpoStatusBarStyle](types.md#expostatusbarstyle)
 - [FirebaseAuthProvider](types.md#firebaseauthprovider)
 - [FirestoreChangeType](types.md#firestorechangetype)
+- [FlatListDecelerationRate](types.md#flatlistdecelerationrate)
 - [FlexDirection](types.md#flexdirection)
 - [FlexWrap](types.md#flexwrap)
 - [FontStyle](types.md#fontstyle)
@@ -39,6 +40,7 @@
 - [Overflow](types.md#overflow)
 - [PointerEvents](types.md#pointerevents)
 - [Position](types.md#position)
+- [StackNavigatorAnimation](types.md#stacknavigatoranimation)
 - [StatusBarStyle](types.md#statusbarstyle)
 - [SvgFontWeight](types.md#svgfontweight)
 - [SvgTextAnchor](types.md#svgtextanchor)
@@ -50,6 +52,7 @@
 - [TextInputKeyboardType](types.md#textinputkeyboardtype)
 - [TextInputMode](types.md#textinputmode)
 - [TextInputTextContentType](types.md#textinputtextcontenttype)
+- [TextTransform](types.md#texttransform)
 - [TextVariant](types.md#textvariant)
 - [ToggleButtonStatus](types.md#togglebuttonstatus)
 - [VerticalAlign](types.md#verticalalign)
@@ -115,6 +118,12 @@ ___
 ### FirestoreChangeType
 
 Re-exports [FirestoreChangeType](../enums/types_react_native_firebase.FirestoreChangeType.md)
+
+___
+
+### FlatListDecelerationRate
+
+Re-exports [FlatListDecelerationRate](../enums/types_react_native.FlatListDecelerationRate.md)
 
 ___
 
@@ -256,6 +265,12 @@ Re-exports [Position](../enums/types_styles.Position.md)
 
 ___
 
+### StackNavigatorAnimation
+
+Re-exports [StackNavigatorAnimation](../enums/types_react_navigation.StackNavigatorAnimation.md)
+
+___
+
 ### StatusBarStyle
 
 Re-exports [StatusBarStyle](../enums/types_react_native.StatusBarStyle.md)
@@ -319,6 +334,12 @@ ___
 ### TextInputTextContentType
 
 Re-exports [TextInputTextContentType](../enums/types_react_native_paper.TextInputTextContentType.md)
+
+___
+
+### TextTransform
+
+Re-exports [TextTransform](../enums/types_react_native.TextTransform.md)
 
 ___
 

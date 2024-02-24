@@ -4,7 +4,7 @@ import type { NumStr, booleanU, numberU, stringU } from "typescript-misc";
 import type { CommonNativeProps } from "../../types";
 import type { Icon } from "../../icons";
 declare global {
-    namespace reactNativeLib {
+    namespace reactNativeMisc {
         interface Icon extends ScopedIcon {
         }
     }

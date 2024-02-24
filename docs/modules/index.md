@@ -43,6 +43,7 @@
 - [FirebaseAuthProvider](index.md#firebaseauthprovider)
 - [FirestoreChangeType](index.md#firestorechangetype)
 - [FlatList](index.md#flatlist)
+- [FlatListDecelerationRate](index.md#flatlistdecelerationrate)
 - [FlexDirection](index.md#flexdirection)
 - [FlexWrap](index.md#flexwrap)
 - [FontStyle](index.md#fontstyle)
@@ -106,6 +107,7 @@
 - [SnackbarProvider](index.md#snackbarprovider)
 - [SnackbarVariant](index.md#snackbarvariant)
 - [SquareButton](index.md#squarebutton)
+- [StackNavigatorAnimation](index.md#stacknavigatoranimation)
 - [StatusBarStyle](index.md#statusbarstyle)
 - [SvgFontWeight](index.md#svgfontweight)
 - [SvgTextAnchor](index.md#svgtextanchor)
@@ -126,6 +128,7 @@
 - [TextInputRef](index.md#textinputref)
 - [TextInputTextContentType](index.md#textinputtextcontenttype)
 - [TextInputWithRightIcon](index.md#textinputwithrighticon)
+- [TextTransform](index.md#texttransform)
 - [TextVariant](index.md#textvariant)
 - [ThemeExtendedProvider](index.md#themeextendedprovider)
 - [TimePicker](index.md#timepicker)
@@ -398,6 +401,12 @@ ___
 ### FlatList
 
 Renames and re-exports [default](components_common_components_FlatList.md#default)
+
+___
+
+### FlatListDecelerationRate
+
+Re-exports [FlatListDecelerationRate](../enums/types_react_native.FlatListDecelerationRate.md)
 
 ___
 
@@ -779,6 +788,12 @@ Renames and re-exports [default](components_SquareButton.md#default)
 
 ___
 
+### StackNavigatorAnimation
+
+Re-exports [StackNavigatorAnimation](../enums/types_react_navigation.StackNavigatorAnimation.md)
+
+___
+
 ### StatusBarStyle
 
 Re-exports [StatusBarStyle](../enums/types_react_native.StatusBarStyle.md)
@@ -896,6 +911,12 @@ ___
 ### TextInputWithRightIcon
 
 Renames and re-exports [default](components_common_components_TextInputWithRightIcon.md#default)
+
+___
+
+### TextTransform
+
+Re-exports [TextTransform](../enums/types_react_native.TextTransform.md)
 
 ___
 

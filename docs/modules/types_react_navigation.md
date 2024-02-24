@@ -7,4 +7,5 @@
 ### Enumerations
 
 - [NavigationEvent](../enums/types_react_navigation.NavigationEvent.md)
+- [StackNavigatorAnimation](../enums/types_react_navigation.StackNavigatorAnimation.md)
 - [TabNavigatorBackBehavior](../enums/types_react_navigation.TabNavigatorBackBehavior.md)

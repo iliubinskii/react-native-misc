@@ -10,6 +10,11 @@ export var ExpoStatusBarStyle;
     ExpoStatusBarStyle["inverted"] = "inverted";
     ExpoStatusBarStyle["light"] = "light";
 })(ExpoStatusBarStyle || (ExpoStatusBarStyle = {}));
+export var FlatListDecelerationRate;
+(function (FlatListDecelerationRate) {
+    FlatListDecelerationRate["fast"] = "fast";
+    FlatListDecelerationRate["normal"] = "normal";
+})(FlatListDecelerationRate || (FlatListDecelerationRate = {}));
 export var HyphenationFrequency;
 (function (HyphenationFrequency) {
     HyphenationFrequency["full"] = "full";
@@ -64,4 +69,9 @@ export var StatusBarStyle;
     StatusBarStyle["default"] = "default";
     StatusBarStyle["lightContent"] = "light-content";
 })(StatusBarStyle || (StatusBarStyle = {}));
+export var TextTransform;
+(function (TextTransform) {
+    TextTransform["capitalize"] = "capitalize";
+    TextTransform["none"] = "none";
+})(TextTransform || (TextTransform = {}));
 //# sourceMappingURL=react-native.js.map

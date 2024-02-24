@@ -8,6 +8,10 @@ export declare enum ExpoStatusBarStyle {
     inverted = "inverted",
     light = "light"
 }
+export declare enum FlatListDecelerationRate {
+    fast = "fast",
+    normal = "normal"
+}
 export declare enum HyphenationFrequency {
     full = "full",
     none = "none",
@@ -53,6 +57,10 @@ export declare enum StatusBarStyle {
     darkContent = "dark-content",
     default = "default",
     lightContent = "light-content"
+}
+export declare enum TextTransform {
+    capitalize = "capitalize",
+    none = "none"
 }
 export interface VirtualizedListLayout {
     readonly index: number;

@@ -8,6 +8,7 @@
 
 - [ColorSchemeName](../enums/types_react_native.ColorSchemeName.md)
 - [ExpoStatusBarStyle](../enums/types_react_native.ExpoStatusBarStyle.md)
+- [FlatListDecelerationRate](../enums/types_react_native.FlatListDecelerationRate.md)
 - [HyphenationFrequency](../enums/types_react_native.HyphenationFrequency.md)
 - [KeyboardAvoidingViewBehavior](../enums/types_react_native.KeyboardAvoidingViewBehavior.md)
 - [KeyboardDismissMode](../enums/types_react_native.KeyboardDismissMode.md)
@@ -16,6 +17,7 @@
 - [OS](../enums/types_react_native.OS.md)
 - [PointerEvents](../enums/types_react_native.PointerEvents.md)
 - [StatusBarStyle](../enums/types_react_native.StatusBarStyle.md)
+- [TextTransform](../enums/types_react_native.TextTransform.md)
 
 ### Interfaces
 

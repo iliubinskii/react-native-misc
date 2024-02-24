@@ -18,7 +18,7 @@
 
 ### IconName
 
-Ƭ **IconName**: `types.object.keys.Pick`\<`reactNativeLib.Icon`, ``true``, ``"extends->"``\>
+Ƭ **IconName**: `types.object.keys.Pick`\<`reactNativeMisc.Icon`, ``true``, ``"extends->"``\>
 
 ___
 

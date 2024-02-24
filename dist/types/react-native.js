@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.StatusBarStyle = exports.PointerEvents = exports.OS = exports.KeyboardShouldPersistTaps = exports.KeyboardEventName = exports.KeyboardDismissMode = exports.KeyboardAvoidingViewBehavior = exports.HyphenationFrequency = exports.ExpoStatusBarStyle = exports.ColorSchemeName = void 0;
+exports.TextTransform = exports.StatusBarStyle = exports.PointerEvents = exports.OS = exports.KeyboardShouldPersistTaps = exports.KeyboardEventName = exports.KeyboardDismissMode = exports.KeyboardAvoidingViewBehavior = exports.HyphenationFrequency = exports.FlatListDecelerationRate = exports.ExpoStatusBarStyle = exports.ColorSchemeName = void 0;
 var ColorSchemeName;
 (function (ColorSchemeName) {
     ColorSchemeName["dark"] = "dark";
@@ -13,6 +13,11 @@ var ExpoStatusBarStyle;
     ExpoStatusBarStyle["inverted"] = "inverted";
     ExpoStatusBarStyle["light"] = "light";
 })(ExpoStatusBarStyle || (exports.ExpoStatusBarStyle = ExpoStatusBarStyle = {}));
+var FlatListDecelerationRate;
+(function (FlatListDecelerationRate) {
+    FlatListDecelerationRate["fast"] = "fast";
+    FlatListDecelerationRate["normal"] = "normal";
+})(FlatListDecelerationRate || (exports.FlatListDecelerationRate = FlatListDecelerationRate = {}));
 var HyphenationFrequency;
 (function (HyphenationFrequency) {
     HyphenationFrequency["full"] = "full";
@@ -67,4 +72,9 @@ var StatusBarStyle;
     StatusBarStyle["default"] = "default";
     StatusBarStyle["lightContent"] = "light-content";
 })(StatusBarStyle || (exports.StatusBarStyle = StatusBarStyle = {}));
+var TextTransform;
+(function (TextTransform) {
+    TextTransform["capitalize"] = "capitalize";
+    TextTransform["none"] = "none";
+})(TextTransform || (exports.TextTransform = TextTransform = {}));
 //# sourceMappingURL=react-native.js.map

@@ -1,7 +1,7 @@
 import type * as React from "react";
 import type { Rec, numberU, stringU, types } from "typescript-misc";
 declare global {
-    namespace reactNativeLib {
+    namespace reactNativeMisc {
         interface Icon {
         }
     }
@@ -18,7 +18,7 @@ export interface Icon {
 /**
  * @internal
  */
-export type IconName = types.object.keys.Pick<reactNativeLib.Icon, true, "extends->">;
+export type IconName = types.object.keys.Pick<reactNativeMisc.Icon, true, "extends->">;
 export interface IconProps {
     readonly color?: stringU;
     readonly size?: numberU;
