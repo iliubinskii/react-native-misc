@@ -74,8 +74,8 @@
     "typescript-misc": "^1.0.0"
   },
   "devDependencies": {
-    "eslint-plugin-misc": "^2.1.0",
-    "project-chore": "^2.2.0",
+    "eslint-plugin-misc": "^2.1.1",
+    "project-chore": "^2.4.0",
     "types-fix": "^1.0.7"
   },
   "peerDependencies": {
@@ -95,7 +95,7 @@
     "react-native-reanimated": "^3",
     "react-native-sound": "^0",
     "react-native-status-bar-height": "^2",
-    "react-native-svg": "^14",
+    "react-native-svg": "^15",
     "react-native-swipe-gestures": "^1"
   },
   "engines": {
