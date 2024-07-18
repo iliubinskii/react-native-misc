@@ -1,4 +1,3 @@
-import * as React from "react";
 import {
   AlignItems,
   JustifyContent,
@@ -24,6 +23,7 @@ import { memo, useLang, useStateConfig } from "react-misc";
 import type { stringU, strings } from "typescript-misc";
 import type { Icon } from "../../icons";
 import Item from "./Item";
+import React from "react";
 import { View } from "react-native";
 import type { VirtualizedListLayout } from "../../types";
 import { consts } from "../../core";
@@ -52,13 +52,12 @@ export default memo(
     const lang = useLang<keyof ScopedWord>();
 
     const [localSelectedName, setLocalSelectedName, , localSelectedNameRef] =
-      useStateConfig(
-        (): UseStateConfig<stringU> => ({
+      useStateConfig((): UseStateConfig<stringU> => {
+        return {
           initialState: selectedName,
           resetOnInitialStateChange: true
-        }),
-        [selectedName]
-      );
+        };
+      }, [selectedName]);
 
     const [search, setSearch] = React.useState("");
 
@@ -77,7 +76,7 @@ export default memo(
         );
       });
 
-      return regexps.length
+      return regexps.length > 0
         ? names.filter(name => regexps.every(re => re.test(name)))
         : names;
     }, [deferredSearch, names]);
@@ -100,11 +99,13 @@ export default memo(
     }, [setLocalSelectedName]);
 
     const getItemLayout = React.useCallback(
-      (_data: unknown, index: number): VirtualizedListLayout => ({
-        index,
-        length: cellSize,
-        offset: index * cellSize
-      }),
+      (_data: unknown, index: number): VirtualizedListLayout => {
+        return {
+          index,
+          length: cellSize,
+          offset: index * cellSize
+        };
+      },
       []
     );
 
@@ -133,12 +134,7 @@ export default memo(
           {a
             .chunk(filteredNames.slice(0, rows * cols), cols)
             .map((row, key) => (
-              <Row
-                key={
-                  // eslint-disable-next-line react/no-array-index-key -- Ok
-                  key
-                }
-              >
+              <Row key={key}>
                 {row.map(name => (
                   <Item
                     getIcon={getIcon}
@@ -188,7 +184,7 @@ export default memo(
             style={{ width }}
             value={search}
           />
-          {filteredNames.length ? (
+          {filteredNames.length > 0 ? (
             <View style={{ height, width }}>
               <LazyRender placeholder={placeholder}>
                 <FlatList
@@ -239,7 +235,6 @@ export default memo(
 export interface Props extends CommonProps.Closeable {
   /**
    * Icon extractor.
-   *
    * @param name - Name.
    * @returns Icon.
    */
@@ -247,7 +242,6 @@ export interface Props extends CommonProps.Closeable {
   readonly names: strings;
   /**
    * Selects icon.
-   *
    * @param name - Name.
    */
   readonly onSave: (name?: string) => void;

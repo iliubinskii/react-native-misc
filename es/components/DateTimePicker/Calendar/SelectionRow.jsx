@@ -1,5 +1,5 @@
-import * as React from "react";
 import Animated, { useAnimatedProps } from "react-native-reanimated";
+import React from "react";
 import { Rect } from "react-native-svg";
 import { consts } from "../../../core";
 import { memo } from "react-misc";

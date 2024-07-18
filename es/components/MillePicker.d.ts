@@ -8,7 +8,6 @@ export interface Props {
     readonly color?: stringU;
     /**
      * Handles value change.
-     *
      * @param value - Value.
      */
     readonly onChange: (value: number) => void;

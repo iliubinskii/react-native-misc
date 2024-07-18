@@ -1,6 +1,6 @@
-import * as React from "react";
 import { JustifyContent, TextVariant } from "../../types";
 import type { CommonProps } from "react-misc";
+import React from "react";
 import { Text } from "../common-components";
 import { TouchableRipple } from "react-native-paper";
 import color from "color";

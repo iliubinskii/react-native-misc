@@ -2,7 +2,6 @@ import { useAppInfo } from "../contexts";
 import { useWindowDimensionsParams } from "../hooks";
 /**
  * Window dimensions hook.
- *
  * @returns Window dimensions.
  */
 export function useWindowDimensions() {

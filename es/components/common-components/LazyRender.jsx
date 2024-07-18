@@ -1,5 +1,5 @@
-import * as React from "react";
 import { memo, useBoolean, useBusyState, useDeferredEffect } from "react-misc";
+import React from "react";
 import { View } from "react-native";
 export default memo("LazyRender", ({ children, placeholder: createPlaceholder }) => {
     const busy = useBusyState();

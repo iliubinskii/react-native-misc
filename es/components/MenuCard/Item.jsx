@@ -1,8 +1,8 @@
-import * as React from "react";
 import { ActivityIndicator, TouchableRipple } from "react-native-paper";
 import { AlignItems, TextVariant } from "../../types";
 import { Row, Text } from "../common-components";
 import { memo, useDelayedValue } from "react-misc";
+import React from "react";
 import { consts } from "../../core";
 import { fn } from "typescript-misc";
 import { useThemeExtended } from "../../contexts";

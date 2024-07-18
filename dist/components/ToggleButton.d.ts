@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { ToggleButton } from "react-native-paper";
 import type { booleanU } from "typescript-misc";
 declare const _default: import("react-misc").FunctionComponent<Props>;

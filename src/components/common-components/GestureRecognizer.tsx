@@ -1,6 +1,6 @@
-import * as React from "react";
 import GestureRecognizer from "react-native-swipe-gestures";
 import type { PanResponderGestureState } from "react-native";
+import React from "react";
 import { isRtl } from "../../consts";
 import { memo } from "react-misc";
 import { o } from "typescript-misc";
@@ -30,7 +30,6 @@ export interface Props
   > {
   /**
    * Handles swipe in the end direction.
-   *
    * @param gestureState - Gesture state.
    */
   readonly onSwipeEnd?:
@@ -38,7 +37,6 @@ export interface Props
     | undefined;
   /**
    * Handles swipe in the start direction.
-   *
    * @param gestureState - Gesture state.
    */
   readonly onSwipeStart?:

@@ -1,15 +1,13 @@
-import * as React from "react";
 import { GestureRecognizer, Row, Text } from "../common-components";
 import { TextAlign, TextVariant } from "../../types";
 import { memo, useDatetime } from "react-misc";
 import Day from "./Day";
+import React from "react";
 import { TimeUnit } from "typescript-misc";
 import { consts } from "../../core";
 import { useCalendar } from "../../hooks";
 import { useThemeExtended } from "../../contexts";
-export default memo("EventsCalendar", 
-// eslint-disable-next-line prefer-arrow-callback -- Ok
-function ({ borderBottom = false, borderEnd = false, borderStart = false, borderTop = false, getKey, getLabel, getTextStyle, isFeatured, items, month, onDayPress, onMonthChange, style, weekStartsOn, workweekStartsOn }) {
+export default memo("EventsCalendar", function EventsCalendar({ borderBottom = false, borderEnd = false, borderStart = false, borderTop = false, getKey, getLabel, getTextStyle, isFeatured, items, month, onDayPress, onMonthChange, style, weekStartsOn, workweekStartsOn }) {
     const { weekDays, weeks } = useCalendar(month, weekStartsOn, workweekStartsOn, onDayPress);
     const { colors } = useThemeExtended();
     const datetime = useDatetime();
@@ -29,24 +27,24 @@ function ({ borderBottom = false, borderEnd = false, borderStart = false, border
             },
             style
         ]}>
-        <Row>
-          {weekDays.map(({ day, label }) => (<Text key={day} style={{
+      <Row>
+        {weekDays.map(({ day, label }) => (<Text key={day} style={{
                 color: colors.fade,
                 flex: 1,
                 paddingVertical,
                 textAlign: TextAlign.center
             }} variant={TextVariant.bodySmall}>
-              {label}
-            </Text>))}
-        </Row>
-        {weeks.map(({ days, week }) => (<Row key={week} style={{
+            {label}
+          </Text>))}
+      </Row>
+      {weeks.map(({ days, week }) => (<Row key={week} style={{
                 borderColor: colors.outline,
                 borderTopWidth: borderWidth,
                 flex: 1
             }}>
-            {days.map(({ date, day, onPress, type }, index) => (<Day date={date} day={day} getKey={getKey} getLabel={getLabel} getTextStyle={getTextStyle} index={index} isFeatured={isFeatured} items={items[date]} key={day} onPress={onPress} type={type}/>))}
-          </Row>))}
-      </GestureRecognizer>);
+          {days.map(({ date, day, onPress, type }, index) => (<Day date={date} day={day} getKey={getKey} getLabel={getLabel} getTextStyle={getTextStyle} index={index} isFeatured={isFeatured} items={items[date]} key={day} onPress={onPress} type={type}/>))}
+        </Row>))}
+    </GestureRecognizer>);
 });
 const { borderWidth, paddingVertical } = consts.EventsCalendar;
 //# sourceMappingURL=index.jsx.map

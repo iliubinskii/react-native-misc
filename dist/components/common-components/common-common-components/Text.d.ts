@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 declare const _default: import("react-misc").FunctionComponent<import("react-native").TextProps & {
     variant?: import("react-native-paper/lib/typescript/components/Typography/types").VariantProp<never>;
     children: React.ReactNode;

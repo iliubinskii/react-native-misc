@@ -1,5 +1,5 @@
-import * as React from "react";
 import GestureRecognizer from "react-native-swipe-gestures";
+import React from "react";
 import { isRtl } from "../../consts";
 import { memo } from "react-misc";
 import { o } from "typescript-misc";

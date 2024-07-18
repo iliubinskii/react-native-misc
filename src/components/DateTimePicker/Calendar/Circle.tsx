@@ -1,6 +1,6 @@
-import * as React from "react";
 import Animated, { useAnimatedProps } from "react-native-reanimated";
 import { Circle } from "react-native-svg";
+import React from "react";
 import type { SharedValue } from "react-native-reanimated";
 import { consts } from "../../../core";
 import { memo } from "react-misc";

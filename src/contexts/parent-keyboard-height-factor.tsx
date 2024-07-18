@@ -1,5 +1,5 @@
-import * as React from "react";
 import type { CommonProps } from "react-misc";
+import React from "react";
 import { memo } from "react-misc";
 
 export const ParentKeyboardHeightFactorProvider = memo(
@@ -13,7 +13,6 @@ export const ParentKeyboardHeightFactorProvider = memo(
 
 /**
  * Consumes theme context.
- *
  * @returns Theme context.
  */
 export function useParentKeyboardHeightFactor(): number {

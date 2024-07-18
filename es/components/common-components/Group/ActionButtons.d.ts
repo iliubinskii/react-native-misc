@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { Row } from "../common-common-components";
 import type { booleanU } from "typescript-misc";
 declare const _default: import("react-misc").FunctionComponent<Props>;

@@ -1,8 +1,6 @@
-import * as React from "react";
-import { o } from "typescript-misc";
+import React from "react";
 /**
  * Layout hook.
- *
  * @returns Result.
  */
 export function useLayout() {
@@ -13,6 +11,8 @@ export function useLayout() {
     const onLayout = React.useCallback(({ nativeEvent }) => {
         setLayout(nativeEvent.layout);
     }, []);
-    return React.useMemo(() => o.removeUndefinedKeys({ clearLayout, layout, onLayout }), [clearLayout, layout, onLayout]);
+    return React.useMemo(() => {
+        return { clearLayout, layout, onLayout };
+    }, [clearLayout, layout, onLayout]);
 }
 //# sourceMappingURL=useLayout.jsx.map

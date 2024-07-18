@@ -1,7 +1,6 @@
 import type { LayoutChangeEvent, LayoutRectangle } from "react-native";
 /**
  * Layout hook.
- *
  * @returns Result.
  */
 export declare function useLayout(): Result;
@@ -10,10 +9,9 @@ export interface Result {
      * Clears layout.
      */
     readonly clearLayout: () => void;
-    readonly layout?: LayoutRectangle;
+    readonly layout?: LayoutRectangle | undefined;
     /**
      * Handles layout event.
-     *
      * @param event - Event.
      */
     readonly onLayout: (event: LayoutChangeEvent) => void;

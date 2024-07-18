@@ -1,6 +1,6 @@
-import * as React from "react";
 import { AnimatedScrollView, AnimatedScrollViewDirection, Row } from "../common-components";
 import { assert, fn } from "typescript-misc";
+import React from "react";
 import Tab from "./Tab";
 import { consts } from "../../core";
 import { memo } from "react-misc";

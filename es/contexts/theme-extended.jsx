@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { memo } from "react-misc";
 import { neverDemand } from "typescript-misc";
 export const ThemeExtendedProvider = memo("ThemeExtendedProvider", ({ children, theme }) => (<ThemeExtendedContext.Provider value={theme}>
@@ -6,7 +6,6 @@ export const ThemeExtendedProvider = memo("ThemeExtendedProvider", ({ children, 
     </ThemeExtendedContext.Provider>));
 /**
  * Consumes theme context.
- *
  * @returns Theme context.
  */
 export function useThemeExtended() {

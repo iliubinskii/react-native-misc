@@ -10,9 +10,6 @@ declare global {
         }
     }
 }
-export { default as Calendar } from "./Calendar";
-export { default as Clock } from "./Clock";
-export { Mode } from "./DateTimePicker-common";
 declare const _default: FunctionComponent<Props>;
 export default _default;
 /**
@@ -28,7 +25,6 @@ export interface Props extends CommonProps.Closeable {
     readonly mode?: Mode | undefined;
     /**
      * Saves dates.
-     *
      * @param date - Date.
      * @param dateFrom - Date from.
      * @param fullDaysMode - Full days mode.
@@ -36,7 +32,6 @@ export interface Props extends CommonProps.Closeable {
     readonly onSave?: ((date: string, dateFrom: string, fullDaysMode: boolean) => void) | undefined;
     /**
      * Saves times.
-     *
      * @param time - Time.
      * @param timeFrom - Time from.
      */
@@ -56,4 +51,7 @@ export interface ScopedWord {
     readonly Reset: true;
     readonly Save: true;
 }
+export { default as Calendar } from "./Calendar";
+export { default as Clock } from "./Clock";
+export { Mode } from "./DateTimePicker-common";
 //# sourceMappingURL=index.d.ts.map

@@ -19,7 +19,6 @@ export interface Props {
     readonly data: Candlesticks;
     /**
      * Returns label for a key.
-     *
      * @param key - Candlestick key.
      * @returns Label.
      */

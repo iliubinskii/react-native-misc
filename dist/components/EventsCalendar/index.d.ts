@@ -1,7 +1,7 @@
-import * as React from "react";
 import type { IndexedRecord, booleanU } from "typescript-misc";
 import type { CommonNativeProps } from "../../types";
 import Day from "./Day";
+import React from "react";
 declare const _default: <T>(props: Props<T>) => React.JSX.Element | undefined;
 export default _default;
 /**
@@ -20,7 +20,6 @@ export interface Props<T> extends CommonNativeProps.ViewStyle, Pick<React.Compon
     readonly onDayPress?: ((date: string) => void) | undefined;
     /**
      * Handles month change.
-     *
      * @param month - Month.
      */
     readonly onMonthChange: (month: string) => void;

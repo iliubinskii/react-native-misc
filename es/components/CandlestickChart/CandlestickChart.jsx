@@ -1,7 +1,7 @@
-import * as React from "react";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { runOnJS, useSharedValue } from "react-native-reanimated";
 import { BaseChart } from "./CandlestickChart-common";
+import React from "react";
 import { consts } from "../../core";
 import { fn } from "typescript-misc";
 import { memo } from "react-misc";
@@ -122,17 +122,21 @@ export default memo("CandlestickChart", ({ data, initialRangeFrom, initialRangeT
         updateRange,
         width
     ]);
-    const normalizedData = React.useMemo(() => data.map(({ closing, high, low, opening, ...candlestick }) => ({
-        closing: normalize(closing),
-        high: normalize(high),
-        low: normalize(low),
-        opening: normalize(opening),
-        ...candlestick
-    })), [data, normalize]);
-    const normalizedVerticalLabels = React.useMemo(() => verticalLabels.map(({ value, ...label }) => ({
-        value: normalize(value),
-        ...label
-    })), [normalize, verticalLabels]);
+    const normalizedData = React.useMemo(() => data.map(({ closing, high, low, opening, ...candlestick }) => {
+        return {
+            closing: normalize(closing),
+            high: normalize(high),
+            low: normalize(low),
+            opening: normalize(opening),
+            ...candlestick
+        };
+    }), [data, normalize]);
+    const normalizedVerticalLabels = React.useMemo(() => verticalLabels.map(({ value, ...label }) => {
+        return {
+            value: normalize(value),
+            ...label
+        };
+    }), [normalize, verticalLabels]);
     return (<GestureDetector gesture={gesture}>
         <BaseChart data={normalizedData} paddingEnd={paddingEnd} paddingStart={paddingStart} range0={range[0]} range1={range[1]} verticalLabels={normalizedVerticalLabels} width={width} {...props}/>
       </GestureDetector>);

@@ -1,4 +1,5 @@
 "use strict";
+/* eslint-disable misc/consistent-enum-members -- Ok */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VerticalAlign = exports.ToggleButtonStatus = exports.TextVariant = exports.TextInputTextContentType = exports.TextInputKeyboardType = exports.TextInputMode = exports.TextInputAutoComplete = exports.TextInputAutoCapitalize = exports.TextAlign = exports.MenuAnchorPosition = exports.CheckboxStatus = exports.ButtonMode = void 0;
 var ButtonMode;

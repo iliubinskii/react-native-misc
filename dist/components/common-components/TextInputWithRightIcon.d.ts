@@ -1,5 +1,5 @@
-import * as React from "react";
 import type { Icon } from "../../icons";
+import React from "react";
 import { TextInput } from "react-native-paper";
 import type { booleanU } from "typescript-misc";
 declare const _default: import("react-misc").FunctionComponent<Props>;

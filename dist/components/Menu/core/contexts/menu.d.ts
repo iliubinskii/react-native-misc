@@ -2,7 +2,6 @@ import type { CommonProps } from "react-misc";
 export declare const MenuProvider: import("react-misc").FunctionComponent<Props>;
 /**
  * Consumes menu context.
- *
  * @returns Menu context.
  */
 export declare function useMenu(): Context;

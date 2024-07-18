@@ -1,7 +1,7 @@
-import * as React from "react";
 import { G, Line, Rect, Svg, TSpan, Text } from "react-native-svg";
 import { Overflow, SvgFontWeight, SvgTextAnchor } from "../../../types";
 import { a, is } from "typescript-misc";
+import React from "react";
 import { consts } from "../../../core";
 import { memo } from "react-misc";
 export default memo("BaseChart", ({ bearBarColor, bullBarColor, color, data, getLabel, height, maxHorizontalCells, minLabelsDistance, minLabelsEdgeDistance, paddingBottom, paddingEnd, paddingStart, paddingTop, range0, range1, selectedColor, selectedIndex, verticalLabels, width }) => {

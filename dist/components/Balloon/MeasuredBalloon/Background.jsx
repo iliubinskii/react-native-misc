@@ -2,31 +2,34 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VerticalPosition = exports.HorizontalPosition = void 0;
 const tslib_1 = require("tslib");
-const React = tslib_1.__importStar(require("react"));
 const react_native_svg_1 = require("react-native-svg");
 const types_1 = require("../../../types");
+const react_1 = tslib_1.__importDefault(require("react"));
 const core_1 = require("../../../core");
 const consts_1 = require("../../../consts");
 const react_misc_1 = require("react-misc");
 const contexts_1 = require("../../../contexts");
 exports.default = (0, react_misc_1.memo)("Background", ({ height, horizontalPosition, verticalPosition, width }) => {
     const { colors, roundness } = (0, contexts_1.useThemeExtended)();
-    const horizontalPositionBiDir = React.useMemo(() => {
+    const horizontalPositionBiDir = react_1.default.useMemo(() => {
         switch (horizontalPosition) {
-            case HorizontalPosition.center:
+            case HorizontalPosition.center: {
                 return HorizontalPositionBiDir.center;
-            case HorizontalPosition.flexEnd:
+            }
+            case HorizontalPosition.flexEnd: {
                 return consts_1.isRtl
                     ? HorizontalPositionBiDir.left
                     : HorizontalPositionBiDir.right;
-            case HorizontalPosition.flexStart:
+            }
+            case HorizontalPosition.flexStart: {
                 return consts_1.isRtl
                     ? HorizontalPositionBiDir.right
                     : HorizontalPositionBiDir.left;
+            }
         }
     }, [horizontalPosition]);
     const r = roundnessFactor * roundness;
-    const transform = React.useMemo(() => {
+    const transform = react_1.default.useMemo(() => {
         switch (verticalPosition) {
             case VerticalPosition.top: {
                 const translateX = svgPadding;
@@ -40,24 +43,30 @@ exports.default = (0, react_misc_1.memo)("Background", ({ height, horizontalPosi
             }
         }
     }, [height, verticalPosition]);
-    const x1 = React.useMemo(() => {
+    const x1 = react_1.default.useMemo(() => {
         switch (horizontalPositionBiDir) {
-            case HorizontalPositionBiDir.center:
+            case HorizontalPositionBiDir.center: {
                 return 0.5 * width;
-            case HorizontalPositionBiDir.left:
+            }
+            case HorizontalPositionBiDir.left: {
                 return 0;
-            case HorizontalPositionBiDir.right:
+            }
+            case HorizontalPositionBiDir.right: {
                 return width;
+            }
         }
     }, [horizontalPositionBiDir, width]);
-    const x2 = React.useMemo(() => {
+    const x2 = react_1.default.useMemo(() => {
         switch (horizontalPositionBiDir) {
-            case HorizontalPositionBiDir.center:
+            case HorizontalPositionBiDir.center: {
                 return 0.5 * width;
-            case HorizontalPositionBiDir.left:
+            }
+            case HorizontalPositionBiDir.left: {
                 return triangleOffset * width;
-            case HorizontalPositionBiDir.right:
+            }
+            case HorizontalPositionBiDir.right: {
                 return width - triangleOffset * width;
+            }
         }
     }, [horizontalPositionBiDir, width]);
     const d = `
@@ -68,8 +77,8 @@ exports.default = (0, react_misc_1.memo)("Background", ({ height, horizontalPosi
       L ${width} ${triangleHeight + height - r}
       A ${r} ${r} 0 0 1 ${width - r} ${triangleHeight + height}
       L ${r} ${triangleHeight + height}
-      A ${r} ${r} 0 0 1 ${0} ${triangleHeight + height - r}
-      L ${0} ${triangleHeight + r}
+      A ${r} ${r} 0 0 1 0 ${triangleHeight + height - r}
+      L 0 ${triangleHeight + r}
       A ${r} ${r} 0 0 1 ${r} ${triangleHeight}
       L ${x2 - 0.5 * triangleWidth * width} ${triangleHeight}
       Z

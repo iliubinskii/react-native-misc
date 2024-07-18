@@ -1,25 +1,23 @@
-import * as React from "react";
+import { Select as BaseSelect } from "../common-components";
 import type { NumStr } from "typescript-misc";
-import { Select } from "../common-components";
+import React from "react";
 import { consts } from "../../core";
 import { memo } from "react-misc";
 import { useThemeExtended } from "../../contexts";
 
-export default memo(
-  "Select",
-  // eslint-disable-next-line prefer-arrow-callback -- Ok
-  function <T extends NumStr>(props: React.ComponentProps<typeof Select<T>>) {
-    const { colors } = useThemeExtended();
+export default memo("Select", function Select<
+  T extends NumStr
+>(props: React.ComponentProps<typeof BaseSelect<T>>) {
+  const { colors } = useThemeExtended();
 
-    return (
-      <Select
-        backgroundColor={colors.dense.background}
-        foregroundColor={colors.dense.foreground}
-        rowStyle={{ borderWidth: 0, height }}
-        {...props}
-      />
-    );
-  }
-);
+  return (
+    <BaseSelect
+      backgroundColor={colors.dense.background}
+      foregroundColor={colors.dense.foreground}
+      rowStyle={{ borderWidth: 0, height }}
+      {...props}
+    />
+  );
+});
 
 const { height } = consts.Dense.Select;

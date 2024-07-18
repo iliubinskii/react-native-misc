@@ -1,5 +1,5 @@
-import * as React from "react";
 import { FlexWrap } from "../../../types";
+import React from "react";
 import { Row } from "../common-common-components";
 import { consts } from "../../../core";
 import { is } from "typescript-misc";

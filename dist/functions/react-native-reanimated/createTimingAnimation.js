@@ -1,10 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createTimingAnimation = void 0;
+exports.createTimingAnimation = createTimingAnimation;
 const react_native_reanimated_1 = require("react-native-reanimated");
 /**
  * Creates animation.
- *
  * @param options - Options.
  * @returns Animation.
  */
@@ -17,5 +16,4 @@ function createTimingAnimation(options) {
         });
     };
 }
-exports.createTimingAnimation = createTimingAnimation;
 //# sourceMappingURL=createTimingAnimation.js.map

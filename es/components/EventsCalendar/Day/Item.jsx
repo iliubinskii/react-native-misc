@@ -1,11 +1,9 @@
-import * as React from "react";
+import React from "react";
 import { Text } from "../../common-components";
 import { consts } from "../../../core";
 import { memo } from "react-misc";
 import { useThemeExtended } from "../../../contexts";
-export default memo("Item", 
-// eslint-disable-next-line prefer-arrow-callback -- Ok
-function ({ getLabel, getTextStyle, isFeatured = false, item }) {
+export default memo("Item", function Item({ getLabel, getTextStyle, isFeatured = false, item }) {
     const { colors, roundness } = useThemeExtended();
     return (<Text numberOfLines={numberOfLines} style={[
             {
@@ -26,8 +24,8 @@ function ({ getLabel, getTextStyle, isFeatured = false, item }) {
                 },
             getTextStyle?.(item)
         ]}>
-        {getLabel(item)}
-      </Text>);
+      {getLabel(item)}
+    </Text>);
 });
 const { fontSize, lineHeight, numberOfLines, paddingHorizontal, paddingVertical, roundnessFactor } = consts.EventsCalendar.Day.Item;
 //# sourceMappingURL=Item.jsx.map

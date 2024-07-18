@@ -1,28 +1,28 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
-const React = tslib_1.__importStar(require("react"));
 const react_native_paper_1 = require("react-native-paper");
 const types_1 = require("../../types");
 const common_components_1 = require("../common-components");
 const react_misc_1 = require("react-misc");
+const react_1 = tslib_1.__importDefault(require("react"));
 const core_1 = require("../../core");
 const typescript_misc_1 = require("typescript-misc");
 const contexts_1 = require("../../contexts");
 exports.default = (0, react_misc_1.memo)("Item", ({ Icon, caption, color, disabled = false, loading = false, onLongPress = typescript_misc_1.fn.noop, onPress = typescript_misc_1.fn.noop, onPressIn = typescript_misc_1.fn.noop, onPressOut = typescript_misc_1.fn.noop, outlined = false, selected = false, selectedColor }) => {
     const { colors, roundness } = (0, contexts_1.useThemeExtended)();
-    const backgroundColor = React.useMemo(() => {
+    const backgroundColor = react_1.default.useMemo(() => {
         if (outlined)
             return selected ? colors.menuCard.selected.background : undefined;
         return (selected ? selectedColor : color) ?? colors.primary;
     }, [color, colors, outlined, selected, selectedColor]);
-    const borderColor = React.useMemo(() => {
+    const borderColor = react_1.default.useMemo(() => {
         if (outlined)
             return selected ? colors.menuCard.selected.outline : colors.outline;
         return undefined;
     }, [colors, outlined, selected]);
     const loadingDelayed = (0, react_misc_1.useDelayedValue)(loading, loadingDelay, [false]);
-    const foregroundColor = React.useMemo(() => {
+    const foregroundColor = react_1.default.useMemo(() => {
         if (outlined)
             return selected
                 ? colors.menuCard.selected.foreground

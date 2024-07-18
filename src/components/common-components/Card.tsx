@@ -1,8 +1,8 @@
-import * as React from "react";
 import { AlignItems, JustifyContent, TextVariant } from "../../types";
 import type { DimensionValue, StyleProp, ViewStyle } from "react-native";
 import { Row, Text } from "./common-common-components";
 import type { CommonProps } from "react-misc";
+import React from "react";
 import { View } from "react-native";
 import { consts } from "../../core";
 import { is } from "typescript-misc";

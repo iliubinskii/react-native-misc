@@ -1,6 +1,6 @@
-import * as React from "react";
 import { AlignItems, JustifyContent, Position } from "../../../types";
 import { Pressable, View } from "react-native";
+import React from "react";
 import { TouchableRipple } from "react-native-paper";
 import { consts } from "../../../core";
 import { memo } from "react-misc";

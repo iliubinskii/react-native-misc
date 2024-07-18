@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
-const React = tslib_1.__importStar(require("react"));
 const types_1 = require("../../types");
 const react_native_1 = require("react-native");
+const react_1 = tslib_1.__importDefault(require("react"));
 const common_components_1 = require("../common-components");
 const typescript_misc_1 = require("typescript-misc");
 const react_misc_1 = require("react-misc");
@@ -15,7 +15,7 @@ exports.default = (0, react_misc_1.memo)("Tab", ({ descriptor: { navigation, opt
     const label = options.tabBarLabel;
     const color = focused ? colors.primary : colors.text;
     const icon = options.tabBarIcon?.({ color, focused, size: iconSize });
-    const onPress = React.useCallback(() => {
+    const onPress = react_1.default.useCallback(() => {
         navigation.jumpTo(route.name);
     }, [route.name, navigation]);
     return (<react_native_1.Pressable onPress={onPress} style={{

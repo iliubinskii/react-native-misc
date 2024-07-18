@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
-const React = tslib_1.__importStar(require("react"));
 const common_components_1 = require("../../common-components");
 const react_native_gesture_handler_1 = require("react-native-gesture-handler");
 const types_1 = require("../../../types");
@@ -10,6 +9,7 @@ const react_native_reanimated_1 = require("react-native-reanimated");
 const hooks_1 = require("../../../hooks");
 const Circle_1 = tslib_1.__importDefault(require("./Circle"));
 const Day_1 = tslib_1.__importDefault(require("./Day"));
+const react_1 = tslib_1.__importDefault(require("react"));
 const SelectionRow_1 = tslib_1.__importDefault(require("./SelectionRow"));
 const react_native_svg_1 = require("react-native-svg");
 const typescript_misc_1 = require("typescript-misc");
@@ -22,26 +22,26 @@ exports.default = (0, react_misc_1.memo)("Calendar", ({ SelectDateRangeHint = co
     const { weekDays, weeks } = (0, hooks_1.useCalendar)(month, weekStartsOn, workweekStartsOn);
     const { colors } = (0, contexts_1.useThemeExtended)();
     const datetime = (0, react_misc_1.useDatetime)();
-    const firstDay = React.useMemo(() => datetime.create(month).setStartOfWeek(weekStartsOn), [datetime, month, weekStartsOn]);
+    const firstDay = react_1.default.useMemo(() => datetime.create(month).setStartOfWeek(weekStartsOn), [datetime, month, weekStartsOn]);
     const [hintActionDone, setHintActionDone, unsetHintActionDone] = (0, react_misc_1.useBoolean)();
-    const initialSelection = React.useMemo(() => date > dateFrom && datetime.create(date).isStartOfDay()
+    const initialSelection = react_1.default.useMemo(() => date > dateFrom && datetime.create(date).isStartOfDay()
         ? datetime
             .create(date)
             .setStartOfDay()
             .sub(1, typescript_misc_1.TimeUnit.day)
             .differenceInDays(firstDay)
         : datetime.create(date).setStartOfDay().differenceInDays(firstDay), [date, dateFrom, datetime, firstDay]);
-    const initialSelectionFrom = React.useMemo(() => datetime.create(dateFrom).setStartOfDay().differenceInDays(firstDay), [dateFrom, datetime, firstDay]);
+    const initialSelectionFrom = react_1.default.useMemo(() => datetime.create(dateFrom).setStartOfDay().differenceInDays(firstDay), [dateFrom, datetime, firstDay]);
     const { layout, onLayout } = (0, hooks_1.useLayoutReanimated)();
     const selection1 = (0, react_native_reanimated_1.useSharedValue)(initialSelection);
     const selection2 = (0, react_native_reanimated_1.useSharedValue)(initialSelectionFrom);
-    const back = React.useCallback(() => {
+    const back = react_1.default.useCallback(() => {
         onMonthChange(datetime.create(month).sub(1, typescript_misc_1.TimeUnit.month).toString());
     }, [datetime, month, onMonthChange]);
-    const forward = React.useCallback(() => {
+    const forward = react_1.default.useCallback(() => {
         onMonthChange(datetime.create(month).add(1, typescript_misc_1.TimeUnit.month).toString());
     }, [datetime, month, onMonthChange]);
-    const setRangeEnd = React.useCallback((index1, index2) => {
+    const setRangeEnd = react_1.default.useCallback((index1, index2) => {
         const index = Math.max(index1, index2);
         const indexFrom = Math.min(index1, index2);
         if (index === initialSelection && indexFrom === initialSelectionFrom) {
@@ -64,7 +64,7 @@ exports.default = (0, react_misc_1.memo)("Calendar", ({ SelectDateRangeHint = co
         pickHours,
         setHintActionDone
     ]);
-    const setRange = React.useCallback((x, y, step) => {
+    const setRange = react_1.default.useCallback((x, y, step) => {
         "worklet";
         if (layout.value) {
             const day = Math.round(x / size - 0.5);
@@ -77,7 +77,7 @@ exports.default = (0, react_misc_1.memo)("Calendar", ({ SelectDateRangeHint = co
                 (0, react_native_reanimated_1.runOnJS)(setRangeEnd)(selection, selection1.value);
         }
     }, [layout, selection1, selection2, setRangeEnd]);
-    const gesture = React.useMemo(() => react_native_gesture_handler_1.Gesture.Pan()
+    const gesture = react_1.default.useMemo(() => react_native_gesture_handler_1.Gesture.Pan()
         .minDistance(core_1.consts.Gesture.pan.minDistance)
         .onBegin(({ x, y }) => {
         "worklet";

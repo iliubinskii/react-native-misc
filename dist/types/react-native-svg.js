@@ -1,4 +1,5 @@
 "use strict";
+/* eslint-disable misc/consistent-enum-members -- Ok */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SvgTextAnchor = exports.SvgFontWeight = void 0;
 var SvgFontWeight;

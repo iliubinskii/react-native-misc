@@ -1,9 +1,9 @@
-import * as React from "react";
 import { Row, Text } from "./common-components";
 import { fn, is } from "typescript-misc";
 import { AlignItems } from "../types";
 import type { CommonProps } from "react-misc";
 import type { Icon } from "../icons";
+import React from "react";
 import { TouchableRipple } from "react-native-paper";
 import { consts } from "../core";
 import { memo } from "react-misc";

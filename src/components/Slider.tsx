@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import Slider from "@react-native-community/slider";
 import { Text } from "./common-components";
 import { View } from "react-native";

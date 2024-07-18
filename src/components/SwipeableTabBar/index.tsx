@@ -1,4 +1,3 @@
-import * as React from "react";
 import {
   AnimatedScrollView,
   AnimatedScrollViewDirection,
@@ -7,6 +6,7 @@ import {
 import { assert, fn } from "typescript-misc";
 import type { numberU, strings } from "typescript-misc";
 import type { BottomTabBar } from "@react-navigation/bottom-tabs";
+import React from "react";
 import Tab from "./Tab";
 import { consts } from "../../core";
 import { memo } from "react-misc";
@@ -83,7 +83,6 @@ export default memo(
 export interface Props extends React.ComponentProps<typeof BottomTabBar> {
   /**
    * Returns tab bar page.
-   *
    * @param index - Index.
    * @param names - Names.
    * @returns Tab bar page.
@@ -93,7 +92,6 @@ export interface Props extends React.ComponentProps<typeof BottomTabBar> {
   readonly iconSize: number;
   /**
    * Handles page change.
-   *
    * @param page - Page.
    */
   readonly onPageChange?: ((page: number) => void) | undefined;

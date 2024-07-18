@@ -1,4 +1,3 @@
-import * as React from "react";
 import { AlignItems, JustifyContent, Position } from "../../../types";
 import {
   ParentKeyboardHeightFactorProvider,
@@ -17,6 +16,7 @@ import Animated, {
   withTiming
 } from "react-native-reanimated";
 import type { CommonProps } from "react-misc";
+import React from "react";
 import { useBackHandler } from "../../../hooks";
 import { useWindowDimensions } from "../../../hooks-with-contexts";
 
@@ -40,15 +40,14 @@ export default memo(
 
     const opacity = useSharedValue(animated ? 0 : 1);
 
-    const animatedStyle = useAnimatedStyle(
-      (): ViewStyle => ({
+    const animatedStyle = useAnimatedStyle((): ViewStyle => {
+      return {
         opacity: opacity.value,
         transform: [
           { translateY: -keyboardHeightFactor * keyboardHeight.value }
         ]
-      }),
-      [keyboardHeight, keyboardHeightFactor, opacity]
-    );
+      };
+    }, [keyboardHeight, keyboardHeightFactor, opacity]);
 
     // Back handler
     useBackHandler(() => {

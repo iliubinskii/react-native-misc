@@ -1,7 +1,7 @@
-import * as React from "react";
 import { Circle, G, Path, Svg } from "react-native-svg";
 import { Color, Position } from "../../../types";
 import Animated, { useAnimatedProps } from "react-native-reanimated";
+import React from "react";
 import { consts } from "../../../core";
 import { memo } from "react-misc";
 import { useThemeExtended } from "../../../contexts";

@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { PointerEvents, Position } from "../types";
 import type { StyleProp, ViewStyle } from "react-native";
@@ -8,6 +7,7 @@ import type { numberU, stringU } from "typescript-misc";
 import Animated, { runOnJS, useAnimatedStyle } from "react-native-reanimated";
 import type { CommonProps } from "react-misc";
 import type { MD3ThemeExtended } from "../types";
+import React from "react";
 import { Snackbar } from "react-native-paper";
 import { View } from "react-native";
 import { consts } from "../core";
@@ -25,8 +25,9 @@ export const SnackbarProvider = memo(
     const style = React.useMemo((): StyleProp<ViewStyle> => {
       if (options.variant)
         switch (options.variant) {
-          case Variant.error:
+          case Variant.error: {
             return { backgroundColor: theme.colors.error };
+          }
         }
 
       return {};
@@ -34,21 +35,21 @@ export const SnackbarProvider = memo(
 
     const [text, setText] = React.useState<stringU>();
 
-    const animatedStyle = useAnimatedStyle(
-      (): ViewStyle => ({
+    const animatedStyle = useAnimatedStyle((): ViewStyle => {
+      return {
         bottom,
         end,
         position: Position.absolute,
         start,
         transform: [{ translateY: -(options.offset ?? defaultOffset) }]
-      }),
-      [options.offset, defaultOffset]
-    );
+      };
+    }, [options.offset, defaultOffset]);
 
     const gesture = React.useMemo(
       () =>
         Gesture.Tap().onEnd(() => {
           "worklet";
+
           runOnJS(hideSnackbar)();
         }),
       [hideSnackbar]
@@ -65,10 +66,9 @@ export const SnackbarProvider = memo(
       [setSnackbarVisible]
     );
 
-    const context = React.useMemo(
-      (): Context => ({ hideSnackbar, showSnackbar }),
-      [hideSnackbar, showSnackbar]
-    );
+    const context = React.useMemo((): Context => {
+      return { hideSnackbar, showSnackbar };
+    }, [hideSnackbar, showSnackbar]);
 
     return (
       <SnackbarContext.Provider value={context}>
@@ -81,7 +81,9 @@ export const SnackbarProvider = memo(
                 style={animatedStyle}
               >
                 <Snackbar
-                  {...o.removeUndefinedKeys({
+                  {...o.removeUndefinedKeys<
+                    React.ComponentProps<typeof Snackbar>
+                  >({
                     action: options.action,
                     duration: options.duration,
                     onDismiss: hideSnackbar,
@@ -111,7 +113,6 @@ export enum Variant {
 
 /**
  * Consumes snackbar context.
- *
  * @returns Snackbar context.
  */
 export function useSnackbar(): Context {
@@ -128,7 +129,6 @@ export interface Context {
   readonly hideSnackbar: () => void;
   /**
    * Shows snackbar.
-   *
    * @param text - Text.
    * @param options - Options.
    */
@@ -139,13 +139,12 @@ export interface Context {
  * @internal
  */
 export interface Options {
-  readonly action?: Exclude<
-    React.ComponentProps<typeof Snackbar>["action"],
-    undefined
-  >;
-  readonly duration?: number;
-  readonly offset?: number;
-  readonly variant?: Variant;
+  readonly action?:
+    | Exclude<React.ComponentProps<typeof Snackbar>["action"], undefined>
+    | undefined;
+  readonly duration?: numberU;
+  readonly offset?: numberU;
+  readonly variant?: Variant | undefined;
 }
 
 /**

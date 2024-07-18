@@ -1,21 +1,19 @@
-import * as React from "react";
 import { Overflow, PointerEvents, Position } from "../../types";
 import { a, evaluate, is, json, num } from "typescript-misc";
 import { memo, useRealEffect } from "react-misc";
 import { useAnimatedReaction, useAnimatedScrollHandler } from "../../hooks";
 import Animated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from "react-native-reanimated";
+import React from "react";
 import { View } from "react-native";
 import { consts } from "../../core";
 import { useThemeExtended } from "../../contexts";
 import { worklets } from "../../functions";
-export default memo("FlatList", 
-// eslint-disable-next-line prefer-arrow-callback -- Ok
-function ({ data, height: containerHeight, itemMinHeight, keyExtractor, numColumns = 1, paddingBottom = 0, paddingTop = 0, showsVerticalScrollIndicator = true, ...props }) {
+export default memo("FlatList", function FlatList({ data, height: containerHeight, itemMinHeight, keyExtractor, numColumns = 1, paddingBottom = 0, paddingTop = 0, showsVerticalScrollIndicator = true, ...props }) {
     const { colors } = useThemeExtended();
     const contentHeight = useSharedValue(undefined);
     const contentMinHeight = React.useMemo(() => {
         const dataMinHeight = evaluate(() => {
-            if (data.length) {
+            if (data.length > 0) {
                 const averageHeight = is.number(itemMinHeight)
                     ? itemMinHeight
                     : num.sum(...data.map(itemMinHeight)) / data.length;
@@ -53,13 +51,15 @@ function ({ data, height: containerHeight, itemMinHeight, keyExtractor, numColum
     const onContentSizeChange = React.useCallback((_width, height) => {
         contentHeight.value = height;
     }, [contentHeight]);
-    const onScroll = useAnimatedScrollHandler(() => ({
-        onScroll: nativeEvent => {
-            "worklet";
-            contentOffset.value = nativeEvent.contentOffset.y;
-            contentHeight.value = nativeEvent.contentSize.height;
-        }
-    }), [contentHeight, contentOffset]);
+    const onScroll = useAnimatedScrollHandler(() => {
+        return {
+            onScroll: nativeEvent => {
+                "worklet";
+                contentOffset.value = nativeEvent.contentOffset.y;
+                contentHeight.value = nativeEvent.contentSize.height;
+            }
+        };
+    }, [contentHeight, contentOffset]);
     const showScrollIndicator = React.useCallback((nextContentOffset, nextContentHeight) => {
         "worklet";
         const range = getRange(nextContentOffset, nextContentHeight);
@@ -96,36 +96,38 @@ function ({ data, height: containerHeight, itemMinHeight, keyExtractor, numColum
         opacity
     ]);
     // Show scroll indicator
-    useAnimatedReaction(() => ({
-        prepare: () => {
-            "worklet";
-            return [contentOffset.value, contentHeight.value];
-        },
-        react: (next, prev) => {
-            "worklet";
-            const [nextContentOffset, nextContentHeight] = next;
-            if (worklets.notEmpty(nextContentHeight))
-                if (prev) {
-                    const [prevContentOffset, prevContentHeight] = prev;
-                    if (nextContentOffset === prevContentOffset &&
-                        worklets.notEmpty(prevContentHeight)) {
-                        // Skip
+    useAnimatedReaction(() => {
+        return {
+            prepare: () => {
+                "worklet";
+                return [contentOffset.value, contentHeight.value];
+            },
+            react: (next, prev) => {
+                "worklet";
+                const [nextContentOffset, nextContentHeight] = next;
+                if (worklets.notEmpty(nextContentHeight))
+                    if (prev) {
+                        const [prevContentOffset, prevContentHeight] = prev;
+                        if (nextContentOffset === prevContentOffset &&
+                            worklets.notEmpty(prevContentHeight)) {
+                            // Skip
+                        }
+                        else
+                            showScrollIndicator(nextContentOffset, nextContentHeight);
                     }
                     else
                         showScrollIndicator(nextContentOffset, nextContentHeight);
-                }
-                else
-                    showScrollIndicator(nextContentOffset, nextContentHeight);
-        }
-    }), [contentHeight, contentOffset, showScrollIndicator]);
+            }
+        };
+    }, [contentHeight, contentOffset, showScrollIndicator]);
     // Show scroll indicator when content changes
     useRealEffect(() => {
         if (is.not.empty(contentHeight.value))
             showScrollIndicator(contentOffset.value, contentHeight.value);
     }, [keys]);
     return (<View style={{ height: containerHeight }}>
-        <Animated.FlatList ListFooterComponent={ListFooterComponent} ListHeaderComponent={ListHeaderComponent} data={data} initialNumToRender={initialNumToRender} keyExtractor={keyExtractor} numColumns={numColumns} onContentSizeChange={onContentSizeChange} onScroll={onScroll} showsVerticalScrollIndicator={false} {...props}/>
-        {showsVerticalScrollIndicator ? (<View pointerEvents={PointerEvents.none} style={{
+      <Animated.FlatList ListFooterComponent={ListFooterComponent} ListHeaderComponent={ListHeaderComponent} data={data} initialNumToRender={initialNumToRender} keyExtractor={keyExtractor} numColumns={numColumns} onContentSizeChange={onContentSizeChange} onScroll={onScroll} showsVerticalScrollIndicator={false} {...props}/>
+      {showsVerticalScrollIndicator ? (<View pointerEvents={PointerEvents.none} style={{
                 bottom: 0,
                 overflow: Overflow.hidden,
                 position: Position.absolute,
@@ -133,9 +135,9 @@ function ({ data, height: containerHeight, itemMinHeight, keyExtractor, numColum
                 top: 0,
                 width
             }}>
-            <Animated.View style={animatedStyle}/>
-          </View>) : undefined}
-      </View>);
+          <Animated.View style={animatedStyle}/>
+        </View>) : undefined}
+    </View>);
 });
 const { delay, scrollIndicatorMinHeight, width } = consts.FlatList;
 //# sourceMappingURL=FlatList.jsx.map

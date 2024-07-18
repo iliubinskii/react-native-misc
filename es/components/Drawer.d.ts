@@ -1,7 +1,7 @@
-import * as React from "react";
 import type { SharedValue } from "react-native-reanimated";
 import type { booleanU, numberU } from "typescript-misc";
 import type { CommonProps } from "react-misc";
+import React from "react";
 declare const _default: import("react-misc").FunctionComponent<Props>;
 export default _default;
 export declare enum DrawerPosition {

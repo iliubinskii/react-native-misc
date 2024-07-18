@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Dummy, IconButton, Row, Text } from "../../common-components";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { JustifyContent, Position, TextAlign, TextVariant, VerticalAlign } from "../../../types";
@@ -7,6 +6,7 @@ import { runOnJS, useSharedValue } from "react-native-reanimated";
 import { useCalendar, useLayoutReanimated } from "../../../hooks";
 import Circle from "./Circle";
 import Day from "./Day";
+import React from "react";
 import SelectionRow from "./SelectionRow";
 import { Svg } from "react-native-svg";
 import { TimeUnit } from "typescript-misc";

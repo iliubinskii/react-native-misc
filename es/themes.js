@@ -1,7 +1,6 @@
 /* eslint-disable unicorn/no-useless-spread -- Ok */
 import { MD3LightTheme } from "react-native-paper";
 import { evaluate } from "typescript-misc";
-// eslint-disable-next-line misc/only-export-name -- Ok
 export const MD3LightThemeExtended = evaluate(() => {
     const basic = {
         ...{

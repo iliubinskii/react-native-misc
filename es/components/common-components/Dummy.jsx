@@ -1,6 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { memo } from "react-misc";
-export default memo("Dummy", ({ children }) => (
-// eslint-disable-next-line react/jsx-no-useless-fragment -- Ok
-<>{children}</>));
+export default memo("Dummy", ({ children }) => (<>{children}</>));
 //# sourceMappingURL=Dummy.jsx.map

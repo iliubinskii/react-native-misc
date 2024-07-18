@@ -1,6 +1,6 @@
-import * as React from "react";
 import type { CommonProps } from "react-misc";
 import type { MD3ThemeExtended } from "../types";
+import React from "react";
 import { memo } from "react-misc";
 import { neverDemand } from "typescript-misc";
 
@@ -15,7 +15,6 @@ export const ThemeExtendedProvider = memo(
 
 /**
  * Consumes theme context.
- *
  * @returns Theme context.
  */
 export function useThemeExtended(): MD3ThemeExtended {

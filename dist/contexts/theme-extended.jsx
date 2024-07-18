@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.useThemeExtended = exports.ThemeExtendedProvider = void 0;
+exports.ThemeExtendedProvider = void 0;
+exports.useThemeExtended = useThemeExtended;
 const tslib_1 = require("tslib");
-const React = tslib_1.__importStar(require("react"));
+const react_1 = tslib_1.__importDefault(require("react"));
 const react_misc_1 = require("react-misc");
 const typescript_misc_1 = require("typescript-misc");
 exports.ThemeExtendedProvider = (0, react_misc_1.memo)("ThemeExtendedProvider", ({ children, theme }) => (<ThemeExtendedContext.Provider value={theme}>
@@ -10,12 +11,10 @@ exports.ThemeExtendedProvider = (0, react_misc_1.memo)("ThemeExtendedProvider", 
     </ThemeExtendedContext.Provider>));
 /**
  * Consumes theme context.
- *
  * @returns Theme context.
  */
 function useThemeExtended() {
-    return React.useContext(ThemeExtendedContext);
+    return react_1.default.useContext(ThemeExtendedContext);
 }
-exports.useThemeExtended = useThemeExtended;
-const ThemeExtendedContext = React.createContext((0, typescript_misc_1.neverDemand)());
+const ThemeExtendedContext = react_1.default.createContext((0, typescript_misc_1.neverDemand)());
 //# sourceMappingURL=theme-extended.jsx.map

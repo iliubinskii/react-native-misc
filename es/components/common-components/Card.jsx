@@ -1,6 +1,6 @@
-import * as React from "react";
 import { AlignItems, JustifyContent, TextVariant } from "../../types";
 import { Row, Text } from "./common-common-components";
+import React from "react";
 import { View } from "react-native";
 import { consts } from "../../core";
 import { is } from "typescript-misc";

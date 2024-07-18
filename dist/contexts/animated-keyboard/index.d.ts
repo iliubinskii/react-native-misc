@@ -1,5 +1,4 @@
 import type { CommonProps } from "react-misc";
-export { useAnimatedKeyboard } from "./base-animated-keyboard";
 export declare const AnimatedKeyboardProvider: import("react-misc").FunctionComponent<Props>;
 /**
  * @internal
@@ -7,4 +6,5 @@ export declare const AnimatedKeyboardProvider: import("react-misc").FunctionComp
 export interface Props extends CommonProps.Children {
     readonly statusBarTranslucent: boolean;
 }
+export { useAnimatedKeyboard } from "./base-animated-keyboard";
 //# sourceMappingURL=index.d.ts.map

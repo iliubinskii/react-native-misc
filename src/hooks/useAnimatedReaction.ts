@@ -1,10 +1,9 @@
-import type * as React from "react";
+import type React from "react";
 import { unfreeze } from "typescript-misc";
 import { useAnimatedReaction as useAnimatedReactionBase } from "react-native-reanimated";
 
 /**
  * Animated reaction hook.
- *
  * @param callbacks - Callbacks.
  * @param deps - Dependencies.
  */
@@ -20,13 +19,11 @@ export function useAnimatedReaction<T>(
 export interface Callbacks<T> {
   /**
    * Prepares data.
-   *
    * @returns Data.
    */
   readonly prepare: () => T;
   /**
    * Reacts to data change.
-   *
    * @param prepareResult - Prepare result.
    * @param preparePreviousResult - Prepare previous result.
    */

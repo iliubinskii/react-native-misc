@@ -1,12 +1,11 @@
-import type * as React from "react";
 import { useProxyRef, useResource } from "react-misc";
 import type { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
 import { NavigationEvent } from "../types";
+import type React from "react";
 import { useNavigation } from "@react-navigation/native";
 
 /**
  * Navigation listener hook.
- *
  * @param event - Navigation event.
  * @param callback - Callback.
  */

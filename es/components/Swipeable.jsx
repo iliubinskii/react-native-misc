@@ -1,8 +1,8 @@
-import * as React from "react";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { createVelocityAnimation, springAnimation } from "../functions";
 import { memo, useRealEffect } from "react-misc";
 import Animated, { cancelAnimation, runOnJS, useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
+import React from "react";
 import { consts } from "../core";
 import { fn } from "typescript-misc";
 import { useLayout } from "../hooks";
@@ -14,10 +14,12 @@ export default memo("Swipeable", ({ children, failOnSwipeEnd = false, failOnSwip
     const pan = useSharedValue(0);
     const pan0 = useSharedValue(0);
     const panOpacity = useSharedValue(0);
-    const animatedStyle = useAnimatedStyle(() => ({
-        opacity: opacity.value * (1 - Math.abs(panOpacity.value)),
-        transform: [{ translateX: pan.value + panOpacity.value * translateX }]
-    }), [opacity, pan, panOpacity]);
+    const animatedStyle = useAnimatedStyle(() => {
+        return {
+            opacity: opacity.value * (1 - Math.abs(panOpacity.value)),
+            transform: [{ translateX: pan.value + panOpacity.value * translateX }]
+        };
+    }, [opacity, pan, panOpacity]);
     const onEnd = React.useCallback(({ velocityX }) => {
         if (velocityX > velocityThreshold)
             if (failOnSwipeEnd)

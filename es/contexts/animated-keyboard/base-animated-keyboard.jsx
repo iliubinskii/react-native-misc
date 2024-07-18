@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { memo } from "react-misc";
 import { neverDemand } from "typescript-misc";
 import { useKeyboardHandler } from "react-native-keyboard-controller";
@@ -21,7 +21,6 @@ export const BaseAnimatedKeyboardProvider = memo("BaseAnimatedKeyboardProvider",
 });
 /**
  * Consumes animated keyboard context.
- *
  * @returns Keyboard height.
  */
 export function useAnimatedKeyboard() {

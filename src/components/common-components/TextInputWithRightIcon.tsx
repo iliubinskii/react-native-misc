@@ -1,6 +1,6 @@
-import * as React from "react";
 import type { Icon } from "../../icons";
 import { IconButton } from "./common-common-components";
+import React from "react";
 import { TextInput } from "react-native-paper";
 import type { booleanU } from "typescript-misc";
 import { memo } from "react-misc";

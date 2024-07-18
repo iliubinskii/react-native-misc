@@ -2,7 +2,6 @@ import type { TextStyle as BaseTextStyle, ViewStyle as BaseViewStyle, LayoutChan
 export interface Layout {
     /**
      * Handles layout change event.
-     *
      * @param event - Event.
      */
     readonly onLayout?: ((event: LayoutChangeEvent) => void) | undefined;

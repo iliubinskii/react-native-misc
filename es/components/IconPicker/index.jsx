@@ -1,10 +1,10 @@
-import * as React from "react";
 import { AlignItems, JustifyContent, KeyboardDismissMode, KeyboardShouldPersistTaps, TextAlign, TextInputAutoCapitalize, TextInputMode, TextVariant } from "../../types";
 import { Button, TextInput } from "react-native-paper";
 import { Card, FlatList, Group, LazyRender, Row, Text } from "../common-components";
 import { a, fn, is, regexp, s } from "typescript-misc";
 import { memo, useLang, useStateConfig } from "react-misc";
 import Item from "./Item";
+import React from "react";
 import { View } from "react-native";
 import { consts } from "../../core";
 import { useIcons } from "../../icons";
@@ -13,10 +13,12 @@ export default memo("IconPicker", ({ getIcon, names, onClose = fn.noop, onSave, 
     const { NotFoundIcon } = useIcons();
     const { colors } = useThemeExtended();
     const lang = useLang();
-    const [localSelectedName, setLocalSelectedName, , localSelectedNameRef] = useStateConfig(() => ({
-        initialState: selectedName,
-        resetOnInitialStateChange: true
-    }), [selectedName]);
+    const [localSelectedName, setLocalSelectedName, , localSelectedNameRef] = useStateConfig(() => {
+        return {
+            initialState: selectedName,
+            resetOnInitialStateChange: true
+        };
+    }, [selectedName]);
     const [search, setSearch] = React.useState("");
     const deferredSearch = React.useDeferredValue(search);
     const filteredNames = React.useMemo(() => {
@@ -26,7 +28,7 @@ export default memo("IconPicker", ({ getIcon, names, onClose = fn.noop, onSave, 
             // eslint-disable-next-line security/detect-non-literal-regexp -- Ok
             return new RegExp(`(^|[^a-z])${lower}($|[^a-z])|${upper}($|[^a-z])`, "u");
         });
-        return regexps.length
+        return regexps.length > 0
             ? names.filter(name => regexps.every(re => re.test(name)))
             : names;
     }, [deferredSearch, names]);
@@ -36,11 +38,13 @@ export default memo("IconPicker", ({ getIcon, names, onClose = fn.noop, onSave, 
     const clear = React.useCallback(() => {
         setLocalSelectedName(undefined);
     }, [setLocalSelectedName]);
-    const getItemLayout = React.useCallback((_data, index) => ({
-        index,
-        length: cellSize,
-        offset: index * cellSize
-    }), []);
+    const getItemLayout = React.useCallback((_data, index) => {
+        return {
+            index,
+            length: cellSize,
+            offset: index * cellSize
+        };
+    }, []);
     const renderItem = React.useCallback(({ item: name }) => (<Item getIcon={getIcon} name={name} onSelect={setLocalSelectedName} selected={name === localSelectedName}/>), [getIcon, localSelectedName, setLocalSelectedName]);
     const save = React.useCallback(() => {
         onSave(localSelectedNameRef.current);
@@ -49,9 +53,7 @@ export default memo("IconPicker", ({ getIcon, names, onClose = fn.noop, onSave, 
     const placeholder = React.useCallback(() => (<>
           {a
             .chunk(filteredNames.slice(0, rows * cols), cols)
-            .map((row, key) => (<Row key={
-            // eslint-disable-next-line react/no-array-index-key -- Ok
-            key}>
+            .map((row, key) => (<Row key={key}>
                 {row.map(name => (<Item getIcon={getIcon} key={name} name={name} onSelect={setLocalSelectedName} selected={name === localSelectedNameRef.current}/>))}
               </Row>))}
         </>), [filteredNames, getIcon, localSelectedNameRef, setLocalSelectedName]);
@@ -67,7 +69,7 @@ export default memo("IconPicker", ({ getIcon, names, onClose = fn.noop, onSave, 
           </>} actionsJustifyContent={JustifyContent.spaceBetween} title={lang.IconPicker}>
         <Group.Sections>
           <TextInput autoCapitalize={TextInputAutoCapitalize.none} autoFocus blurOnSubmit={false} mode={TextInputMode.outlined} onChangeText={setSearch} onSubmitEditing={save} placeholder={lang.TypeYourSearch} style={{ width }} value={search}/>
-          {filteredNames.length ? (<View style={{ height, width }}>
+          {filteredNames.length > 0 ? (<View style={{ height, width }}>
               <LazyRender placeholder={placeholder}>
                 <FlatList data={filteredNames} getItemLayout={getItemLayout} height={height} initialScrollIndex={initialScrollIndex} itemMinHeight={cellSize} keyExtractor={fn.identity} keyboardDismissMode={KeyboardDismissMode.none} keyboardShouldPersistTaps={KeyboardShouldPersistTaps.always} numColumns={cols} renderItem={renderItem}/>
               </LazyRender>

@@ -1,8 +1,8 @@
-import * as React from "react";
 import type { Candlestick, VerticalLabel } from "./CandlestickChart-common";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { runOnJS, useSharedValue } from "react-native-reanimated";
 import { BaseChart } from "./CandlestickChart-common";
+import React from "react";
 import { consts } from "../../core";
 import { fn } from "typescript-misc";
 import { memo } from "react-misc";
@@ -71,12 +71,14 @@ export default memo(
               .minDistance(consts.Gesture.pan.minDistance)
               .onBegin(({ numberOfPointers, translationX }) => {
                 "worklet";
+
                 pan0.value = pan.value;
                 panNumberOfPointers.value = numberOfPointers;
                 panTranslationX.value = translationX;
               })
               .onStart(() => {
                 "worklet";
+
                 runOnJS(hideSnackbar)();
               })
               .onUpdate(({ numberOfPointers, translationX }) => {
@@ -123,12 +125,14 @@ export default memo(
               .enabled(enabled)
               .onBegin(({ numberOfPointers, scale }) => {
                 "worklet";
+
                 pan0.value = pan.value;
                 panNumberOfPointers.value = numberOfPointers;
                 panScale.value = scale;
               })
               .onStart(() => {
                 "worklet";
+
                 runOnJS(hideSnackbar)();
               })
               .onUpdate(({ numberOfPointers, scale }) => {
@@ -202,25 +206,27 @@ export default memo(
     const normalizedData = React.useMemo(
       () =>
         data.map(
-          ({ closing, high, low, opening, ...candlestick }): Candlestick => ({
-            closing: normalize(closing),
-            high: normalize(high),
-            low: normalize(low),
-            opening: normalize(opening),
-            ...candlestick
-          })
+          ({ closing, high, low, opening, ...candlestick }): Candlestick => {
+            return {
+              closing: normalize(closing),
+              high: normalize(high),
+              low: normalize(low),
+              opening: normalize(opening),
+              ...candlestick
+            };
+          }
         ),
       [data, normalize]
     );
 
     const normalizedVerticalLabels = React.useMemo(
       () =>
-        verticalLabels.map(
-          ({ value, ...label }): VerticalLabel => ({
+        verticalLabels.map(({ value, ...label }): VerticalLabel => {
+          return {
             value: normalize(value),
             ...label
-          })
-        ),
+          };
+        }),
       [normalize, verticalLabels]
     );
 
@@ -252,7 +258,6 @@ export interface Props
   readonly minSliceLength: number;
   /**
    * Selects index.
-   *
    * @param index - Index.
    */
   readonly onSelect?: ((index: number) => void) | undefined;

@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Dummy, IconButton, Row, Text } from "../../common-components";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { JustifyContent, TextVariant, VerticalAlign } from "../../../types";
@@ -16,6 +15,7 @@ import type { FunctionComponent } from "react-misc";
 import Hand from "./Hand";
 import type { HintProps } from "../DateTimePicker-common";
 import Numbers from "./Numbers";
+import React from "react";
 import { TimeUnit } from "typescript-misc";
 import { consts } from "../../../core";
 import { useIcons } from "../../../icons";
@@ -116,7 +116,7 @@ export default memo(
     const setRangeEnd = React.useCallback(
       (index: number, indexFrom: number) => {
         switch (step) {
-          case Step.hours:
+          case Step.hours: {
             if (
               index === initialHours &&
               indexFrom === initialHoursFrom &&
@@ -147,8 +147,9 @@ export default memo(
             pickMinutes();
 
             break;
+          }
 
-          case Step.minutes:
+          case Step.minutes: {
             if (
               index === initialMinutes &&
               indexFrom === initialMinutesFrom &&
@@ -176,6 +177,7 @@ export default memo(
                 false
               );
             }
+          }
         }
 
         if (index === indexFrom) {
@@ -213,7 +215,7 @@ export default memo(
           const index = Math.round(rad / sector) % 12;
 
           switch (step) {
-            case Step.hours:
+            case Step.hours: {
               hours.value = index;
 
               if (gestureStep === GestureStep.start) hoursFrom.value = index;
@@ -222,14 +224,16 @@ export default memo(
                 runOnJS(setRangeEnd)(index, hoursFrom.value);
 
               break;
+            }
 
-            case Step.minutes:
+            case Step.minutes: {
               minutes.value = index;
 
               if (gestureStep === GestureStep.start) minutesFrom.value = index;
 
               if (gestureStep === GestureStep.end)
                 runOnJS(setRangeEnd)(index, minutesFrom.value);
+            }
           }
         }
       },
@@ -263,14 +267,17 @@ export default memo(
           .minDistance(consts.Gesture.pan.minDistance)
           .onBegin(({ x, y }) => {
             "worklet";
+
             setRange(x, y, GestureStep.start);
           })
           .onUpdate(({ x, y }) => {
             "worklet";
+
             setRange(x, y, GestureStep.update);
           })
           .onFinalize(({ x, y }) => {
             "worklet";
+
             setRange(x, y, GestureStep.end);
           }),
       [setRange]
@@ -410,7 +417,6 @@ export interface Props {
   readonly mode: Mode;
   /**
    * Handles dates setRangeEnd.
-   *
    * @param date - Date.
    * @param dateFrom - Date from.
    * @param fullDaysMode - Full days mode.

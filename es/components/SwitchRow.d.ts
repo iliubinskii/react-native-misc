@@ -1,5 +1,5 @@
-import * as React from "react";
 import { Switch } from "./common-components";
+import React from "react";
 declare const _default: import("react-misc").FunctionComponent<Props>;
 export default _default;
 /**

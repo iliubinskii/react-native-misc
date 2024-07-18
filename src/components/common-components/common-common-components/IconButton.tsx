@@ -1,10 +1,10 @@
-import * as React from "react";
 import { AlignItems, JustifyContent, Position } from "../../../types";
 import { Pressable, View } from "react-native";
 import type { booleanU, numberU, stringU } from "typescript-misc";
 import type { CommonNativeProps } from "../../../types";
 import type { CommonProps } from "react-misc";
 import type { Icon } from "../../../icons";
+import React from "react";
 import { TouchableRipple } from "react-native-paper";
 import { consts } from "../../../core";
 import { memo } from "react-misc";

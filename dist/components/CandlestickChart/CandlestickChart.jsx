@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
-const React = tslib_1.__importStar(require("react"));
 const react_native_gesture_handler_1 = require("react-native-gesture-handler");
 const react_native_reanimated_1 = require("react-native-reanimated");
 const CandlestickChart_common_1 = require("./CandlestickChart-common");
+const react_1 = tslib_1.__importDefault(require("react"));
 const core_1 = require("../../core");
 const typescript_misc_1 = require("typescript-misc");
 const react_misc_1 = require("react-misc");
@@ -16,18 +16,18 @@ exports.default = (0, react_misc_1.memo)("CandlestickChart", ({ data, initialRan
         initialRangeTo - initialRangeFrom >= minSliceLength &&
         initialRangeTo - initialRangeFrom <= maxSliceLength;
     const { hideSnackbar } = (0, contexts_1.useSnackbar)();
-    const initialRange = React.useMemo(() => enabled ? [initialRangeFrom, initialRangeTo] : [0, minSliceLength], [enabled, initialRangeFrom, initialRangeTo, minSliceLength]);
+    const initialRange = react_1.default.useMemo(() => enabled ? [initialRangeFrom, initialRangeTo] : [0, minSliceLength], [enabled, initialRangeFrom, initialRangeTo, minSliceLength]);
     const pan = (0, react_native_reanimated_1.useSharedValue)(initialRange);
     const pan0 = (0, react_native_reanimated_1.useSharedValue)(initialRange);
     const panNumberOfPointers = (0, react_native_reanimated_1.useSharedValue)(0);
     const panScale = (0, react_native_reanimated_1.useSharedValue)(1);
     const panTranslationX = (0, react_native_reanimated_1.useSharedValue)(0);
-    const [range, setRange] = React.useState(initialRange);
-    const normalize = React.useCallback((value) => (value - verticalRangeFrom) / (verticalRangeTo - verticalRangeFrom), [verticalRangeFrom, verticalRangeTo]);
-    const updateRange = React.useCallback(() => {
+    const [range, setRange] = react_1.default.useState(initialRange);
+    const normalize = react_1.default.useCallback((value) => (value - verticalRangeFrom) / (verticalRangeTo - verticalRangeFrom), [verticalRangeFrom, verticalRangeTo]);
+    const updateRange = react_1.default.useCallback(() => {
         setRange(pan.value);
     }, [pan]);
-    const gesture = React.useMemo(() => react_native_gesture_handler_1.Gesture.Race(react_native_gesture_handler_1.Gesture.Simultaneous(react_native_gesture_handler_1.Gesture.Pan()
+    const gesture = react_1.default.useMemo(() => react_native_gesture_handler_1.Gesture.Race(react_native_gesture_handler_1.Gesture.Simultaneous(react_native_gesture_handler_1.Gesture.Pan()
         .enabled(enabled)
         .minDistance(core_1.consts.Gesture.pan.minDistance)
         .onBegin(({ numberOfPointers, translationX }) => {
@@ -125,17 +125,21 @@ exports.default = (0, react_misc_1.memo)("CandlestickChart", ({ data, initialRan
         updateRange,
         width
     ]);
-    const normalizedData = React.useMemo(() => data.map(({ closing, high, low, opening, ...candlestick }) => ({
-        closing: normalize(closing),
-        high: normalize(high),
-        low: normalize(low),
-        opening: normalize(opening),
-        ...candlestick
-    })), [data, normalize]);
-    const normalizedVerticalLabels = React.useMemo(() => verticalLabels.map(({ value, ...label }) => ({
-        value: normalize(value),
-        ...label
-    })), [normalize, verticalLabels]);
+    const normalizedData = react_1.default.useMemo(() => data.map(({ closing, high, low, opening, ...candlestick }) => {
+        return {
+            closing: normalize(closing),
+            high: normalize(high),
+            low: normalize(low),
+            opening: normalize(opening),
+            ...candlestick
+        };
+    }), [data, normalize]);
+    const normalizedVerticalLabels = react_1.default.useMemo(() => verticalLabels.map(({ value, ...label }) => {
+        return {
+            value: normalize(value),
+            ...label
+        };
+    }), [normalize, verticalLabels]);
     return (<react_native_gesture_handler_1.GestureDetector gesture={gesture}>
         <CandlestickChart_common_1.BaseChart data={normalizedData} paddingEnd={paddingEnd} paddingStart={paddingStart} range0={range[0]} range1={range[1]} verticalLabels={normalizedVerticalLabels} width={width} {...props}/>
       </react_native_gesture_handler_1.GestureDetector>);

@@ -1,5 +1,5 @@
-import * as React from "react";
 import { IconButton } from "../common-components";
+import React from "react";
 import { consts } from "../../core";
 import { memo } from "react-misc";
 import { useThemeExtended } from "../../contexts";

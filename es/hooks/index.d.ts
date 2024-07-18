@@ -1,5 +1,5 @@
-export type { Callbacks as AnimatedReactionCallbacks } from "./useAnimatedReaction";
 export { useAnimatedReaction } from "./useAnimatedReaction";
+export type { Callbacks as AnimatedReactionCallbacks } from "./useAnimatedReaction";
 export { useAnimatedScrollHandler } from "./useAnimatedScrollHandler";
 export { useBackHandler } from "./useBackHandler";
 export { DayType as CalendarDayType, useCalendar } from "./useCalendar";

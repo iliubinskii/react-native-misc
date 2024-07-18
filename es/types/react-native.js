@@ -1,3 +1,4 @@
+/* eslint-disable misc/consistent-enum-members -- Ok */
 export var ColorSchemeName;
 (function (ColorSchemeName) {
     ColorSchemeName["dark"] = "dark";

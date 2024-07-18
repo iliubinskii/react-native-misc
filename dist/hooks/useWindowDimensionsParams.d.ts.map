@@ -1,1 +1,1 @@
-{"version":3,"file":"useWindowDimensionsParams.d.ts","sourceRoot":"","sources":["../../src/hooks/useWindowDimensionsParams.ts"],"names":[],"mappings":"AACA,OAAO,KAAK,EAAE,UAAU,EAAE,MAAM,cAAc,CAAC;AAI/C;;;;;GAKG;AACH,wBAAgB,yBAAyB,CAAC,WAAW,EAAE,OAAO,GAAG,UAAU,CAY1E"}
+{"version":3,"file":"useWindowDimensionsParams.d.ts","sourceRoot":"","sources":["../../src/hooks/useWindowDimensionsParams.ts"],"names":[],"mappings":"AACA,OAAO,KAAK,EAAE,UAAU,EAAE,MAAM,cAAc,CAAC;AAI/C;;;;GAIG;AACH,wBAAgB,yBAAyB,CAAC,WAAW,EAAE,OAAO,GAAG,UAAU,CAW1E"}

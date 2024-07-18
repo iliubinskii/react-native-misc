@@ -3,6 +3,6 @@ export type {
   Options as WheelPickerOptions,
   Ref as WheelPickerRef
 } from "./BaseWheelPicker";
-export type { Slot as DualWheelPickerSlot } from "./DualWheelPicker";
 export { default as DualWheelPicker } from "./DualWheelPicker";
+export type { Slot as DualWheelPickerSlot } from "./DualWheelPicker";
 export { default as WheelPicker } from "./WheelPicker";

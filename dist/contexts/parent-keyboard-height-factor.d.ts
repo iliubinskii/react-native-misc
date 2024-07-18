@@ -2,7 +2,6 @@ import type { CommonProps } from "react-misc";
 export declare const ParentKeyboardHeightFactorProvider: import("react-misc").FunctionComponent<Props>;
 /**
  * Consumes theme context.
- *
  * @returns Theme context.
  */
 export declare function useParentKeyboardHeightFactor(): number;

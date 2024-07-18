@@ -1,6 +1,6 @@
-import * as React from "react";
 import { memo, useBoolean, useBusyState, useDeferredEffect } from "react-misc";
 import type { CommonProps } from "react-misc";
+import React from "react";
 import { View } from "react-native";
 
 export default memo(
@@ -31,7 +31,6 @@ export default memo(
 export interface Props extends CommonProps.Children {
   /**
    * Placeholder.
-   *
    * @returns React node.
    */
   readonly placeholder: () => React.ReactNode;

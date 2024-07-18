@@ -1,5 +1,5 @@
-import * as React from "react";
 import { BaseChart } from "./CandlestickChart-common";
+import React from "react";
 declare const _default: import("react-misc").FunctionComponent<Props>;
 export default _default;
 /**
@@ -12,7 +12,6 @@ export interface Props extends Omit<React.ComponentProps<typeof BaseChart>, "ran
     readonly minSliceLength: number;
     /**
      * Selects index.
-     *
      * @param index - Index.
      */
     readonly onSelect?: ((index: number) => void) | undefined;

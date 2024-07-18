@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import type {
   GestureUpdateEvent,
@@ -17,6 +16,7 @@ import Animated, {
   withTiming
 } from "react-native-reanimated";
 import type { CommonProps } from "react-misc";
+import React from "react";
 import { consts } from "../core";
 import { fn } from "typescript-misc";
 import { useLayout } from "../hooks";
@@ -46,13 +46,12 @@ export default memo(
 
     const panOpacity = useSharedValue(0);
 
-    const animatedStyle = useAnimatedStyle(
-      (): ViewStyle => ({
+    const animatedStyle = useAnimatedStyle((): ViewStyle => {
+      return {
         opacity: opacity.value * (1 - Math.abs(panOpacity.value)),
         transform: [{ translateX: pan.value + panOpacity.value * translateX }]
-      }),
-      [opacity, pan, panOpacity]
-    );
+      };
+    }, [opacity, pan, panOpacity]);
 
     const onEnd = React.useCallback(
       ({ velocityX }: GestureUpdateEvent<PanGestureHandlerEventPayload>) => {
@@ -134,6 +133,7 @@ export default memo(
           })
           .onStart(() => {
             "worklet";
+
             cancelAnimation(pan);
             activated.value = true;
             pan0.value = pan.value;
@@ -141,14 +141,17 @@ export default memo(
           })
           .onUpdate(event => {
             "worklet";
+
             pan.value = pan0.value + event.translationX;
           })
           .onEnd(event => {
             "worklet";
+
             runOnJS(onEnd)(event);
           })
           .onFinalize(() => {
             "worklet";
+
             activated.value = false;
           }),
       [activated, initialTouch, layout, onEnd, pan, pan0, panOpacity, threshold]

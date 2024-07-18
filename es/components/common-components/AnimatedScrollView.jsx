@@ -1,9 +1,9 @@
-import * as React from "react";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { evaluate, fn, num } from "typescript-misc";
 import { memo, useRealEffect, useUpdater } from "react-misc";
 import Animated, { cancelAnimation, runOnJS, useAnimatedStyle, useSharedValue } from "react-native-reanimated";
 import { Overflow } from "../../types";
+import React from "react";
 import { View } from "react-native";
 import { consts } from "../../core";
 import { rtlSign } from "../../consts";
@@ -15,10 +15,12 @@ export default memo("AnimatedScrollView", ({ children, customRef, direction, dis
     const animatedStyle = useAnimatedStyle(() => {
         runOnJS(onScroll)(pan.value);
         switch (direction) {
-            case Direction.column:
+            case Direction.column: {
                 return { transform: [{ translateY: pan.value }], width };
-            case Direction.row:
+            }
+            case Direction.row: {
                 return { transform: [{ translateX: rtlSign * pan.value }], width };
+            }
         }
     }, [direction, onScroll, pan, width]);
     const animate = React.useCallback((value, velocity, swipe, step) => {
@@ -46,19 +48,23 @@ export default memo("AnimatedScrollView", ({ children, customRef, direction, dis
     const getDelta = React.useCallback(({ translationX, translationY }) => {
         "worklet";
         switch (direction) {
-            case Direction.column:
+            case Direction.column: {
                 return translationY;
-            case Direction.row:
+            }
+            case Direction.row: {
                 return rtlSign * translationX;
+            }
         }
     }, [direction]);
     const getVelocity = React.useCallback(({ velocityX, velocityY }) => {
         "worklet";
         switch (direction) {
-            case Direction.column:
+            case Direction.column: {
                 return velocityY;
-            case Direction.row:
+            }
+            case Direction.row: {
                 return rtlSign * velocityX;
+            }
         }
     }, [direction]);
     const { hideSnackbar } = useSnackbar();

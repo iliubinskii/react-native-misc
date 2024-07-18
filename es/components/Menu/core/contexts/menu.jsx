@@ -1,13 +1,14 @@
-import * as React from "react";
 import { fn, neverDemand } from "typescript-misc";
+import React from "react";
 import { memo } from "react-misc";
 export const MenuProvider = memo("MenuProvider", ({ children, onDismiss = fn.noop }) => {
-    const context = React.useMemo(() => ({ onDismiss }), [onDismiss]);
+    const context = React.useMemo(() => {
+        return { onDismiss };
+    }, [onDismiss]);
     return (<MenuContext.Provider value={context}>{children}</MenuContext.Provider>);
 });
 /**
  * Consumes menu context.
- *
  * @returns Menu context.
  */
 export function useMenu() {

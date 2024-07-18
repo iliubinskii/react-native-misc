@@ -2,12 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Direction = void 0;
 const tslib_1 = require("tslib");
-const React = tslib_1.__importStar(require("react"));
 const react_native_gesture_handler_1 = require("react-native-gesture-handler");
 const typescript_misc_1 = require("typescript-misc");
 const react_misc_1 = require("react-misc");
 const react_native_reanimated_1 = tslib_1.__importStar(require("react-native-reanimated"));
 const types_1 = require("../../types");
+const react_1 = tslib_1.__importDefault(require("react"));
 const react_native_1 = require("react-native");
 const core_1 = require("../../core");
 const consts_1 = require("../../consts");
@@ -19,13 +19,15 @@ exports.default = (0, react_misc_1.memo)("AnimatedScrollView", ({ children, cust
     const animatedStyle = (0, react_native_reanimated_1.useAnimatedStyle)(() => {
         (0, react_native_reanimated_1.runOnJS)(onScroll)(pan.value);
         switch (direction) {
-            case Direction.column:
+            case Direction.column: {
                 return { transform: [{ translateY: pan.value }], width };
-            case Direction.row:
+            }
+            case Direction.row: {
                 return { transform: [{ translateX: consts_1.rtlSign * pan.value }], width };
+            }
         }
     }, [direction, onScroll, pan, width]);
-    const animate = React.useCallback((value, velocity, swipe, step) => {
+    const animate = react_1.default.useCallback((value, velocity, swipe, step) => {
         value = typescript_misc_1.num.limit(typescript_misc_1.num.round.step(value, step), min, max);
         const callback = (finished = false) => {
             onScroll(pan.value);
@@ -47,26 +49,30 @@ exports.default = (0, react_misc_1.memo)("AnimatedScrollView", ({ children, cust
         snapAnimation,
         swipeAnimation
     ]);
-    const getDelta = React.useCallback(({ translationX, translationY }) => {
+    const getDelta = react_1.default.useCallback(({ translationX, translationY }) => {
         "worklet";
         switch (direction) {
-            case Direction.column:
+            case Direction.column: {
                 return translationY;
-            case Direction.row:
+            }
+            case Direction.row: {
                 return consts_1.rtlSign * translationX;
+            }
         }
     }, [direction]);
-    const getVelocity = React.useCallback(({ velocityX, velocityY }) => {
+    const getVelocity = react_1.default.useCallback(({ velocityX, velocityY }) => {
         "worklet";
         switch (direction) {
-            case Direction.column:
+            case Direction.column: {
                 return velocityY;
-            case Direction.row:
+            }
+            case Direction.row: {
                 return consts_1.rtlSign * velocityX;
+            }
         }
     }, [direction]);
     const { hideSnackbar } = (0, contexts_1.useSnackbar)();
-    const snap = React.useCallback((delta, velocity) => {
+    const snap = react_1.default.useCallback((delta, velocity) => {
         const value = (0, typescript_misc_1.evaluate)(() => {
             if (delta > toggleThreshold * snapInterval)
                 return typescript_misc_1.num.ceil.step(pan0.value + delta, snapInterval);
@@ -76,7 +82,7 @@ exports.default = (0, react_misc_1.memo)("AnimatedScrollView", ({ children, cust
         });
         (0, react_native_reanimated_1.runOnJS)(animate)(value, velocity, false, snapInterval);
     }, [animate, pan0, snapInterval, toggleThreshold]);
-    const gesture = React.useMemo(() => react_native_gesture_handler_1.Gesture.Pan()
+    const gesture = react_1.default.useMemo(() => react_native_gesture_handler_1.Gesture.Pan()
         .minDistance(core_1.consts.Gesture.pan.minDistance)
         .onTouchesDown((_event, { fail }) => {
         "worklet";

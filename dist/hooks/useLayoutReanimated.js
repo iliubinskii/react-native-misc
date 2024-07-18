@@ -1,20 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.useLayoutReanimated = void 0;
+exports.useLayoutReanimated = useLayoutReanimated;
 const tslib_1 = require("tslib");
-const React = tslib_1.__importStar(require("react"));
+const react_1 = tslib_1.__importDefault(require("react"));
 const react_native_reanimated_1 = require("react-native-reanimated");
 /**
  * Layout hook.
- *
  * @returns Result.
  */
 function useLayoutReanimated() {
     const layout = (0, react_native_reanimated_1.useSharedValue)(undefined);
-    const onLayout = React.useCallback(({ nativeEvent }) => {
+    const onLayout = react_1.default.useCallback(({ nativeEvent }) => {
         layout.value = nativeEvent.layout;
     }, [layout]);
-    return React.useMemo(() => ({ layout, onLayout }), [layout, onLayout]);
+    return react_1.default.useMemo(() => {
+        return { layout, onLayout };
+    }, [layout, onLayout]);
 }
-exports.useLayoutReanimated = useLayoutReanimated;
 //# sourceMappingURL=useLayoutReanimated.js.map

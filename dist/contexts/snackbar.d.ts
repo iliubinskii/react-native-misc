@@ -1,7 +1,7 @@
-import * as React from "react";
 import type { numberU } from "typescript-misc";
 import type { CommonProps } from "react-misc";
 import type { MD3ThemeExtended } from "../types";
+import React from "react";
 import { Snackbar } from "react-native-paper";
 export declare const SnackbarProvider: import("react-misc").FunctionComponent<Props>;
 export declare enum Variant {
@@ -9,7 +9,6 @@ export declare enum Variant {
 }
 /**
  * Consumes snackbar context.
- *
  * @returns Snackbar context.
  */
 export declare function useSnackbar(): Context;
@@ -23,7 +22,6 @@ export interface Context {
     readonly hideSnackbar: () => void;
     /**
      * Shows snackbar.
-     *
      * @param text - Text.
      * @param options - Options.
      */
@@ -33,10 +31,10 @@ export interface Context {
  * @internal
  */
 export interface Options {
-    readonly action?: Exclude<React.ComponentProps<typeof Snackbar>["action"], undefined>;
-    readonly duration?: number;
-    readonly offset?: number;
-    readonly variant?: Variant;
+    readonly action?: Exclude<React.ComponentProps<typeof Snackbar>["action"], undefined> | undefined;
+    readonly duration?: numberU;
+    readonly offset?: numberU;
+    readonly variant?: Variant | undefined;
 }
 /**
  * @internal

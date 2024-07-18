@@ -1,3 +1,4 @@
+/* eslint-disable misc/consistent-enum-members -- Ok */
 export var SvgFontWeight;
 (function (SvgFontWeight) {
     SvgFontWeight["bold"] = "bold";

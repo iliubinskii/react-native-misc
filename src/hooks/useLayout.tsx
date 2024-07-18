@@ -1,10 +1,8 @@
-import * as React from "react";
 import type { LayoutChangeEvent, LayoutRectangle } from "react-native";
-import { o } from "typescript-misc";
+import React from "react";
 
 /**
  * Layout hook.
- *
  * @returns Result.
  */
 export function useLayout(): Result {
@@ -18,10 +16,9 @@ export function useLayout(): Result {
     setLayout(nativeEvent.layout);
   }, []);
 
-  return React.useMemo(
-    (): Result => o.removeUndefinedKeys({ clearLayout, layout, onLayout }),
-    [clearLayout, layout, onLayout]
-  );
+  return React.useMemo(() => {
+    return { clearLayout, layout, onLayout };
+  }, [clearLayout, layout, onLayout]);
 }
 
 export interface Result {
@@ -29,10 +26,9 @@ export interface Result {
    * Clears layout.
    */
   readonly clearLayout: () => void;
-  readonly layout?: LayoutRectangle;
+  readonly layout?: LayoutRectangle | undefined;
   /**
    * Handles layout event.
-   *
    * @param event - Event.
    */
   readonly onLayout: (event: LayoutChangeEvent) => void;

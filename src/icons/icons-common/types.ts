@@ -1,5 +1,5 @@
-import type * as React from "react";
 import type { Rec, numberU, stringU, types } from "typescript-misc";
+import type React from "react";
 
 declare global {
   namespace reactNativeMisc {
@@ -11,7 +11,6 @@ declare global {
 export interface Icon {
   /**
    * Icon component.
-   *
    * @param props - Properties.
    * @returns React element.
    */

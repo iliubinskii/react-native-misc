@@ -1,10 +1,10 @@
-import * as React from "react";
 import {
   AlignItems,
   JustifyContent,
   Position,
   TextVariant
 } from "../../../types";
+import React from "react";
 import { Text } from "../../common-components";
 import { View } from "react-native";
 import { consts } from "../../../core";

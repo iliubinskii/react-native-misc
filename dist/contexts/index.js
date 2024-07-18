@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.useThemeExtended = exports.ThemeExtendedProvider = exports.useSnackbar = exports.SnackbarVariant = exports.SnackbarProvider = exports.useParentKeyboardHeightFactor = exports.ParentKeyboardHeightFactorProvider = exports.useAppInfo = exports.AppInfoProvider = exports.useAnimatedKeyboard = exports.AnimatedKeyboardProvider = void 0;
+exports.useThemeExtended = exports.ThemeExtendedProvider = exports.SnackbarVariant = exports.useSnackbar = exports.SnackbarProvider = exports.useParentKeyboardHeightFactor = exports.ParentKeyboardHeightFactorProvider = exports.useAppInfo = exports.AppInfoProvider = exports.useAnimatedKeyboard = exports.AnimatedKeyboardProvider = void 0;
 var animated_keyboard_1 = require("./animated-keyboard");
 Object.defineProperty(exports, "AnimatedKeyboardProvider", { enumerable: true, get: function () { return animated_keyboard_1.AnimatedKeyboardProvider; } });
 Object.defineProperty(exports, "useAnimatedKeyboard", { enumerable: true, get: function () { return animated_keyboard_1.useAnimatedKeyboard; } });
@@ -12,8 +12,8 @@ Object.defineProperty(exports, "ParentKeyboardHeightFactorProvider", { enumerabl
 Object.defineProperty(exports, "useParentKeyboardHeightFactor", { enumerable: true, get: function () { return parent_keyboard_height_factor_1.useParentKeyboardHeightFactor; } });
 var snackbar_1 = require("./snackbar");
 Object.defineProperty(exports, "SnackbarProvider", { enumerable: true, get: function () { return snackbar_1.SnackbarProvider; } });
-Object.defineProperty(exports, "SnackbarVariant", { enumerable: true, get: function () { return snackbar_1.Variant; } });
 Object.defineProperty(exports, "useSnackbar", { enumerable: true, get: function () { return snackbar_1.useSnackbar; } });
+Object.defineProperty(exports, "SnackbarVariant", { enumerable: true, get: function () { return snackbar_1.Variant; } });
 var theme_extended_1 = require("./theme-extended");
 Object.defineProperty(exports, "ThemeExtendedProvider", { enumerable: true, get: function () { return theme_extended_1.ThemeExtendedProvider; } });
 Object.defineProperty(exports, "useThemeExtended", { enumerable: true, get: function () { return theme_extended_1.useThemeExtended; } });

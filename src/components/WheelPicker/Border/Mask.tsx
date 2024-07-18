@@ -1,6 +1,6 @@
-import * as React from "react";
-import LinearGradient from "react-native-linear-gradient";
+import { LinearGradient } from "react-native-linear-gradient";
 import MaskedView from "@react-native-masked-view/masked-view";
+import React from "react";
 import { consts } from "../../../core";
 import { memo } from "react-misc";
 import { unfreeze } from "typescript-misc";

@@ -1,11 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createVelocityAnimation = void 0;
+exports.createVelocityAnimation = createVelocityAnimation;
 const react_native_reanimated_1 = require("react-native-reanimated");
 const typescript_misc_1 = require("typescript-misc");
 /**
  * Creates animation.
- *
  * @param options - Options.
  * @returns Animation.
  */
@@ -21,5 +20,4 @@ function createVelocityAnimation(options) {
         });
     };
 }
-exports.createVelocityAnimation = createVelocityAnimation;
 //# sourceMappingURL=createVelocityAnimation.js.map

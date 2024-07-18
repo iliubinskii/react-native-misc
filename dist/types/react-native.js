@@ -1,4 +1,5 @@
 "use strict";
+/* eslint-disable misc/consistent-enum-members -- Ok */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TextTransform = exports.StatusBarStyle = exports.PointerEvents = exports.OS = exports.KeyboardShouldPersistTaps = exports.KeyboardEventName = exports.KeyboardDismissMode = exports.KeyboardAvoidingViewBehavior = exports.HyphenationFrequency = exports.FlatListDecelerationRate = exports.ExpoStatusBarStyle = exports.ColorSchemeName = void 0;
 var ColorSchemeName;

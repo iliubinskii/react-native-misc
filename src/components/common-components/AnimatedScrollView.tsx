@@ -1,4 +1,3 @@
-import * as React from "react";
 import type { AnimationCallback, SharedValue } from "react-native-reanimated";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import type {
@@ -15,6 +14,7 @@ import Animated, {
 } from "react-native-reanimated";
 import type { NativeAnimation } from "../../functions";
 import { Overflow } from "../../types";
+import React from "react";
 import { View } from "react-native";
 import type { ViewStyle } from "react-native";
 import { consts } from "../../core";
@@ -56,11 +56,13 @@ export default memo(
       runOnJS(onScroll)(pan.value);
 
       switch (direction) {
-        case Direction.column:
+        case Direction.column: {
           return { transform: [{ translateY: pan.value }], width };
+        }
 
-        case Direction.row:
+        case Direction.row: {
           return { transform: [{ translateX: rtlSign * pan.value }], width };
+        }
       }
     }, [direction, onScroll, pan, width]);
 
@@ -99,11 +101,13 @@ export default memo(
         "worklet";
 
         switch (direction) {
-          case Direction.column:
+          case Direction.column: {
             return translationY;
+          }
 
-          case Direction.row:
+          case Direction.row: {
             return rtlSign * translationX;
+          }
         }
       },
       [direction]
@@ -117,11 +121,13 @@ export default memo(
         "worklet";
 
         switch (direction) {
-          case Direction.column:
+          case Direction.column: {
             return velocityY;
+          }
 
-          case Direction.row:
+          case Direction.row: {
             return rtlSign * velocityX;
+          }
         }
       },
       [direction]
@@ -157,12 +163,14 @@ export default memo(
           })
           .onBegin(() => {
             "worklet";
+
             cancelAnimation(pan);
             pan0.value = pan.value;
             panLastStop.value = pan.value;
           })
           .onStart(() => {
             "worklet";
+
             runOnJS(hideSnackbar)();
           })
           .onUpdate(event => {
@@ -284,13 +292,11 @@ export interface Props {
   readonly min?: numberU;
   /**
    * Handles scroll event.
-   *
    * @param offset - Offset.
    */
   readonly onScroll?: ((offset: number) => void) | undefined;
   /**
    * Handles scroll end event.
-   *
    * @param offset - Offset.
    */
   readonly onScrollEnd?: ((offset: number) => void) | undefined;
@@ -310,7 +316,6 @@ export interface Props {
 export interface Ref {
   /**
    * Scrolls by a given delta.
-   *
    * @param delta - Delta.
    */
   readonly scrollBy: (delta: number) => void;

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { Row } from "../common-common-components";
 import type { booleanU } from "typescript-misc";
 import { consts } from "../../../core";

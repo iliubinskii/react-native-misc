@@ -8,7 +8,6 @@ import { num } from "typescript-misc";
 
 /**
  * Creates animation.
- *
  * @param options - Options.
  * @returns Animation.
  */

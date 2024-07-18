@@ -1,7 +1,6 @@
 import { runOnJS, withTiming } from "react-native-reanimated";
 /**
  * Creates animation.
- *
  * @param options - Options.
  * @returns Animation.
  */

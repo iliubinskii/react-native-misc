@@ -1,13 +1,11 @@
-import * as React from "react";
 import { memo, useRealEffect } from "react-misc";
 import type { Anchor } from "./MeasuredBalloon";
 import BalloonMeter from "./BalloonMeter";
 import MeasuredBalloon from "./MeasuredBalloon";
 import { Portal } from "react-native-paper";
+import React from "react";
 import { useLayout } from "../../hooks";
 import { useWindowDimensions } from "../../hooks-with-contexts";
-
-export type { Anchor } from "./MeasuredBalloon";
 
 export default memo("Balloon", ({ anchor, visible, ...props }: Props) => {
   const { clearLayout, layout, onLayout } = useLayout();
@@ -46,3 +44,5 @@ export interface Props
   > {
   readonly anchor?: Anchor | undefined;
 }
+
+export type { Anchor } from "./MeasuredBalloon";

@@ -1,6 +1,6 @@
-import * as React from "react";
 import { G, Path, Svg } from "react-native-svg";
 import { Position } from "../../../types";
+import React from "react";
 import { consts } from "../../../core";
 import { isRtl } from "../../../consts";
 import { memo } from "react-misc";
@@ -13,18 +13,21 @@ export default memo(
 
     const horizontalPositionBiDir = React.useMemo(() => {
       switch (horizontalPosition) {
-        case HorizontalPosition.center:
+        case HorizontalPosition.center: {
           return HorizontalPositionBiDir.center;
+        }
 
-        case HorizontalPosition.flexEnd:
+        case HorizontalPosition.flexEnd: {
           return isRtl
             ? HorizontalPositionBiDir.left
             : HorizontalPositionBiDir.right;
+        }
 
-        case HorizontalPosition.flexStart:
+        case HorizontalPosition.flexStart: {
           return isRtl
             ? HorizontalPositionBiDir.right
             : HorizontalPositionBiDir.left;
+        }
       }
     }, [horizontalPosition]);
 
@@ -52,27 +55,33 @@ export default memo(
 
     const x1 = React.useMemo(() => {
       switch (horizontalPositionBiDir) {
-        case HorizontalPositionBiDir.center:
+        case HorizontalPositionBiDir.center: {
           return 0.5 * width;
+        }
 
-        case HorizontalPositionBiDir.left:
+        case HorizontalPositionBiDir.left: {
           return 0;
+        }
 
-        case HorizontalPositionBiDir.right:
+        case HorizontalPositionBiDir.right: {
           return width;
+        }
       }
     }, [horizontalPositionBiDir, width]);
 
     const x2 = React.useMemo(() => {
       switch (horizontalPositionBiDir) {
-        case HorizontalPositionBiDir.center:
+        case HorizontalPositionBiDir.center: {
           return 0.5 * width;
+        }
 
-        case HorizontalPositionBiDir.left:
+        case HorizontalPositionBiDir.left: {
           return triangleOffset * width;
+        }
 
-        case HorizontalPositionBiDir.right:
+        case HorizontalPositionBiDir.right: {
           return width - triangleOffset * width;
+        }
       }
     }, [horizontalPositionBiDir, width]);
 
@@ -84,8 +93,8 @@ export default memo(
       L ${width} ${triangleHeight + height - r}
       A ${r} ${r} 0 0 1 ${width - r} ${triangleHeight + height}
       L ${r} ${triangleHeight + height}
-      A ${r} ${r} 0 0 1 ${0} ${triangleHeight + height - r}
-      L ${0} ${triangleHeight + r}
+      A ${r} ${r} 0 0 1 0 ${triangleHeight + height - r}
+      L 0 ${triangleHeight + r}
       A ${r} ${r} 0 0 1 ${r} ${triangleHeight}
       L ${x2 - 0.5 * triangleWidth * width} ${triangleHeight}
       Z

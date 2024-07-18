@@ -1,5 +1,5 @@
-import * as React from "react";
 import { FlexDirection } from "../../../types";
+import React from "react";
 import { View } from "react-native";
 import { memo } from "react-misc";
 

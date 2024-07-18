@@ -1,6 +1,6 @@
-import * as React from "react";
 import type { GestureResponderEvent } from "react-native";
 import { Menu } from "react-native-paper";
+import React from "react";
 import { fn } from "typescript-misc";
 import { memo } from "react-misc";
 import { useMenu } from "./core";

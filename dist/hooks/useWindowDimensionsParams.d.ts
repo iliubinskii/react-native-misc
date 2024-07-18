@@ -1,7 +1,6 @@
 import type { ScaledSize } from "react-native";
 /**
  * Window dimensions hook.
- *
  * @param translucent - Whether status bar is translucent.
  * @returns Window dimensions.
  */

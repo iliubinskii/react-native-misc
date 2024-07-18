@@ -1,22 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.useMenu = exports.MenuProvider = void 0;
+exports.MenuProvider = void 0;
+exports.useMenu = useMenu;
 const tslib_1 = require("tslib");
-const React = tslib_1.__importStar(require("react"));
 const typescript_misc_1 = require("typescript-misc");
+const react_1 = tslib_1.__importDefault(require("react"));
 const react_misc_1 = require("react-misc");
 exports.MenuProvider = (0, react_misc_1.memo)("MenuProvider", ({ children, onDismiss = typescript_misc_1.fn.noop }) => {
-    const context = React.useMemo(() => ({ onDismiss }), [onDismiss]);
+    const context = react_1.default.useMemo(() => {
+        return { onDismiss };
+    }, [onDismiss]);
     return (<MenuContext.Provider value={context}>{children}</MenuContext.Provider>);
 });
 /**
  * Consumes menu context.
- *
  * @returns Menu context.
  */
 function useMenu() {
-    return React.useContext(MenuContext);
+    return react_1.default.useContext(MenuContext);
 }
-exports.useMenu = useMenu;
-const MenuContext = React.createContext((0, typescript_misc_1.neverDemand)());
+const MenuContext = react_1.default.createContext((0, typescript_misc_1.neverDemand)());
 //# sourceMappingURL=menu.jsx.map

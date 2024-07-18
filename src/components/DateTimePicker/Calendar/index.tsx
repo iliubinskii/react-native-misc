@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Dummy, IconButton, Row, Text } from "../../common-components";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import {
@@ -15,6 +14,7 @@ import Circle from "./Circle";
 import Day from "./Day";
 import type { FunctionComponent } from "react-misc";
 import type { HintProps } from "../DateTimePicker-common";
+import React from "react";
 import SelectionRow from "./SelectionRow";
 import { Svg } from "react-native-svg";
 import { TimeUnit } from "typescript-misc";
@@ -154,14 +154,17 @@ export default memo(
           .minDistance(consts.Gesture.pan.minDistance)
           .onBegin(({ x, y }) => {
             "worklet";
+
             setRange(x, y, GestureStep.start);
           })
           .onUpdate(({ x, y }) => {
             "worklet";
+
             setRange(x, y, GestureStep.update);
           })
           .onFinalize(({ x, y }) => {
             "worklet";
+
             setRange(x, y, GestureStep.end);
           }),
       [setRange]
@@ -265,7 +268,6 @@ export interface Props {
   readonly month: string;
   /**
    * Handles dates setRangeEnd.
-   *
    * @param date - Date.
    * @param dateFrom - Date from.
    * @param fullDaysMode - Full days mode.
@@ -277,7 +279,6 @@ export interface Props {
   ) => void;
   /**
    * Handles month setRangeEnd.
-   *
    * @param month - Month.
    */
   readonly onMonthChange: (month: string) => void;

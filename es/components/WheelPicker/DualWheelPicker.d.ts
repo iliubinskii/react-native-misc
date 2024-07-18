@@ -1,6 +1,6 @@
-import * as React from "react";
 import type { NumStr, stringU } from "typescript-misc";
 import type { Options as WheelPickerOptions } from "./BaseWheelPicker";
+import React from "react";
 declare const _default: <A extends NumStr, B extends NumStr>(props: Props<A, B>) => React.JSX.Element | undefined;
 export default _default;
 /**
@@ -10,7 +10,6 @@ export interface Props<A extends NumStr, B extends NumStr> {
     readonly color?: stringU;
     /**
      * Handles values change.
-     *
      * @param value1 - First value.
      * @param value2 - Second value.
      */

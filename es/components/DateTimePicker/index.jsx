@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Card, Group } from "../common-components";
 import { Mode, Step } from "./DateTimePicker-common";
 import { as, fn, is } from "typescript-misc";
@@ -8,11 +7,9 @@ import { Button } from "react-native-paper";
 import Calendar from "./Calendar";
 import Clock from "./Clock";
 import { JustifyContent } from "../../types";
+import React from "react";
 import { consts } from "../../core";
 import { useThemeExtended } from "../../contexts";
-export { default as Calendar } from "./Calendar";
-export { default as Clock } from "./Clock";
-export { Mode } from "./DateTimePicker-common";
 export default memo("DateTimePicker", ({ SelectDateRangeHint, SelectTimeRangeHint, date, dateFormat, dateFrom, fullDaysMode, mode = Mode.datetime, onClose = fn.noop, onSave = fn.noop, onSaveTime = fn.noop, time, timeFormat, timeFrom, weekStartsOn, workweekStartsOn }) => {
     const { colors } = useThemeExtended();
     const datetime = useDatetime();
@@ -56,13 +53,16 @@ export default memo("DateTimePicker", ({ SelectDateRangeHint, SelectTimeRangeHin
         }
         else
             switch (stepRef.current) {
-                case Step.date:
+                case Step.date: {
                     break;
-                case Step.hours:
+                }
+                case Step.hours: {
                     pickDate();
                     break;
-                case Step.minutes:
+                }
+                case Step.minutes: {
                     pickHours();
+                }
             }
     }, [
         firstStep,
@@ -138,6 +138,9 @@ export default memo("DateTimePicker", ({ SelectDateRangeHint, SelectTimeRangeHin
         {step === Step.date ? (<Calendar SelectDateRangeHint={SelectDateRangeHint} date={localDate} dateFrom={localDateFrom} month={month} onChange={calendarChangeHandler} onMonthChange={setMonth} pickHours={mode === Mode.datetime ? pickHours : fn.noop} weekStartsOn={weekStartsOn} workweekStartsOn={workweekStartsOn}/>) : (<Clock SelectTimeRangeHint={SelectTimeRangeHint} date={localDate} dateFormat={dateFormat} dateFrom={localDateFrom} fullDaysMode={localFullDaysMode} mode={mode} onChange={clockChangeHandler} pickMinutes={pickMinutes} step={step} timeFormat={timeFormat}/>)}
       </Card>);
 });
+export { default as Calendar } from "./Calendar";
+export { default as Clock } from "./Clock";
+export { Mode } from "./DateTimePicker-common";
 const { duration, height, width } = consts.DateTimePicker;
 const entering = FadeIn.duration(duration);
 const exiting = FadeOut.duration(duration);

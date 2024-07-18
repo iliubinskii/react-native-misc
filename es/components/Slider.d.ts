@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import Slider from "@react-native-community/slider";
 import type { stringU } from "typescript-misc";
 declare const _default: import("react-misc").FunctionComponent<Props>;

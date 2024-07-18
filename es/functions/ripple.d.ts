@@ -1,6 +1,5 @@
 /**
  * Creates ripple color.
- *
  * @param textColor - Text color.
  * @returns Ripple color.
  */

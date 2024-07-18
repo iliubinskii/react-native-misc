@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers -- Ok */
+
 import { Easing } from "react-native-reanimated";
 import { PixelRatio } from "react-native";
 import { num } from "typescript-misc";
@@ -178,6 +180,7 @@ export const consts = {
     slot1: {
       largeSwipeSize: 10,
       largeSwipeStopInterval: 5,
+      padding: 2,
       range: [0, 99],
       smallSwipeSize: 5,
       smallSwipeStopInterval: 5
@@ -185,6 +188,7 @@ export const consts = {
     slot2: {
       largeSwipeSize: 10,
       largeSwipeStopInterval: 5,
+      padding: 3,
       range: [0, 999],
       smallSwipeSize: 5,
       smallSwipeStopInterval: 5,
@@ -229,6 +233,7 @@ export const consts = {
     slot1: {
       largeSwipeSize: 12,
       largeSwipeStopInterval: 6,
+      padding: 2,
       range: [0, 23],
       smallSwipeSize: 6,
       smallSwipeStopInterval: 6
@@ -236,6 +241,7 @@ export const consts = {
     slot2: {
       largeSwipeSize: 30,
       largeSwipeStopInterval: 15,
+      padding: 2,
       range: [0, 59],
       smallSwipeSize: 15,
       smallSwipeStopInterval: 15

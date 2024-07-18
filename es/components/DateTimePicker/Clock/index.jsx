@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Dummy, IconButton, Row, Text } from "../../common-components";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { JustifyContent, TextVariant, VerticalAlign } from "../../../types";
@@ -8,6 +7,7 @@ import { memo, useBoolean, useDatetime, useLang, useRealEffect } from "react-mis
 import { runOnJS, useSharedValue } from "react-native-reanimated";
 import Hand from "./Hand";
 import Numbers from "./Numbers";
+import React from "react";
 import { TimeUnit } from "typescript-misc";
 import { consts } from "../../../core";
 import { useIcons } from "../../../icons";
@@ -44,7 +44,7 @@ export default memo("Clock", ({ SelectTimeRangeHint = Dummy, date, dateFormat, d
     }, [dt, dtFrom, onChange]);
     const setRangeEnd = React.useCallback((index, indexFrom) => {
         switch (step) {
-            case Step.hours:
+            case Step.hours: {
                 if (index === initialHours &&
                     indexFrom === initialHoursFrom &&
                     !fullDaysMode) {
@@ -65,7 +65,8 @@ export default memo("Clock", ({ SelectTimeRangeHint = Dummy, date, dateFormat, d
                 }
                 pickMinutes();
                 break;
-            case Step.minutes:
+            }
+            case Step.minutes: {
                 if (index === initialMinutes &&
                     indexFrom === initialMinutesFrom &&
                     !fullDaysMode) {
@@ -84,6 +85,7 @@ export default memo("Clock", ({ SelectTimeRangeHint = Dummy, date, dateFormat, d
                         .sub(deltaMinutes, TimeUnit.minutes)
                         .toString(), false);
                 }
+            }
         }
         if (index === indexFrom) {
             // Skip
@@ -112,19 +114,21 @@ export default memo("Clock", ({ SelectTimeRangeHint = Dummy, date, dateFormat, d
             const rad = Math.PI - Math.atan2(dx, dy);
             const index = Math.round(rad / sector) % 12;
             switch (step) {
-                case Step.hours:
+                case Step.hours: {
                     hours.value = index;
                     if (gestureStep === GestureStep.start)
                         hoursFrom.value = index;
                     if (gestureStep === GestureStep.end)
                         runOnJS(setRangeEnd)(index, hoursFrom.value);
                     break;
-                case Step.minutes:
+                }
+                case Step.minutes: {
                     minutes.value = index;
                     if (gestureStep === GestureStep.start)
                         minutesFrom.value = index;
                     if (gestureStep === GestureStep.end)
                         runOnJS(setRangeEnd)(index, minutesFrom.value);
+                }
             }
         }
     }, [hours, hoursFrom, layout, minutes, minutesFrom, setRangeEnd, step]);

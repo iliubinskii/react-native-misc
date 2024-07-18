@@ -3,7 +3,6 @@ import { NavigationEvent } from "../types";
 import { useNavigation } from "@react-navigation/native";
 /**
  * Navigation listener hook.
- *
  * @param event - Navigation event.
  * @param callback - Callback.
  */

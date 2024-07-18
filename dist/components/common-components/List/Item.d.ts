@@ -1,7 +1,7 @@
-import * as React from "react";
 import type { booleanU, stringU } from "typescript-misc";
 import type { Icon } from "../../../icons";
 import { List } from "react-native-paper";
+import React from "react";
 declare const _default: import("react-misc").FunctionComponent<Props>;
 export default _default;
 /**

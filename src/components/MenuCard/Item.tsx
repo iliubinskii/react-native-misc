@@ -1,4 +1,3 @@
-import * as React from "react";
 import { ActivityIndicator, TouchableRipple } from "react-native-paper";
 import { AlignItems, TextVariant } from "../../types";
 import { Row, Text } from "../common-components";
@@ -6,6 +5,7 @@ import type { booleanU, stringU } from "typescript-misc";
 import { memo, useDelayedValue } from "react-misc";
 import type { CommonProps } from "react-misc";
 import type { Icon } from "../../icons";
+import React from "react";
 import { consts } from "../../core";
 import { fn } from "typescript-misc";
 import { useThemeExtended } from "../../contexts";

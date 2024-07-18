@@ -1,3 +1,5 @@
+/* eslint-disable misc/consistent-enum-members -- Ok */
+
 export enum AlignItems {
   baseline = "baseline",
   center = "center",
@@ -35,17 +37,17 @@ export enum FontStyle {
 }
 
 export enum FontWeight {
-  "bold" = "bold",
-  "n100" = "100",
-  "n200" = "200",
-  "n300" = "300",
-  "n400" = "400",
-  "n500" = "500",
-  "n600" = "600",
-  "n700" = "700",
-  "n800" = "800",
-  "n900" = "900",
-  "normal" = "normal"
+  bold = "bold",
+  n100 = "100",
+  n200 = "200",
+  n300 = "300",
+  n400 = "400",
+  n500 = "500",
+  n600 = "600",
+  n700 = "700",
+  n800 = "800",
+  n900 = "900",
+  normal = "normal"
 }
 
 export enum Height {

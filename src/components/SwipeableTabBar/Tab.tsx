@@ -1,7 +1,7 @@
-import * as React from "react";
 import { AlignItems, JustifyContent } from "../../types";
 import type { BottomTabDescriptor } from "@react-navigation/bottom-tabs/lib/typescript/src/types";
 import { Pressable } from "react-native";
+import React from "react";
 import { Text } from "../common-components";
 import { assert } from "typescript-misc";
 import { memo } from "react-misc";

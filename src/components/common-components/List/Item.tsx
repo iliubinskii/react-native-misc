@@ -1,14 +1,13 @@
-import * as React from "react";
 import { Row, Text } from "../common-common-components";
 import type { booleanU, stringU } from "typescript-misc";
 import type { CommonNativeProps } from "../../../types";
 import type { Icon } from "../../../icons";
 import { List } from "react-native-paper";
+import React from "react";
 import { TextVariant } from "../../../types";
 import { View } from "react-native";
 import { consts } from "../../../core";
 import { memo } from "react-misc";
-import { o } from "typescript-misc";
 import { rtlSign } from "../../../consts";
 import { useThemeExtended } from "../../../contexts";
 
@@ -40,12 +39,16 @@ export default memo(
     }, [colors, disabled, selected]);
 
     const renderLeft = React.useCallback(
-      ({ style: iconStyle }: IconProps) =>
-        Icon ? (
-          <List.Icon
-            {...o.removeUndefinedKeys({ color, icon: Icon, style: iconStyle })}
-          />
-        ) : undefined,
+      ({ style: iconStyle }: IconProps) => {
+        if (Icon)
+          return color ? (
+            <List.Icon color={color} icon={Icon} style={iconStyle} />
+          ) : (
+            <List.Icon icon={Icon} style={iconStyle} />
+          );
+
+        return undefined;
+      },
       [Icon, color]
     );
 

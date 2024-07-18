@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { TextInput } from "react-native";
 declare const _default: import("react-misc").FunctionComponent<Props>;
 export default _default;

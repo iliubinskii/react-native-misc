@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Mode = exports.Clock = exports.Calendar = void 0;
 const tslib_1 = require("tslib");
-const React = tslib_1.__importStar(require("react"));
 const common_components_1 = require("../common-components");
 const DateTimePicker_common_1 = require("./DateTimePicker-common");
 const typescript_misc_1 = require("typescript-misc");
@@ -12,26 +11,21 @@ const react_native_paper_1 = require("react-native-paper");
 const Calendar_1 = tslib_1.__importDefault(require("./Calendar"));
 const Clock_1 = tslib_1.__importDefault(require("./Clock"));
 const types_1 = require("../../types");
+const react_1 = tslib_1.__importDefault(require("react"));
 const core_1 = require("../../core");
 const contexts_1 = require("../../contexts");
-var Calendar_2 = require("./Calendar");
-Object.defineProperty(exports, "Calendar", { enumerable: true, get: function () { return tslib_1.__importDefault(Calendar_2).default; } });
-var Clock_2 = require("./Clock");
-Object.defineProperty(exports, "Clock", { enumerable: true, get: function () { return tslib_1.__importDefault(Clock_2).default; } });
-var DateTimePicker_common_2 = require("./DateTimePicker-common");
-Object.defineProperty(exports, "Mode", { enumerable: true, get: function () { return DateTimePicker_common_2.Mode; } });
 exports.default = (0, react_misc_1.memo)("DateTimePicker", ({ SelectDateRangeHint, SelectTimeRangeHint, date, dateFormat, dateFrom, fullDaysMode, mode = DateTimePicker_common_1.Mode.datetime, onClose = typescript_misc_1.fn.noop, onSave = typescript_misc_1.fn.noop, onSaveTime = typescript_misc_1.fn.noop, time, timeFormat, timeFrom, weekStartsOn, workweekStartsOn }) => {
     const { colors } = (0, contexts_1.useThemeExtended)();
     const datetime = (0, react_misc_1.useDatetime)();
     const firstStep = mode === DateTimePicker_common_1.Mode.time ? DateTimePicker_common_1.Step.hours : DateTimePicker_common_1.Step.date;
-    const initialDate = React.useMemo(() => {
+    const initialDate = react_1.default.useMemo(() => {
         if (typescript_misc_1.is.not.empty(date) && typescript_misc_1.is.not.empty(dateFrom))
             return date;
         return typescript_misc_1.is.not.empty(time) && typescript_misc_1.is.not.empty(timeFrom)
             ? datetime.create().setStartOfDay().setMinutes(time).toString()
             : datetime.create().setStartOfNextDay().toString();
     }, [date, dateFrom, datetime, time, timeFrom]);
-    const initialDateFrom = React.useMemo(() => {
+    const initialDateFrom = react_1.default.useMemo(() => {
         if (typescript_misc_1.is.not.empty(date) && typescript_misc_1.is.not.empty(dateFrom))
             return dateFrom;
         return typescript_misc_1.is.not.empty(time) && typescript_misc_1.is.not.empty(timeFrom)
@@ -42,19 +36,19 @@ exports.default = (0, react_misc_1.memo)("DateTimePicker", ({ SelectDateRangeHin
                 .toString()
             : datetime.create().setStartOfDay().toString();
     }, [date, dateFrom, datetime, time, timeFrom]);
-    const initialFullDaysMode = React.useMemo(() => {
+    const initialFullDaysMode = react_1.default.useMemo(() => {
         if (typescript_misc_1.is.not.empty(date) && typescript_misc_1.is.not.empty(dateFrom))
             return typescript_misc_1.as.not.empty(fullDaysMode);
         return !(typescript_misc_1.is.empty(time) && typescript_misc_1.is.not.empty(timeFrom));
     }, [date, dateFrom, fullDaysMode, time, timeFrom]);
-    const initialMonth = React.useMemo(() => datetime.create(initialDate).setStartOfMonth().toString(), [datetime, initialDate]);
+    const initialMonth = react_1.default.useMemo(() => datetime.create(initialDate).setStartOfMonth().toString(), [datetime, initialDate]);
     const lang = (0, react_misc_1.useLang)();
     const [localDate, setLocalDate, , localDateRef] = (0, react_misc_1.useState)(initialDate);
     const [localDateFrom, setLocalDateFrom, , localDateFromRef] = (0, react_misc_1.useState)(initialDateFrom);
     const [localFullDaysMode, setLocalFullDaysMode, , localFullDaysModeRef] = (0, react_misc_1.useState)(initialFullDaysMode);
-    const [month, setMonth] = React.useState(initialMonth);
+    const [month, setMonth] = react_1.default.useState(initialMonth);
     const [step, { [DateTimePicker_common_1.Step.date]: pickDate, [DateTimePicker_common_1.Step.hours]: pickHours, [DateTimePicker_common_1.Step.minutes]: pickMinutes }, setStep, stepRef] = (0, react_misc_1.useEnum)(firstStep, DateTimePicker_common_1.Step);
-    const backPressHandler = React.useCallback(() => {
+    const backPressHandler = react_1.default.useCallback(() => {
         if (stepRef.current === firstStep) {
             setLocalDate(initialDate);
             setLocalDateFrom(initialDateFrom);
@@ -63,13 +57,16 @@ exports.default = (0, react_misc_1.memo)("DateTimePicker", ({ SelectDateRangeHin
         }
         else
             switch (stepRef.current) {
-                case DateTimePicker_common_1.Step.date:
+                case DateTimePicker_common_1.Step.date: {
                     break;
-                case DateTimePicker_common_1.Step.hours:
+                }
+                case DateTimePicker_common_1.Step.hours: {
                     pickDate();
                     break;
-                case DateTimePicker_common_1.Step.minutes:
+                }
+                case DateTimePicker_common_1.Step.minutes: {
                     pickHours();
+                }
             }
     }, [
         firstStep,
@@ -84,17 +81,17 @@ exports.default = (0, react_misc_1.memo)("DateTimePicker", ({ SelectDateRangeHin
         setLocalFullDaysMode,
         stepRef
     ]);
-    const calendarChangeHandler = React.useCallback((nextDate, nextDateFrom, nextFullDaysMode) => {
+    const calendarChangeHandler = react_1.default.useCallback((nextDate, nextDateFrom, nextFullDaysMode) => {
         setLocalDate(nextDate);
         setLocalDateFrom(nextDateFrom);
         setLocalFullDaysMode(nextFullDaysMode);
     }, [setLocalDate, setLocalDateFrom, setLocalFullDaysMode]);
-    const clockChangeHandler = React.useCallback((nextDate, nextDateFrom, nextFullDaysMode) => {
+    const clockChangeHandler = react_1.default.useCallback((nextDate, nextDateFrom, nextFullDaysMode) => {
         setLocalDate(nextDate);
         setLocalDateFrom(nextDateFrom);
         setLocalFullDaysMode(nextFullDaysMode);
     }, [setLocalDate, setLocalDateFrom, setLocalFullDaysMode]);
-    const save = React.useCallback(() => {
+    const save = react_1.default.useCallback(() => {
         onSave(localDateRef.current, localDateFromRef.current, localFullDaysModeRef.current);
         if (localFullDaysModeRef.current)
             onSaveTime();
@@ -145,6 +142,12 @@ exports.default = (0, react_misc_1.memo)("DateTimePicker", ({ SelectDateRangeHin
         {step === DateTimePicker_common_1.Step.date ? (<Calendar_1.default SelectDateRangeHint={SelectDateRangeHint} date={localDate} dateFrom={localDateFrom} month={month} onChange={calendarChangeHandler} onMonthChange={setMonth} pickHours={mode === DateTimePicker_common_1.Mode.datetime ? pickHours : typescript_misc_1.fn.noop} weekStartsOn={weekStartsOn} workweekStartsOn={workweekStartsOn}/>) : (<Clock_1.default SelectTimeRangeHint={SelectTimeRangeHint} date={localDate} dateFormat={dateFormat} dateFrom={localDateFrom} fullDaysMode={localFullDaysMode} mode={mode} onChange={clockChangeHandler} pickMinutes={pickMinutes} step={step} timeFormat={timeFormat}/>)}
       </common_components_1.Card>);
 });
+var Calendar_2 = require("./Calendar");
+Object.defineProperty(exports, "Calendar", { enumerable: true, get: function () { return tslib_1.__importDefault(Calendar_2).default; } });
+var Clock_2 = require("./Clock");
+Object.defineProperty(exports, "Clock", { enumerable: true, get: function () { return tslib_1.__importDefault(Clock_2).default; } });
+var DateTimePicker_common_2 = require("./DateTimePicker-common");
+Object.defineProperty(exports, "Mode", { enumerable: true, get: function () { return DateTimePicker_common_2.Mode; } });
 const { duration, height, width } = core_1.consts.DateTimePicker;
 const entering = react_native_reanimated_1.FadeIn.duration(duration);
 const exiting = react_native_reanimated_1.FadeOut.duration(duration);

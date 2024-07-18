@@ -1,4 +1,5 @@
 "use strict";
+/* eslint-disable misc/consistent-enum-members -- Ok */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Width = exports.TextDecorationLine = exports.Position = exports.Overflow = exports.JustifyContent = exports.ImageResizeMode = exports.Height = exports.FontWeight = exports.FontStyle = exports.FlexWrap = exports.FlexDirection = exports.Display = exports.Color = exports.AlignItems = void 0;
 var AlignItems;

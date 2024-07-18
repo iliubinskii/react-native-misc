@@ -1,5 +1,3 @@
-/// <reference types="react" />
-export { default as Item } from "./Item";
 export declare const Accordion: {
     ({ left, right, title, description, children, theme: themeOverrides, titleStyle, descriptionStyle, titleNumberOfLines, descriptionNumberOfLines, rippleColor: customRippleColor, style, id, testID, background, onPress, onLongPress, delayLongPress, expanded: expandedProp, accessibilityLabel, pointerEvents, titleMaxFontSizeMultiplier, descriptionMaxFontSizeMultiplier, }: import("react-native-paper").ListAccordionProps): import("react").JSX.Element;
     displayName: string;
@@ -19,4 +17,5 @@ export declare const Accordion: {
     ({ style, theme: overrideTheme, maxFontSizeMultiplier, ...rest }: import("react-native-paper").ListSubheaderProps): import("react").JSX.Element;
     displayName: string;
 };
+export { default as Item } from "./Item";
 //# sourceMappingURL=index.d.ts.map

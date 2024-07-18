@@ -4,7 +4,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MD3LightThemeExtended = void 0;
 const react_native_paper_1 = require("react-native-paper");
 const typescript_misc_1 = require("typescript-misc");
-// eslint-disable-next-line misc/only-export-name -- Ok
 exports.MD3LightThemeExtended = (0, typescript_misc_1.evaluate)(() => {
     const basic = {
         ...{

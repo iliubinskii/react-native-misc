@@ -1,3 +1,4 @@
+/* eslint-disable misc/consistent-enum-members -- Ok */
 export var AlignItems;
 (function (AlignItems) {
     AlignItems["baseline"] = "baseline";

@@ -1,4 +1,3 @@
-import * as React from "react";
 import { AlignItems, JustifyContent } from "../../../types";
 import type {
   LayoutRectangle,
@@ -11,6 +10,7 @@ import Background, { HorizontalPosition, VerticalPosition } from "./Background";
 import type { CommonNativeProps } from "../../../types";
 import type { CommonProps } from "react-misc";
 import { Modal } from "../../common-components";
+import React from "react";
 import { View } from "react-native";
 import { consts } from "../../../core";
 import { memo } from "react-misc";
@@ -50,8 +50,8 @@ export default memo(
         : VerticalPosition.top;
     }, [windowDimensions.height, y]);
 
-    const containerStyle = React.useMemo(
-      (): StyleProp<ViewStyle> => ({
+    const containerStyle = React.useMemo((): StyleProp<ViewStyle> => {
+      return {
         left: evaluate(() => {
           switch (horizontalPosition) {
             case HorizontalPosition.flexStart: {
@@ -92,9 +92,8 @@ export default memo(
             }
           }
         })
-      }),
-      [horizontalPosition, layout, verticalPosition, x, y]
-    );
+      };
+    }, [horizontalPosition, layout, verticalPosition, x, y]);
 
     return (
       <Modal

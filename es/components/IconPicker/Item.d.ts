@@ -7,7 +7,6 @@ export default _default;
 export interface Props {
     /**
      * Icon extractor.
-     *
      * @param name - Name.
      * @returns Icon.
      */
@@ -15,7 +14,6 @@ export interface Props {
     readonly name: string;
     /**
      * Selects icon.
-     *
      * @param name - Name.
      */
     readonly onSelect: (name: string) => void;

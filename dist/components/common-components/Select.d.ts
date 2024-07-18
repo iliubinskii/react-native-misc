@@ -1,8 +1,8 @@
-import * as React from "react";
 import type { StyleProp, ViewStyle } from "react-native";
 import type { NumStr, booleanU, numberU, stringU } from "typescript-misc";
 import type { CommonNativeProps } from "../../types";
 import type { Icon } from "../../icons";
+import React from "react";
 declare global {
     namespace reactNativeMisc {
         interface Icon extends ScopedIcon {
@@ -22,7 +22,6 @@ export interface Props<T extends NumStr> extends CommonNativeProps.ViewStyle {
     readonly maxItems?: numberU;
     /**
      * Selects or resets value.
-     *
      * @param value - Value.
      */
     readonly onChange?: ((value?: T) => void) | undefined;
@@ -32,7 +31,6 @@ export interface Props<T extends NumStr> extends CommonNativeProps.ViewStyle {
     readonly onReset?: (() => void) | undefined;
     /**
      * Selects value.
-     *
      * @param value - Value.
      */
     readonly onSelect?: ((value: T) => void) | undefined;
@@ -50,7 +48,7 @@ export interface ScopedIcon {
     readonly UpChevronIcon: true;
 }
 export interface SelectOption<T extends NumStr> {
-    readonly Icon?: Icon;
+    readonly Icon?: Icon | undefined;
     readonly label: string;
     readonly value: T;
 }

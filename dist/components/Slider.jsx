@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
-const React = tslib_1.__importStar(require("react"));
+const react_1 = tslib_1.__importDefault(require("react"));
 const slider_1 = tslib_1.__importDefault(require("@react-native-community/slider"));
 const common_components_1 = require("./common-components");
 const react_native_1 = require("react-native");

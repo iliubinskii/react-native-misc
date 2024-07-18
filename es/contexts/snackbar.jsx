@@ -1,9 +1,9 @@
-import * as React from "react";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { PointerEvents, Position } from "../types";
 import { memo, useBoolean } from "react-misc";
 import { neverDemand, o } from "typescript-misc";
 import Animated, { runOnJS, useAnimatedStyle } from "react-native-reanimated";
+import React from "react";
 import { Snackbar } from "react-native-paper";
 import { View } from "react-native";
 import { consts } from "../core";
@@ -15,19 +15,22 @@ export const SnackbarProvider = memo("SnackbarProvider", ({ children, defaultOff
     const style = React.useMemo(() => {
         if (options.variant)
             switch (options.variant) {
-                case Variant.error:
+                case Variant.error: {
                     return { backgroundColor: theme.colors.error };
+                }
             }
         return {};
     }, [options.variant, theme]);
     const [text, setText] = React.useState();
-    const animatedStyle = useAnimatedStyle(() => ({
-        bottom,
-        end,
-        position: Position.absolute,
-        start,
-        transform: [{ translateY: -(options.offset ?? defaultOffset) }]
-    }), [options.offset, defaultOffset]);
+    const animatedStyle = useAnimatedStyle(() => {
+        return {
+            bottom,
+            end,
+            position: Position.absolute,
+            start,
+            transform: [{ translateY: -(options.offset ?? defaultOffset) }]
+        };
+    }, [options.offset, defaultOffset]);
     const gesture = React.useMemo(() => Gesture.Tap().onEnd(() => {
         "worklet";
         runOnJS(hideSnackbar)();
@@ -38,7 +41,9 @@ export const SnackbarProvider = memo("SnackbarProvider", ({ children, defaultOff
         setOptions(nextOptions);
         setSnackbarVisible();
     }, [setSnackbarVisible]);
-    const context = React.useMemo(() => ({ hideSnackbar, showSnackbar }), [hideSnackbar, showSnackbar]);
+    const context = React.useMemo(() => {
+        return { hideSnackbar, showSnackbar };
+    }, [hideSnackbar, showSnackbar]);
     return (<SnackbarContext.Provider value={context}>
         <GestureDetector gesture={gesture}>
           <View style={{ height, width }}>
@@ -71,7 +76,6 @@ export var Variant;
 })(Variant || (Variant = {}));
 /**
  * Consumes snackbar context.
- *
  * @returns Snackbar context.
  */
 export function useSnackbar() {

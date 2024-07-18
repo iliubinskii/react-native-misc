@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
-const React = tslib_1.__importStar(require("react"));
 const common_components_1 = require("../../common-components");
 const react_native_gesture_handler_1 = require("react-native-gesture-handler");
 const types_1 = require("../../../types");
@@ -11,6 +10,7 @@ const react_misc_1 = require("react-misc");
 const react_native_reanimated_1 = require("react-native-reanimated");
 const Hand_1 = tslib_1.__importDefault(require("./Hand"));
 const Numbers_1 = tslib_1.__importDefault(require("./Numbers"));
+const react_1 = tslib_1.__importDefault(require("react"));
 const typescript_misc_1 = require("typescript-misc");
 const core_1 = require("../../../core");
 const icons_1 = require("../../../icons");
@@ -21,8 +21,8 @@ exports.default = (0, react_misc_1.memo)("Clock", ({ SelectTimeRangeHint = commo
     const { layout, onLayout } = (0, hooks_1.useLayoutReanimated)();
     const { colors } = (0, contexts_1.useThemeExtended)();
     const datetime = (0, react_misc_1.useDatetime)();
-    const dt = React.useMemo(() => datetime.create(date), [date, datetime]);
-    const dtFrom = React.useMemo(() => datetime.create(dateFrom), [dateFrom, datetime]);
+    const dt = react_1.default.useMemo(() => datetime.create(date), [date, datetime]);
+    const dtFrom = react_1.default.useMemo(() => datetime.create(dateFrom), [dateFrom, datetime]);
     const [hintActionDone, setHintActionDone, unsetHintActionDone] = (0, react_misc_1.useBoolean)();
     const initialHours = dt.hours() % 12;
     const initialHoursFrom = dtFrom.hours() % 12;
@@ -33,21 +33,21 @@ exports.default = (0, react_misc_1.memo)("Clock", ({ SelectTimeRangeHint = commo
     const hoursFrom = (0, react_native_reanimated_1.useSharedValue)(initialHoursFrom);
     const minutes = (0, react_native_reanimated_1.useSharedValue)(initialMinutes);
     const minutesFrom = (0, react_native_reanimated_1.useSharedValue)(initialMinutesFrom);
-    const nextDay = React.useCallback(() => {
+    const nextDay = react_1.default.useCallback(() => {
         onChange(dt.add(1, typescript_misc_1.TimeUnit.day).toString(), dtFrom.add(1, typescript_misc_1.TimeUnit.day).toString(), fullDaysMode);
     }, [dt, dtFrom, fullDaysMode, onChange]);
-    const prevDay = React.useCallback(() => {
+    const prevDay = react_1.default.useCallback(() => {
         onChange(dt.sub(1, typescript_misc_1.TimeUnit.day).toString(), dtFrom.sub(1, typescript_misc_1.TimeUnit.day).toString(), fullDaysMode);
     }, [dt, dtFrom, fullDaysMode, onChange]);
-    const setAm = React.useCallback(() => {
+    const setAm = react_1.default.useCallback(() => {
         onChange(dt.sub(24, typescript_misc_1.TimeUnit.hours).toString(), dtFrom.toString(), false);
     }, [dt, dtFrom, onChange]);
-    const setPm = React.useCallback(() => {
+    const setPm = react_1.default.useCallback(() => {
         onChange(dt.sub(12, typescript_misc_1.TimeUnit.hours).toString(), dtFrom.add(12, typescript_misc_1.TimeUnit.hours).toString(), false);
     }, [dt, dtFrom, onChange]);
-    const setRangeEnd = React.useCallback((index, indexFrom) => {
+    const setRangeEnd = react_1.default.useCallback((index, indexFrom) => {
         switch (step) {
-            case DateTimePicker_common_1.Step.hours:
+            case DateTimePicker_common_1.Step.hours: {
                 if (index === initialHours &&
                     indexFrom === initialHoursFrom &&
                     !fullDaysMode) {
@@ -68,7 +68,8 @@ exports.default = (0, react_misc_1.memo)("Clock", ({ SelectTimeRangeHint = commo
                 }
                 pickMinutes();
                 break;
-            case DateTimePicker_common_1.Step.minutes:
+            }
+            case DateTimePicker_common_1.Step.minutes: {
                 if (index === initialMinutes &&
                     indexFrom === initialMinutesFrom &&
                     !fullDaysMode) {
@@ -87,6 +88,7 @@ exports.default = (0, react_misc_1.memo)("Clock", ({ SelectTimeRangeHint = commo
                         .sub(deltaMinutes, typescript_misc_1.TimeUnit.minutes)
                         .toString(), false);
                 }
+            }
         }
         if (index === indexFrom) {
             // Skip
@@ -106,7 +108,7 @@ exports.default = (0, react_misc_1.memo)("Clock", ({ SelectTimeRangeHint = commo
         setHintActionDone,
         step
     ]);
-    const setRange = React.useCallback((x, y, gestureStep) => {
+    const setRange = react_1.default.useCallback((x, y, gestureStep) => {
         "worklet";
         const dx = x - 0.5 * size;
         const dy = y - 0.5 * size;
@@ -115,23 +117,25 @@ exports.default = (0, react_misc_1.memo)("Clock", ({ SelectTimeRangeHint = commo
             const rad = Math.PI - Math.atan2(dx, dy);
             const index = Math.round(rad / sector) % 12;
             switch (step) {
-                case DateTimePicker_common_1.Step.hours:
+                case DateTimePicker_common_1.Step.hours: {
                     hours.value = index;
                     if (gestureStep === GestureStep.start)
                         hoursFrom.value = index;
                     if (gestureStep === GestureStep.end)
                         (0, react_native_reanimated_1.runOnJS)(setRangeEnd)(index, hoursFrom.value);
                     break;
-                case DateTimePicker_common_1.Step.minutes:
+                }
+                case DateTimePicker_common_1.Step.minutes: {
                     minutes.value = index;
                     if (gestureStep === GestureStep.start)
                         minutesFrom.value = index;
                     if (gestureStep === GestureStep.end)
                         (0, react_native_reanimated_1.runOnJS)(setRangeEnd)(index, minutesFrom.value);
+                }
             }
         }
     }, [hours, hoursFrom, layout, minutes, minutesFrom, setRangeEnd, step]);
-    const toggleAmPm = React.useCallback(() => {
+    const toggleAmPm = react_1.default.useCallback(() => {
         if (fullDaysMode)
             onChange(dt.sub(12, typescript_misc_1.TimeUnit.hours).toString(), dtFrom.add(12, typescript_misc_1.TimeUnit.hours).toString(), false);
         else if (dt.hours() >= 12)
@@ -139,7 +143,7 @@ exports.default = (0, react_misc_1.memo)("Clock", ({ SelectTimeRangeHint = commo
         else
             onChange(dt.add(12, typescript_misc_1.TimeUnit.hours).toString(), dtFrom.add(12, typescript_misc_1.TimeUnit.hours).toString(), false);
     }, [dt, dtFrom, fullDaysMode, onChange]);
-    const gesture = React.useMemo(() => react_native_gesture_handler_1.Gesture.Pan()
+    const gesture = react_1.default.useMemo(() => react_native_gesture_handler_1.Gesture.Pan()
         .minDistance(core_1.consts.Gesture.pan.minDistance)
         .onBegin(({ x, y }) => {
         "worklet";

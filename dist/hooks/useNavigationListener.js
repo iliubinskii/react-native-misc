@@ -1,12 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.useNavigationListener = void 0;
+exports.useNavigationListener = useNavigationListener;
 const react_misc_1 = require("react-misc");
 const types_1 = require("../types");
 const native_1 = require("@react-navigation/native");
 /**
  * Navigation listener hook.
- *
  * @param event - Navigation event.
  * @param callback - Callback.
  */
@@ -25,5 +24,4 @@ function useNavigationListener(event, callback) {
             callbackRef.current();
     }, [callbackRef, eventRef]);
 }
-exports.useNavigationListener = useNavigationListener;
 //# sourceMappingURL=useNavigationListener.js.map

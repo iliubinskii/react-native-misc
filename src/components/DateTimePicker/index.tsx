@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Card, Group } from "../common-components";
 import type { CommonProps, FunctionComponent } from "react-misc";
 import { Mode, Step } from "./DateTimePicker-common";
@@ -18,6 +17,7 @@ import Calendar from "./Calendar";
 import Clock from "./Clock";
 import type { HintProps } from "./DateTimePicker-common";
 import { JustifyContent } from "../../types";
+import React from "react";
 import { consts } from "../../core";
 import { useThemeExtended } from "../../contexts";
 
@@ -28,10 +28,6 @@ declare global {
     }
   }
 }
-
-export { default as Calendar } from "./Calendar";
-export { default as Clock } from "./Clock";
-export { Mode } from "./DateTimePicker-common";
 
 export default memo(
   "DateTimePicker",
@@ -121,16 +117,19 @@ export default memo(
         setMonth(initialMonth);
       } else
         switch (stepRef.current) {
-          case Step.date:
+          case Step.date: {
             break;
+          }
 
-          case Step.hours:
+          case Step.hours: {
             pickDate();
 
             break;
+          }
 
-          case Step.minutes:
+          case Step.minutes: {
             pickHours();
+          }
         }
     }, [
       firstStep,
@@ -280,7 +279,6 @@ export interface Props extends CommonProps.Closeable {
   readonly mode?: Mode | undefined;
   /**
    * Saves dates.
-   *
    * @param date - Date.
    * @param dateFrom - Date from.
    * @param fullDaysMode - Full days mode.
@@ -290,7 +288,6 @@ export interface Props extends CommonProps.Closeable {
     | undefined;
   /**
    * Saves times.
-   *
    * @param time - Time.
    * @param timeFrom - Time from.
    */
@@ -313,6 +310,10 @@ export interface ScopedWord {
   readonly Reset: true;
   readonly Save: true;
 }
+
+export { default as Calendar } from "./Calendar";
+export { default as Clock } from "./Clock";
+export { Mode } from "./DateTimePicker-common";
 
 const { duration, height, width } = consts.DateTimePicker;
 

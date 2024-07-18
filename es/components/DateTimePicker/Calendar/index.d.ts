@@ -18,7 +18,6 @@ export interface Props {
     readonly month: string;
     /**
      * Handles dates setRangeEnd.
-     *
      * @param date - Date.
      * @param dateFrom - Date from.
      * @param fullDaysMode - Full days mode.
@@ -26,7 +25,6 @@ export interface Props {
     readonly onChange: (date: string, dateFrom: string, fullDaysMode: boolean) => void;
     /**
      * Handles month setRangeEnd.
-     *
      * @param month - Month.
      */
     readonly onMonthChange: (month: string) => void;

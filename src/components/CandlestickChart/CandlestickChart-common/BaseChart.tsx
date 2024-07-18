@@ -1,8 +1,8 @@
-import * as React from "react";
 import { G, Line, Rect, Svg, TSpan, Text } from "react-native-svg";
 import type { NumStr, numberU } from "typescript-misc";
 import { Overflow, SvgFontWeight, SvgTextAnchor } from "../../../types";
 import { a, is } from "typescript-misc";
+import React from "react";
 import { consts } from "../../../core";
 import { memo } from "react-misc";
 
@@ -177,7 +177,6 @@ export interface Props {
   readonly data: Candlesticks;
   /**
    * Returns label for a key.
-   *
    * @param key - Candlestick key.
    * @returns Label.
    */

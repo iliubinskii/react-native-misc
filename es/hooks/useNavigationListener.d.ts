@@ -1,8 +1,7 @@
-import type * as React from "react";
 import { NavigationEvent } from "../types";
+import type React from "react";
 /**
  * Navigation listener hook.
- *
  * @param event - Navigation event.
  * @param callback - Callback.
  */

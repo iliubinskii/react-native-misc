@@ -2,7 +2,6 @@ import type { EasingFunction, EasingFunctionFactory } from "react-native-reanima
 import type { NativeAnimation } from "./react-native-reanimated-common";
 /**
  * Creates animation.
- *
  * @param options - Options.
  * @returns Animation.
  */

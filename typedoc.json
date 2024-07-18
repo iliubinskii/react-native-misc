@@ -1,11 +1,19 @@
 {
-  "extends": [
-    "project-chore/typedoc/recommended"
-  ],
-  "intentionallyNotExported": [
-    "__global.reactNativeMisc.Icon"
-  ],
+  "cleanOutputDir": true,
+  "disableSources": true,
+  "entryFileName": "index.md",
+  "entryPointStrategy": "expand",
+  "exclude": ["**/*.test.ts", "**/*.test.tsx"],
+  "excludeExternals": true,
+  "externalPattern": ["**/node_modules/**"],
+  "githubPages": false,
+  "intentionallyNotExported": ["__global.reactNativeMisc.Icon"],
   "name": "React Native library",
   "out": "docs",
-  "tsconfig": "tsconfig-typedoc.json"
+  "treatWarningsAsErrors": true,
+  "tsconfig": "tsconfig-typedoc.json",
+  "validation": {
+    "invalidLink": true,
+    "notExported": true
+  }
 }

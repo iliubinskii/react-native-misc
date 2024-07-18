@@ -1,6 +1,6 @@
-import * as React from "react";
 import type { Icon } from "../../icons";
 import { IconButton } from "../common-components";
+import React from "react";
 import { consts } from "../../core";
 import { memo } from "react-misc";
 import { useThemeExtended } from "../../contexts";
@@ -35,7 +35,6 @@ export default memo("Item", ({ getIcon, name, onSelect, selected }: Props) => {
 export interface Props {
   /**
    * Icon extractor.
-   *
    * @param name - Name.
    * @returns Icon.
    */
@@ -43,7 +42,6 @@ export interface Props {
   readonly name: string;
   /**
    * Selects icon.
-   *
    * @param name - Name.
    */
   readonly onSelect: (name: string) => void;

@@ -29,17 +29,17 @@ export declare enum FontStyle {
     normal = "normal"
 }
 export declare enum FontWeight {
-    "bold" = "bold",
-    "n100" = "100",
-    "n200" = "200",
-    "n300" = "300",
-    "n400" = "400",
-    "n500" = "500",
-    "n600" = "600",
-    "n700" = "700",
-    "n800" = "800",
-    "n900" = "900",
-    "normal" = "normal"
+    bold = "bold",
+    n100 = "100",
+    n200 = "200",
+    n300 = "300",
+    n400 = "400",
+    n500 = "500",
+    n600 = "600",
+    n700 = "700",
+    n800 = "800",
+    n900 = "900",
+    normal = "normal"
 }
 export declare enum Height {
     p100 = "100%"

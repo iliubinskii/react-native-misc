@@ -1,4 +1,3 @@
-import * as React from "react";
 import { AlignItems, JustifyContent, PointerEvents, Position } from "../types";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { createTimingAnimation, createVelocityAnimation, worklets } from "../functions";
@@ -8,11 +7,11 @@ import { memo, useBoolean, useUpdater } from "react-misc";
 import { useAnimatedKeyboard, useSnackbar, useThemeExtended } from "../contexts";
 import { useAnimatedReaction, useBackHandler } from "../hooks";
 import Animated, { cancelAnimation, runOnJS, useAnimatedStyle, useSharedValue } from "react-native-reanimated";
+import React from "react";
 import { View } from "react-native";
 import { consts } from "../core";
 import { useWindowDimensions } from "../hooks-with-contexts";
-export default memo("Drawer", ({ children, customRef, dragToOpen = false, drawerContents, height, onClosed = fn.noop, onOpened = fn.noop, openRef, position, width // eslint-disable-next-line sonarjs/cognitive-complexity -- Ok
- }) => {
+export default memo("Drawer", ({ children, customRef, dragToOpen = false, drawerContents, height, onClosed = fn.noop, onOpened = fn.noop, openRef, position, width }) => {
     const active = useSharedValue(false);
     const alignItems = alignItemsMap[position];
     const busy = useSharedValue(false);
@@ -24,14 +23,18 @@ export default memo("Drawer", ({ children, customRef, dragToOpen = false, drawer
     const [pointerEvents, setPointerEvents, unsetPointerEvents] = useBoolean(false);
     const positionBiDir = React.useMemo(() => {
         switch (position) {
-            case DrawerPosition.flexStart:
+            case DrawerPosition.flexStart: {
                 return isRtl ? DrawerPositionBiDir.right : DrawerPositionBiDir.left;
-            case DrawerPosition.flexEnd:
+            }
+            case DrawerPosition.flexEnd: {
                 return isRtl ? DrawerPositionBiDir.left : DrawerPositionBiDir.right;
-            case DrawerPosition.bottom:
+            }
+            case DrawerPosition.bottom: {
                 return DrawerPositionBiDir.bottom;
-            case DrawerPosition.top:
+            }
+            case DrawerPosition.top: {
                 return DrawerPositionBiDir.top;
+            }
         }
     }, [position]);
     const size = useSharedValue(getSize(width, height, position));
@@ -39,24 +42,30 @@ export default memo("Drawer", ({ children, customRef, dragToOpen = false, drawer
     const animatedStyle = useAnimatedStyle(() => {
         const translateX = worklets.evaluate(() => {
             switch (position) {
-                case DrawerPosition.flexStart:
+                case DrawerPosition.flexStart: {
                     return -rtlSign * pan.value * size.value;
-                case DrawerPosition.flexEnd:
+                }
+                case DrawerPosition.flexEnd: {
                     return rtlSign * pan.value * size.value;
+                }
                 case DrawerPosition.top:
-                case DrawerPosition.bottom:
+                case DrawerPosition.bottom: {
                     return 0;
+                }
             }
         });
         const translateY = worklets.evaluate(() => {
             switch (position) {
                 case DrawerPosition.flexStart:
-                case DrawerPosition.flexEnd:
+                case DrawerPosition.flexEnd: {
                     return 0;
-                case DrawerPosition.top:
+                }
+                case DrawerPosition.top: {
                     return -pan.value * size.value;
-                case DrawerPosition.bottom:
+                }
+                case DrawerPosition.bottom: {
                     return pan.value * size.value - keyboardHeight.value;
+                }
             }
         });
         return {
@@ -67,25 +76,31 @@ export default memo("Drawer", ({ children, customRef, dragToOpen = false, drawer
             width
         };
     }, [colors, height, keyboardHeight, pan, position, size, width]);
-    const animatedBackdropStyle = useAnimatedStyle(() => ({
-        backgroundColor: colors.backdrop,
-        height: windowDimensions.height,
-        opacity: 1 - pan.value,
-        position: Position.absolute,
-        width: windowDimensions.width
-    }), [windowDimensions.height, windowDimensions.width, colors, pan]);
+    const animatedBackdropStyle = useAnimatedStyle(() => {
+        return {
+            backgroundColor: colors.backdrop,
+            height: windowDimensions.height,
+            opacity: 1 - pan.value,
+            position: Position.absolute,
+            width: windowDimensions.width
+        };
+    }, [windowDimensions.height, windowDimensions.width, colors, pan]);
     const { hideSnackbar } = useSnackbar();
     const inboundValue = React.useCallback((x, y) => {
         "worklet";
         switch (positionBiDir) {
-            case DrawerPositionBiDir.left:
+            case DrawerPositionBiDir.left: {
                 return x;
-            case DrawerPositionBiDir.right:
+            }
+            case DrawerPositionBiDir.right: {
                 return windowDimensions.width - x;
-            case DrawerPositionBiDir.top:
+            }
+            case DrawerPositionBiDir.top: {
                 return y;
-            case DrawerPositionBiDir.bottom:
+            }
+            case DrawerPositionBiDir.bottom: {
                 return windowDimensions.height - keyboardHeight.value - y;
+            }
         }
     }, [
         windowDimensions.height,
@@ -96,14 +111,18 @@ export default memo("Drawer", ({ children, customRef, dragToOpen = false, drawer
     const outboundDelta = React.useCallback((dx, dy) => {
         "worklet";
         switch (position) {
-            case DrawerPosition.flexStart:
+            case DrawerPosition.flexStart: {
                 return -rtlSign * dx;
-            case DrawerPosition.flexEnd:
+            }
+            case DrawerPosition.flexEnd: {
                 return rtlSign * dx;
-            case DrawerPosition.top:
+            }
+            case DrawerPosition.top: {
                 return -dy;
-            case DrawerPosition.bottom:
+            }
+            case DrawerPosition.bottom: {
                 return dy;
+            }
         }
     }, [position]);
     const gestureValue = React.useCallback((event) => {
@@ -217,17 +236,21 @@ export default memo("Drawer", ({ children, customRef, dragToOpen = false, drawer
                     return value > threshold ? Action.moveOut : Action.moveIn;
                 });
                 switch (action) {
-                    case Action.moveIn:
+                    case Action.moveIn: {
                         runOnJS(moveIn)();
                         break;
-                    case Action.moveOut:
+                    }
+                    case Action.moveOut: {
                         runOnJS(moveOut)();
                         break;
-                    case Action.swipeIn:
+                    }
+                    case Action.swipeIn: {
                         runOnJS(moveIn)(velocity);
                         break;
-                    case Action.swipeOut:
+                    }
+                    case Action.swipeOut: {
                         runOnJS(moveOut)(velocity);
+                    }
                 }
             }
     }), Gesture.Tap()
@@ -276,17 +299,19 @@ export default memo("Drawer", ({ children, customRef, dragToOpen = false, drawer
             customRef.current = { close: moveOut, open: moveIn };
     }, [customRef, moveIn, moveOut]);
     // Update openRef
-    useAnimatedReaction(() => ({
-        prepare: () => {
-            "worklet";
-            return pan.value < 1;
-        },
-        react: next => {
-            "worklet";
-            if (openRef)
-                openRef.value = next;
-        }
-    }), [openRef, pan]);
+    useAnimatedReaction(() => {
+        return {
+            prepare: () => {
+                "worklet";
+                return pan.value < 1;
+            },
+            react: next => {
+                "worklet";
+                if (openRef)
+                    openRef.value = next;
+            }
+        };
+    }, [openRef, pan]);
     return (<GestureDetector gesture={gesture}>
         <View>
           {children}
@@ -356,7 +381,6 @@ const velocityAnimation = createVelocityAnimation({
 });
 /**
  * Native animation.
- *
  * @param animated - Animated value.
  * @param toValue - Target value.
  * @param velocity - Initial velocity.
@@ -371,7 +395,6 @@ function animation(animated, toValue, velocity, size, callback) {
 }
 /**
  * Returns drawer size.
- *
  * @param width - Width.
  * @param height - Height.
  * @param position - Position.
@@ -381,11 +404,13 @@ function getSize(width, height, position) {
     "worklet";
     switch (position) {
         case DrawerPosition.flexStart:
-        case DrawerPosition.flexEnd:
+        case DrawerPosition.flexEnd: {
             return width ?? offScreen;
+        }
         case DrawerPosition.top:
-        case DrawerPosition.bottom:
+        case DrawerPosition.bottom: {
             return height ?? offScreen;
+        }
     }
 }
 //# sourceMappingURL=Drawer.jsx.map

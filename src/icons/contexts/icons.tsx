@@ -1,6 +1,6 @@
-import * as React from "react";
 import type { IconName, Icons } from "../icons-common";
 import type { CommonProps } from "react-misc";
+import React from "react";
 import { memo } from "react-misc";
 import { neverDemand } from "typescript-misc";
 
@@ -13,7 +13,6 @@ export const IconsProvider = memo(
 
 /**
  * Consumes icons context.
- *
  * @returns Icons context.
  */
 export function useIcons<I extends IconName = never>(): Icons<I> {

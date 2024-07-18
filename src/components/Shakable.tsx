@@ -1,4 +1,3 @@
-import * as React from "react";
 import { memo, useUpdater } from "react-misc";
 import Animated, {
   useAnimatedStyle,
@@ -6,14 +5,15 @@ import Animated, {
   withTiming
 } from "react-native-reanimated";
 import type { CommonProps } from "react-misc";
+import React from "react";
 import type { ViewStyle } from "react-native";
 import { consts } from "../core";
 
 export default memo("Shakable", ({ children, customRef }: Props) => {
   const pan = useSharedValue(0);
 
-  const animatedStyle = useAnimatedStyle(
-    (): ViewStyle => ({
+  const animatedStyle = useAnimatedStyle((): ViewStyle => {
+    return {
       transform: [
         {
           translateX:
@@ -21,9 +21,8 @@ export default memo("Shakable", ({ children, customRef }: Props) => {
         },
         { scale: 1 + scale * Math.sin(Math.PI * pan.value) ** 2 }
       ]
-    }),
-    [pan]
-  );
+    };
+  }, [pan]);
 
   useUpdater(() => {
     if (customRef)

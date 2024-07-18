@@ -1,6 +1,6 @@
-import * as React from "react";
 import type { SharedValue } from "react-native-reanimated";
 import type { NativeAnimation } from "../../functions";
+import React from "react";
 import type { numberU } from "typescript-misc";
 declare const _default: import("react-misc").FunctionComponent<Props>;
 export default _default;
@@ -24,13 +24,11 @@ export interface Props {
     readonly min?: numberU;
     /**
      * Handles scroll event.
-     *
      * @param offset - Offset.
      */
     readonly onScroll?: ((offset: number) => void) | undefined;
     /**
      * Handles scroll end event.
-     *
      * @param offset - Offset.
      */
     readonly onScrollEnd?: ((offset: number) => void) | undefined;
@@ -49,7 +47,6 @@ export interface Props {
 export interface Ref {
     /**
      * Scrolls by a given delta.
-     *
      * @param delta - Delta.
      */
     readonly scrollBy: (delta: number) => void;

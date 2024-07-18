@@ -3,7 +3,6 @@ import { BackHandler } from "react-native";
 
 /**
  * Handles hardware back press.
- *
  * @param handler - Handler.
  */
 export function useBackHandler(handler: () => boolean): void {

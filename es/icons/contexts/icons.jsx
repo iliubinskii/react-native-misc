@@ -1,10 +1,9 @@
-import * as React from "react";
+import React from "react";
 import { memo } from "react-misc";
 import { neverDemand } from "typescript-misc";
 export const IconsProvider = memo("IconsProvider", ({ children, icons }) => (<IconsContext.Provider value={icons}>{children}</IconsContext.Provider>));
 /**
  * Consumes icons context.
- *
  * @returns Icons context.
  */
 export function useIcons() {

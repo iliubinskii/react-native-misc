@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
-const React = tslib_1.__importStar(require("react"));
 const react_native_svg_1 = require("react-native-svg");
 const types_1 = require("../../../types");
 const typescript_misc_1 = require("typescript-misc");
+const react_1 = tslib_1.__importDefault(require("react"));
 const core_1 = require("../../../core");
 const react_misc_1 = require("react-misc");
 exports.default = (0, react_misc_1.memo)("BaseChart", ({ bearBarColor, bullBarColor, color, data, getLabel, height, maxHorizontalCells, minLabelsDistance, minLabelsEdgeDistance, paddingBottom, paddingEnd, paddingStart, paddingTop, range0, range1, selectedColor, selectedIndex, verticalLabels, width }) => {
@@ -21,7 +21,7 @@ exports.default = (0, react_misc_1.memo)("BaseChart", ({ bearBarColor, bullBarCo
     const labelsFrequency = Math.ceil(labelsDistance / barWidth);
     const labelsStart = Math.ceil(labelsEdgeDistance / barWidth);
     const labelsEnd = barCount - 1 - Math.ceil(labelsEdgeDistance / barWidth);
-    const slice = React.useMemo(() => data.slice(range0, range1), [data, range0, range1]);
+    const slice = react_1.default.useMemo(() => data.slice(range0, range1), [data, range0, range1]);
     return (<react_native_svg_1.Svg height={height} style={{ overflow: types_1.Overflow.hidden }} width={width}>
         <react_native_svg_1.G transform={`translate(${paddingStart},${height - paddingBottom})`}>
           <react_native_svg_1.G transform="scale(1,-1)">

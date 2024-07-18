@@ -9,7 +9,7 @@ export {
 } from "./parent-keyboard-height-factor";
 export {
   SnackbarProvider,
-  Variant as SnackbarVariant,
-  useSnackbar
+  useSnackbar,
+  Variant as SnackbarVariant
 } from "./snackbar";
 export { ThemeExtendedProvider, useThemeExtended } from "./theme-extended";

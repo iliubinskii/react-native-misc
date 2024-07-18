@@ -1,5 +1,5 @@
-import * as React from "react";
 import type { CommonProps } from "react-misc";
+import React from "react";
 import { View } from "react-native";
 import { consts } from "../../core";
 import { memo } from "react-misc";

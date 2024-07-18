@@ -14,7 +14,6 @@ export declare enum DayType {
 }
 /**
  * Calendar hook.
- *
  * @param month - Month.
  * @param weekStartsOn - Week starts on.
  * @param workweekStartsOn - Workweek starts on.

@@ -2,7 +2,6 @@ import { unfreeze } from "typescript-misc";
 import { useAnimatedReaction as useAnimatedReactionBase } from "react-native-reanimated";
 /**
  * Animated reaction hook.
- *
  * @param callbacks - Callbacks.
  * @param deps - Dependencies.
  */

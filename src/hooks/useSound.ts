@@ -1,10 +1,9 @@
-import * as React from "react";
+import React from "react";
 import Sound from "react-native-sound";
 import { useResource } from "react-misc";
 
 /**
  * Creates sound.
- *
  * @param source - Source.
  * @returns Sound.
  */

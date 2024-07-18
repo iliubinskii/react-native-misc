@@ -1,4 +1,5 @@
 "use strict";
+/* eslint-disable no-magic-numbers -- Ok */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.consts = void 0;
 const react_native_reanimated_1 = require("react-native-reanimated");
@@ -114,7 +115,7 @@ exports.consts = {
         maxDuration: 1000,
         minDuration: 150,
         moveOutThreshold: { delta: 10, high: 0.8, low: 0.2 },
-        offScreen: 10000,
+        offScreen: 10_000,
         swipeThreshold: 500
     },
     EventsCalendar: {
@@ -180,6 +181,7 @@ exports.consts = {
         slot1: {
             largeSwipeSize: 10,
             largeSwipeStopInterval: 5,
+            padding: 2,
             range: [0, 99],
             smallSwipeSize: 5,
             smallSwipeStopInterval: 5
@@ -187,6 +189,7 @@ exports.consts = {
         slot2: {
             largeSwipeSize: 10,
             largeSwipeStopInterval: 5,
+            padding: 3,
             range: [0, 999],
             smallSwipeSize: 5,
             smallSwipeStopInterval: 5,
@@ -196,7 +199,7 @@ exports.consts = {
     Select: {
         captionPaddingHorizontal: 4,
         captionStart: 12,
-        defaultMaxItems: 1000000000,
+        defaultMaxItems: 1_000_000_000,
         defaultPlaceholder: "...",
         elevation: 3,
         gap: 2,
@@ -231,6 +234,7 @@ exports.consts = {
         slot1: {
             largeSwipeSize: 12,
             largeSwipeStopInterval: 6,
+            padding: 2,
             range: [0, 23],
             smallSwipeSize: 6,
             smallSwipeStopInterval: 6
@@ -238,6 +242,7 @@ exports.consts = {
         slot2: {
             largeSwipeSize: 30,
             largeSwipeStopInterval: 15,
+            padding: 2,
             range: [0, 59],
             smallSwipeSize: 15,
             smallSwipeStopInterval: 15

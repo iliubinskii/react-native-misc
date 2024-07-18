@@ -1,8 +1,8 @@
-import * as React from "react";
 import { CalendarDayType } from "../../../hooks";
 import type { CommonProps } from "react-misc";
 import Item from "./Item";
 import type { NumStr } from "typescript-misc";
+import React from "react";
 declare const _default: <T>(props: Props<T>) => React.JSX.Element | undefined;
 export default _default;
 /**
@@ -13,7 +13,6 @@ export interface Props<T> extends CommonProps.Pressable, Pick<React.ComponentPro
     readonly day: number;
     /**
      * Extracts key.
-     *
      * @param item - Item.
      * @returns Key.
      */
@@ -21,7 +20,6 @@ export interface Props<T> extends CommonProps.Pressable, Pick<React.ComponentPro
     readonly index: number;
     /**
      * Checks if item is featured.
-     *
      * @param item - Item.
      * @returns _True_ if item is featured, _false_ otherwise.
      */

@@ -231,6 +231,7 @@ export declare const consts: {
         readonly slot1: {
             readonly largeSwipeSize: 10;
             readonly largeSwipeStopInterval: 5;
+            readonly padding: 2;
             readonly range: readonly [0, 99];
             readonly smallSwipeSize: 5;
             readonly smallSwipeStopInterval: 5;
@@ -238,6 +239,7 @@ export declare const consts: {
         readonly slot2: {
             readonly largeSwipeSize: 10;
             readonly largeSwipeStopInterval: 5;
+            readonly padding: 3;
             readonly range: readonly [0, 999];
             readonly smallSwipeSize: 5;
             readonly smallSwipeStopInterval: 5;
@@ -302,6 +304,7 @@ export declare const consts: {
         readonly slot1: {
             readonly largeSwipeSize: 12;
             readonly largeSwipeStopInterval: 6;
+            readonly padding: 2;
             readonly range: readonly [0, 23];
             readonly smallSwipeSize: 6;
             readonly smallSwipeStopInterval: 6;
@@ -309,6 +312,7 @@ export declare const consts: {
         readonly slot2: {
             readonly largeSwipeSize: 30;
             readonly largeSwipeStopInterval: 15;
+            readonly padding: 2;
             readonly range: readonly [0, 59];
             readonly smallSwipeSize: 15;
             readonly smallSwipeStopInterval: 15;

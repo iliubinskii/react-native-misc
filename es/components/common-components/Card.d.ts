@@ -1,7 +1,7 @@
-import * as React from "react";
 import { JustifyContent, TextVariant } from "../../types";
 import type { DimensionValue, StyleProp, ViewStyle } from "react-native";
 import type { CommonProps } from "react-misc";
+import React from "react";
 import { View } from "react-native";
 import type { stringU } from "typescript-misc";
 declare const _default: import("react-misc").FunctionComponent<Props>;

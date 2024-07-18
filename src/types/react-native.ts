@@ -1,3 +1,5 @@
+/* eslint-disable misc/consistent-enum-members -- Ok */
+
 export enum ColorSchemeName {
   dark = "dark",
   light = "light"

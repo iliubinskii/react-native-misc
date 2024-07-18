@@ -1,5 +1,5 @@
-import * as React from "react";
 import { IconButton } from "./common-common-components";
+import React from "react";
 import { TextInput } from "react-native-paper";
 import { memo } from "react-misc";
 export default memo("TextInputWithRightIcon", ({ Icon, iconDisabled, onIconPress, ...props }) => {

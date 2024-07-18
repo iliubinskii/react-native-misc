@@ -7,7 +7,6 @@ import type { NativeAnimation } from "./react-native-reanimated-common";
 
 /**
  * Creates animation.
- *
  * @param options - Options.
  * @returns Animation.
  */

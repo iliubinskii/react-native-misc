@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { Row } from "../common-common-components";
 import { consts } from "../../../core";
 import { memo } from "react-misc";

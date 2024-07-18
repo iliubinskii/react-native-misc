@@ -8,7 +8,6 @@ import type {
 export interface Layout {
   /**
    * Handles layout change event.
-   *
    * @param event - Event.
    */
   readonly onLayout?: ((event: LayoutChangeEvent) => void) | undefined;

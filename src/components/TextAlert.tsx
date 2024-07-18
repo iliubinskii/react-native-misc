@@ -1,7 +1,7 @@
-import * as React from "react";
 import { AlignItems, Position } from "../types";
 import { Row, Text } from "./common-components";
 import type { Icon } from "../icons";
+import React from "react";
 import { View } from "react-native";
 import { consts } from "../core";
 import { memo } from "react-misc";

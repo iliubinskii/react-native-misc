@@ -1,5 +1,5 @@
-import * as React from "react";
 import type { CommonProps } from "react-misc";
+import React from "react";
 import type { SharedValue } from "react-native-reanimated";
 import { memo } from "react-misc";
 import { neverDemand } from "typescript-misc";
@@ -15,10 +15,12 @@ export const BaseAnimatedKeyboardProvider = memo(
       {
         onEnd: event => {
           "worklet";
+
           height.value = event.height;
         },
         onMove: event => {
           "worklet";
+
           height.value = event.height;
         }
       },
@@ -35,7 +37,6 @@ export const BaseAnimatedKeyboardProvider = memo(
 
 /**
  * Consumes animated keyboard context.
- *
  * @returns Keyboard height.
  */
 export function useAnimatedKeyboard(): Readonly<SharedValue<number>> {

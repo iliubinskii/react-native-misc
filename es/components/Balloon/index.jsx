@@ -1,8 +1,8 @@
-import * as React from "react";
 import { memo, useRealEffect } from "react-misc";
 import BalloonMeter from "./BalloonMeter";
 import MeasuredBalloon from "./MeasuredBalloon";
 import { Portal } from "react-native-paper";
+import React from "react";
 import { useLayout } from "../../hooks";
 import { useWindowDimensions } from "../../hooks-with-contexts";
 export default memo("Balloon", ({ anchor, visible, ...props }) => {

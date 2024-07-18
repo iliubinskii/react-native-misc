@@ -2,7 +2,6 @@ import type { CommonProps } from "react-misc";
 export declare const AppInfoProvider: import("react-misc").FunctionComponent<Props>;
 /**
  * Consumes app info context.
- *
  * @returns App info context.
  */
 export declare function useAppInfo(): Context;

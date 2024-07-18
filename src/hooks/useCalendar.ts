@@ -1,6 +1,6 @@
-import * as React from "react";
-import { ReadonlySet, TimeUnit, a, evaluate, fn, o } from "typescript-misc";
+import { ReadonlySet, TimeUnit, a, evaluate, fn } from "typescript-misc";
 import { useDatetime, useLang } from "react-misc";
+import React from "react";
 import { consts } from "../core";
 
 declare global {
@@ -20,7 +20,6 @@ export enum DayType {
 
 /**
  * Calendar hook.
- *
  * @param month - Month.
  * @param weekStartsOn - Week starts on.
  * @param workweekStartsOn - Workweek starts on.
@@ -51,15 +50,17 @@ export function useCalendar(
       : [lang.Sun, lang.Mon, lang.Tue, lang.Wed, lang.Thu, lang.Fri, lang.Sat];
 
     return {
-      weekDays: weekDays.map((label, day): WeekDay => ({ day, label })),
-      weeks: a.fromRange(0, maxWeeks - 1).map(
-        (week): Week => ({
+      weekDays: weekDays.map((label, day): WeekDay => {
+        return { day, label };
+      }),
+      weeks: a.fromRange(0, maxWeeks - 1).map((week): Week => {
+        return {
           days: a.fromRange(0, daysInWeek - 1).map((day): Day => {
             const d = firstDay.add(week * daysInWeek + day, TimeUnit.days);
 
             const date = d.toString();
 
-            return o.removeUndefinedKeys({
+            return {
               date,
               day: d.dayOfMonth(),
               onPress: () => {
@@ -75,11 +76,11 @@ export function useCalendar(
 
                 return DayType.padding;
               })
-            });
+            };
           }),
           week
-        })
-      )
+        };
+      })
     };
   }, [datetime, lang, month, onDayPress, weekStartsOn, workweekStartsOn]);
 }

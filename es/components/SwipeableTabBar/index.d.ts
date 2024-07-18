@@ -1,6 +1,6 @@
-import * as React from "react";
 import type { numberU, strings } from "typescript-misc";
 import type { BottomTabBar } from "@react-navigation/bottom-tabs";
+import React from "react";
 declare const _default: import("react-misc").FunctionComponent<Props>;
 export default _default;
 /**
@@ -9,7 +9,6 @@ export default _default;
 export interface Props extends React.ComponentProps<typeof BottomTabBar> {
     /**
      * Returns tab bar page.
-     *
      * @param index - Index.
      * @param names - Names.
      * @returns Tab bar page.
@@ -19,7 +18,6 @@ export interface Props extends React.ComponentProps<typeof BottomTabBar> {
     readonly iconSize: number;
     /**
      * Handles page change.
-     *
      * @param page - Page.
      */
     readonly onPageChange?: ((page: number) => void) | undefined;

@@ -1,4 +1,5 @@
-// eslint-disable-next-line misc/no-self-import -- Wait for eslint-plugin-misc update
+/* eslint-disable misc/consistent-enum-members -- Ok */
+
 import type { MD3Theme } from "react-native-paper";
 
 export enum ButtonMode {

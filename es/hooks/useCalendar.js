@@ -1,6 +1,6 @@
-import * as React from "react";
-import { ReadonlySet, TimeUnit, a, evaluate, fn, o } from "typescript-misc";
+import { ReadonlySet, TimeUnit, a, evaluate, fn } from "typescript-misc";
 import { useDatetime, useLang } from "react-misc";
+import React from "react";
 import { consts } from "../core";
 export var DayType;
 (function (DayType) {
@@ -11,7 +11,6 @@ export var DayType;
 })(DayType || (DayType = {}));
 /**
  * Calendar hook.
- *
  * @param month - Month.
  * @param weekStartsOn - Week starts on.
  * @param workweekStartsOn - Workweek starts on.
@@ -29,30 +28,34 @@ export function useCalendar(month, weekStartsOn, workweekStartsOn, onDayPress = 
             ? [lang.Mon, lang.Tue, lang.Wed, lang.Thu, lang.Fri, lang.Sat, lang.Sun]
             : [lang.Sun, lang.Mon, lang.Tue, lang.Wed, lang.Thu, lang.Fri, lang.Sat];
         return {
-            weekDays: weekDays.map((label, day) => ({ day, label })),
-            weeks: a.fromRange(0, maxWeeks - 1).map((week) => ({
-                days: a.fromRange(0, daysInWeek - 1).map((day) => {
-                    const d = firstDay.add(week * daysInWeek + day, TimeUnit.days);
-                    const date = d.toString();
-                    return o.removeUndefinedKeys({
-                        date,
-                        day: d.dayOfMonth(),
-                        onPress: () => {
-                            onDayPress(date);
-                        },
-                        type: evaluate(() => {
-                            if (d.isSameDay(today))
-                                return DayType.today;
-                            if (d.setStartOfMonth().toString() === month)
-                                return offDays.has(d.dayOfWeek())
-                                    ? DayType.offDay
-                                    : DayType.workday;
-                            return DayType.padding;
-                        })
-                    });
-                }),
-                week
-            }))
+            weekDays: weekDays.map((label, day) => {
+                return { day, label };
+            }),
+            weeks: a.fromRange(0, maxWeeks - 1).map((week) => {
+                return {
+                    days: a.fromRange(0, daysInWeek - 1).map((day) => {
+                        const d = firstDay.add(week * daysInWeek + day, TimeUnit.days);
+                        const date = d.toString();
+                        return {
+                            date,
+                            day: d.dayOfMonth(),
+                            onPress: () => {
+                                onDayPress(date);
+                            },
+                            type: evaluate(() => {
+                                if (d.isSameDay(today))
+                                    return DayType.today;
+                                if (d.setStartOfMonth().toString() === month)
+                                    return offDays.has(d.dayOfWeek())
+                                        ? DayType.offDay
+                                        : DayType.workday;
+                                return DayType.padding;
+                            })
+                        };
+                    }),
+                    week
+                };
+            })
         };
     }, [datetime, lang, month, onDayPress, weekStartsOn, workweekStartsOn]);
 }

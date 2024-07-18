@@ -21,7 +21,6 @@ export default _default;
 export interface Props extends CommonProps.Closeable {
     /**
      * Icon extractor.
-     *
      * @param name - Name.
      * @returns Icon.
      */
@@ -29,7 +28,6 @@ export interface Props extends CommonProps.Closeable {
     readonly names: strings;
     /**
      * Selects icon.
-     *
      * @param name - Name.
      */
     readonly onSave: (name?: string) => void;

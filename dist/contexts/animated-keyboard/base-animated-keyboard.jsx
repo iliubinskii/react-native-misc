@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.useAnimatedKeyboard = exports.BaseAnimatedKeyboardProvider = void 0;
+exports.BaseAnimatedKeyboardProvider = void 0;
+exports.useAnimatedKeyboard = useAnimatedKeyboard;
 const tslib_1 = require("tslib");
-const React = tslib_1.__importStar(require("react"));
+const react_1 = tslib_1.__importDefault(require("react"));
 const react_misc_1 = require("react-misc");
 const typescript_misc_1 = require("typescript-misc");
 const react_native_keyboard_controller_1 = require("react-native-keyboard-controller");
@@ -25,12 +26,10 @@ exports.BaseAnimatedKeyboardProvider = (0, react_misc_1.memo)("BaseAnimatedKeybo
 });
 /**
  * Consumes animated keyboard context.
- *
  * @returns Keyboard height.
  */
 function useAnimatedKeyboard() {
-    return React.useContext(AnimatedKeyboardContext);
+    return react_1.default.useContext(AnimatedKeyboardContext);
 }
-exports.useAnimatedKeyboard = useAnimatedKeyboard;
-const AnimatedKeyboardContext = React.createContext((0, typescript_misc_1.neverDemand)());
+const AnimatedKeyboardContext = react_1.default.createContext((0, typescript_misc_1.neverDemand)());
 //# sourceMappingURL=base-animated-keyboard.jsx.map

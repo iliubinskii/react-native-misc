@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
-const React = tslib_1.__importStar(require("react"));
 const common_components_1 = require("../common-components");
 const typescript_misc_1 = require("typescript-misc");
+const react_1 = tslib_1.__importDefault(require("react"));
 const Tab_1 = tslib_1.__importDefault(require("./Tab"));
 const core_1 = require("../../core");
 const react_misc_1 = require("react-misc");
@@ -13,7 +13,7 @@ exports.default = (0, react_misc_1.memo)("SwipeableTabBar", ({ descriptors, getP
     const { width } = (0, hooks_with_contexts_1.useWindowDimensions)();
     const range = (pageCount - 1) * width;
     const page = getPage(index, routeNames) ?? Math.floor(index / pageSize);
-    const onScrollEnd = React.useCallback((offset) => {
+    const onScrollEnd = react_1.default.useCallback((offset) => {
         onPageChange(-Math.round(offset / width));
     }, [onPageChange, width]);
     return (<common_components_1.AnimatedScrollView direction={common_components_1.AnimatedScrollViewDirection.row} height={height} initialOffset={-page * width} largeSwipeSize={width} largeSwipeStopInterval={width} max={0} min={-range} onScrollEnd={onScrollEnd} smallSwipeSize={width} smallSwipeStopInterval={width} snapAnimation={functions_1.springAnimation} snapInterval={width} swipeAnimation={functions_1.springAnimation} toggleThreshold={toggleThreshold} width={width}>

@@ -27,7 +27,6 @@ export interface Props {
     readonly mode: Mode;
     /**
      * Handles dates setRangeEnd.
-     *
      * @param date - Date.
      * @param dateFrom - Date from.
      * @param fullDaysMode - Full days mode.

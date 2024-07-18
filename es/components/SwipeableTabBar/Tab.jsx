@@ -1,6 +1,6 @@
-import * as React from "react";
 import { AlignItems, JustifyContent } from "../../types";
 import { Pressable } from "react-native";
+import React from "react";
 import { Text } from "../common-components";
 import { assert } from "typescript-misc";
 import { memo } from "react-misc";

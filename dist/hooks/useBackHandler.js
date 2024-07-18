@@ -1,11 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.useBackHandler = void 0;
+exports.useBackHandler = useBackHandler;
 const react_misc_1 = require("react-misc");
 const react_native_1 = require("react-native");
 /**
  * Handles hardware back press.
- *
  * @param handler - Handler.
  */
 function useBackHandler(handler) {
@@ -18,5 +17,4 @@ function useBackHandler(handler) {
         };
     }, [handlerRef]);
 }
-exports.useBackHandler = useBackHandler;
 //# sourceMappingURL=useBackHandler.js.map
