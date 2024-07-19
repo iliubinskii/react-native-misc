@@ -35,6 +35,7 @@ const config = {
               "asyncs",
               "escompat",
               "firestore",
+              "packagejson",
               "pannable",
               "prerendered",
               "sonarjs",
