@@ -16,7 +16,7 @@ const config = {
     facades: "readonly",
     reactNativeMisc: "readonly"
   },
-  extends: "./.eslintrc.base.cjs",
+  extends: "union",
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: { jsx: true },
@@ -33,8 +33,9 @@ const config = {
             // @sorted
             [
               "asyncs",
-              "escompat",
+              "cjsx",
               "firestore",
+              "mjsx",
               "packagejson",
               "pannable",
               "prerendered",
