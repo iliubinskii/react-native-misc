@@ -10,17 +10,17 @@
 - [Installation](#installation)
 - [Modules](#modules)
 
-## <a id="overview"></a>Overview
+## Overview
 
 React Native library.
 
-## <a id="installation"></a>Installation
+## Installation
 
 ```sh
 npm install react-native-misc
 ```
 
-## <a id="modules"></a>Modules
+## Modules
 
 - [Candlestick Chart](https://github.com/iliubinskii/react-native-misc/tree/master/src/components/CandlestickChart) — A trading chart with support for panning and zooming gestures.
 - [Date/Time Picker](https://github.com/iliubinskii/react-native-misc/tree/master/src/components/DateTimePicker) — A date/time picker component that allows selecting a date interval with as little actions as selecting a single date.
