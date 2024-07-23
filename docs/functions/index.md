@@ -130,4 +130,4 @@ Re-exports [springAnimation](react-native-reanimated/springAnimation/functions/s
 
 ### worklets
 
-Renames and re-exports [functions/worklets](worklets/index.md)
+Re-exports [worklets](worklets/variables/worklets.md)

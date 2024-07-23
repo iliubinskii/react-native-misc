@@ -8,9 +8,6 @@
 
 ## Index
 
-### Functions
+### Variables
 
-- [empty](functions/empty.md)
-- [evaluate](functions/evaluate.md)
-- [limit](functions/limit.md)
-- [notEmpty](functions/notEmpty.md)
+- [worklets](variables/worklets.md)

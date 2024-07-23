@@ -1042,4 +1042,4 @@ Re-exports [useWindowDimensionsParams](../hooks/useWindowDimensionsParams/functi
 
 ### worklets
 
-Renames and re-exports [functions/worklets](../functions/worklets/index.md)
+Re-exports [worklets](../functions/worklets/variables/worklets.md)
