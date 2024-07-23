@@ -14,27 +14,20 @@ exports.default = (0, react_misc_1.memo)("Modal", ({ animated = true, backdropSt
     const { height, width } = (0, hooks_with_contexts_1.useWindowDimensions)();
     const { colors } = (0, contexts_1.useThemeExtended)();
     const keyboardHeight = (0, contexts_1.useAnimatedKeyboard)();
-    const opacity = (0, react_native_reanimated_1.useSharedValue)(animated ? 0 : 1);
     const animatedStyle = (0, react_native_reanimated_1.useAnimatedStyle)(() => {
         return {
-            opacity: opacity.value,
             transform: [
                 { translateY: -keyboardHeightFactor * keyboardHeight.value }
             ]
         };
-    }, [keyboardHeight, keyboardHeightFactor, opacity]);
-    // Back handler
+    }, [keyboardHeight, keyboardHeightFactor]);
     (0, hooks_1.useBackHandler)(() => {
         onClose();
         return true;
     });
-    // Fade in
-    (0, react_misc_1.useRealEffect)(() => {
-        if (animated)
-            opacity.value = (0, react_native_reanimated_1.withTiming)(1);
-    }, []);
     return (<react_misc_1.RenderTimeLogger name={name}>
         <react_native_reanimated_1.default.View {...typescript_misc_1.o.removeUndefinedKeys({
+        entering: animated ? react_native_reanimated_1.FadeIn : undefined,
         exiting: animated ? react_native_reanimated_1.FadeOut : undefined,
         style: animatedStyle
     })}>
