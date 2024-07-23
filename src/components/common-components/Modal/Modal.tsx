@@ -5,15 +5,14 @@ import {
   useThemeExtended
 } from "../../../contexts";
 import { Pressable, View } from "react-native";
-import { RenderTimeLogger, memo, useRealEffect } from "react-misc";
+import { RenderTimeLogger, memo } from "react-misc";
 import type { StyleProp, ViewStyle } from "react-native";
 import type { booleanU, numberU } from "typescript-misc";
 import { fn, o } from "typescript-misc";
 import Animated, {
+  FadeIn,
   FadeOut,
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming
+  useAnimatedStyle
 } from "react-native-reanimated";
 import type { CommonProps } from "react-misc";
 import React from "react";
@@ -38,33 +37,25 @@ export default memo(
 
     const keyboardHeight = useAnimatedKeyboard();
 
-    const opacity = useSharedValue(animated ? 0 : 1);
-
     const animatedStyle = useAnimatedStyle((): ViewStyle => {
       return {
-        opacity: opacity.value,
         transform: [
           { translateY: -keyboardHeightFactor * keyboardHeight.value }
         ]
       };
-    }, [keyboardHeight, keyboardHeightFactor, opacity]);
+    }, [keyboardHeight, keyboardHeightFactor]);
 
-    // Back handler
     useBackHandler(() => {
       onClose();
 
       return true;
     });
 
-    // Fade in
-    useRealEffect(() => {
-      if (animated) opacity.value = withTiming(1);
-    }, []);
-
     return (
       <RenderTimeLogger name={name}>
         <Animated.View
           {...o.removeUndefinedKeys({
+            entering: animated ? FadeIn : undefined,
             exiting: animated ? FadeOut : undefined,
             style: animatedStyle
           })}
