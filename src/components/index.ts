@@ -11,7 +11,8 @@ export { default as CheckboxRow } from "./CheckboxRow";
 export { default as Chip } from "./Chip";
 export {
   default as DateTimePicker,
-  Mode as DateTimePickerMode
+  Mode as DateTimePickerMode,
+  Step as DateTimePickerStep
 } from "./DateTimePicker";
 export * as Dense from "./Dense";
 export * from "./Drawer";

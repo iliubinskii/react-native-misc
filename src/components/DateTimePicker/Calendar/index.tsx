@@ -1,5 +1,6 @@
 import { Dummy, IconButton, Row, Text } from "../../common-components";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
+import type { HintProps, HintRef } from "../DateTimePicker-core";
 import {
   JustifyContent,
   Position,
@@ -7,17 +8,16 @@ import {
   TextVariant,
   VerticalAlign
 } from "../../../types";
-import { memo, useBoolean, useDatetime, useRealEffect } from "react-misc";
+import { TimeUnit, neverDemand } from "typescript-misc";
+import { memo, useDatetime, useRealEffect } from "react-misc";
 import { runOnJS, useSharedValue } from "react-native-reanimated";
 import { useCalendar, useLayoutReanimated } from "../../../hooks";
 import Circle from "./Circle";
 import Day from "./Day";
 import type { FunctionComponent } from "react-misc";
-import type { HintProps } from "../DateTimePicker-common";
 import React from "react";
 import SelectionRow from "./SelectionRow";
 import { Svg } from "react-native-svg";
-import { TimeUnit } from "typescript-misc";
 import { View } from "react-native";
 import { consts } from "../../../core";
 import { useIcons } from "../../../icons";
@@ -60,9 +60,6 @@ export default memo(
       [datetime, month, weekStartsOn]
     );
 
-    const [hintActionDone, setHintActionDone, unsetHintActionDone] =
-      useBoolean();
-
     const initialSelection = React.useMemo(
       () =>
         date > dateFrom && datetime.create(date).isStartOfDay()
@@ -82,6 +79,8 @@ export default memo(
     );
 
     const { layout, onLayout } = useLayoutReanimated();
+
+    const selectDateRangeHint = React.useRef(neverDemand<HintRef>());
 
     const selection1 = useSharedValue(initialSelection);
 
@@ -114,16 +113,9 @@ export default memo(
 
         if (index === indexFrom) {
           // Skip
-        } else setHintActionDone();
+        } else selectDateRangeHint.current.setSeen();
       },
-      [
-        firstDay,
-        initialSelection,
-        initialSelectionFrom,
-        onChange,
-        pickHours,
-        setHintActionDone
-      ]
+      [firstDay, initialSelection, initialSelectionFrom, onChange, pickHours]
     );
 
     const setRange = React.useCallback(
@@ -218,10 +210,7 @@ export default memo(
             ))}
           </Row>
           <GestureDetector gesture={gesture}>
-            <SelectDateRangeHint
-              hintActionDone={hintActionDone}
-              unsetHintActionDone={unsetHintActionDone}
-            >
+            <SelectDateRangeHint customRef={selectDateRangeHint}>
               <View
                 onLayout={onLayout}
                 style={{ height: size * maxWeeks, width: size * daysInWeek }}

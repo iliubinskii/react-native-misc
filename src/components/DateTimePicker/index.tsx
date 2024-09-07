@@ -15,7 +15,7 @@ import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 import { Button } from "react-native-paper";
 import Calendar from "./Calendar";
 import Clock from "./Clock";
-import type { HintProps } from "./DateTimePicker-common";
+import type { HintProps } from "./DateTimePicker-core";
 import { JustifyContent } from "../../types";
 import React from "react";
 import { consts } from "../../core";
@@ -313,7 +313,7 @@ export interface ScopedWord {
 
 export { default as Calendar } from "./Calendar";
 export { default as Clock } from "./Clock";
-export { Mode } from "./DateTimePicker-common";
+export { Mode, Step } from "./DateTimePicker-common";
 
 const { duration, height, width } = consts.DateTimePicker;
 

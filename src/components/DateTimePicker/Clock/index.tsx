@@ -1,22 +1,16 @@
 import { Dummy, IconButton, Row, Text } from "../../common-components";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
+import type { HintProps, HintRef } from "../DateTimePicker-core";
 import { JustifyContent, TextVariant, VerticalAlign } from "../../../types";
 import { Mode, Step } from "../DateTimePicker-common";
 import { Pressable, View } from "react-native";
-import {
-  memo,
-  useBoolean,
-  useDatetime,
-  useLang,
-  useRealEffect
-} from "react-misc";
+import { TimeUnit, neverDemand } from "typescript-misc";
+import { memo, useDatetime, useLang, useRealEffect } from "react-misc";
 import { runOnJS, useSharedValue } from "react-native-reanimated";
 import type { FunctionComponent } from "react-misc";
 import Hand from "./Hand";
-import type { HintProps } from "../DateTimePicker-common";
 import Numbers from "./Numbers";
 import React from "react";
-import { TimeUnit } from "typescript-misc";
 import { consts } from "../../../core";
 import { useIcons } from "../../../icons";
 import { useLayoutReanimated } from "../../../hooks";
@@ -64,9 +58,6 @@ export default memo(
       [dateFrom, datetime]
     );
 
-    const [hintActionDone, setHintActionDone, unsetHintActionDone] =
-      useBoolean();
-
     const initialHours = dt.hours() % 12;
 
     const initialHoursFrom = dtFrom.hours() % 12;
@@ -84,6 +75,8 @@ export default memo(
     const minutes = useSharedValue(initialMinutes);
 
     const minutesFrom = useSharedValue(initialMinutesFrom);
+
+    const selectTimeRangeHint = React.useRef(neverDemand<HintRef>());
 
     const nextDay = React.useCallback(() => {
       onChange(
@@ -182,7 +175,7 @@ export default memo(
 
         if (index === indexFrom) {
           // Skip
-        } else setHintActionDone();
+        } else selectTimeRangeHint.current.setSeen();
       },
       [
         dt,
@@ -194,7 +187,6 @@ export default memo(
         initialMinutesFrom,
         onChange,
         pickMinutes,
-        setHintActionDone,
         step
       ]
     );
@@ -375,10 +367,7 @@ export default memo(
           </Row>
         ) : undefined}
         <GestureDetector gesture={gesture}>
-          <SelectTimeRangeHint
-            hintActionDone={hintActionDone}
-            unsetHintActionDone={unsetHintActionDone}
-          >
+          <SelectTimeRangeHint customRef={selectTimeRangeHint}>
             <View onLayout={onLayout} style={{ height: size, width: size }}>
               <Hand
                 active={step === Step.hours}
