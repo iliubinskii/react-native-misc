@@ -12,7 +12,3 @@
 
 - [Mode](enumerations/Mode.md)
 - [Step](enumerations/Step.md)
-
-### Interfaces
-
-- [HintProps](interfaces/HintProps.md)

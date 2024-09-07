@@ -6,12 +6,12 @@ const react_native_gesture_handler_1 = require("react-native-gesture-handler");
 const types_1 = require("../../../types");
 const DateTimePicker_common_1 = require("../DateTimePicker-common");
 const react_native_1 = require("react-native");
+const typescript_misc_1 = require("typescript-misc");
 const react_misc_1 = require("react-misc");
 const react_native_reanimated_1 = require("react-native-reanimated");
 const Hand_1 = tslib_1.__importDefault(require("./Hand"));
 const Numbers_1 = tslib_1.__importDefault(require("./Numbers"));
 const react_1 = tslib_1.__importDefault(require("react"));
-const typescript_misc_1 = require("typescript-misc");
 const core_1 = require("../../../core");
 const icons_1 = require("../../../icons");
 const hooks_1 = require("../../../hooks");
@@ -23,7 +23,6 @@ exports.default = (0, react_misc_1.memo)("Clock", ({ SelectTimeRangeHint = commo
     const datetime = (0, react_misc_1.useDatetime)();
     const dt = react_1.default.useMemo(() => datetime.create(date), [date, datetime]);
     const dtFrom = react_1.default.useMemo(() => datetime.create(dateFrom), [dateFrom, datetime]);
-    const [hintActionDone, setHintActionDone, unsetHintActionDone] = (0, react_misc_1.useBoolean)();
     const initialHours = dt.hours() % 12;
     const initialHoursFrom = dtFrom.hours() % 12;
     const initialMinutes = Math.floor(dt.minutes() / minutesStep);
@@ -33,6 +32,7 @@ exports.default = (0, react_misc_1.memo)("Clock", ({ SelectTimeRangeHint = commo
     const hoursFrom = (0, react_native_reanimated_1.useSharedValue)(initialHoursFrom);
     const minutes = (0, react_native_reanimated_1.useSharedValue)(initialMinutes);
     const minutesFrom = (0, react_native_reanimated_1.useSharedValue)(initialMinutesFrom);
+    const selectTimeRangeHint = react_1.default.useRef((0, typescript_misc_1.neverDemand)());
     const nextDay = react_1.default.useCallback(() => {
         onChange(dt.add(1, typescript_misc_1.TimeUnit.day).toString(), dtFrom.add(1, typescript_misc_1.TimeUnit.day).toString(), fullDaysMode);
     }, [dt, dtFrom, fullDaysMode, onChange]);
@@ -94,7 +94,7 @@ exports.default = (0, react_misc_1.memo)("Clock", ({ SelectTimeRangeHint = commo
             // Skip
         }
         else
-            setHintActionDone();
+            selectTimeRangeHint.current.setSeen();
     }, [
         dt,
         dtFrom,
@@ -105,7 +105,6 @@ exports.default = (0, react_misc_1.memo)("Clock", ({ SelectTimeRangeHint = commo
         initialMinutesFrom,
         onChange,
         pickMinutes,
-        setHintActionDone,
         step
     ]);
     const setRange = react_1.default.useCallback((x, y, gestureStep) => {
@@ -215,7 +214,7 @@ exports.default = (0, react_misc_1.memo)("Clock", ({ SelectTimeRangeHint = commo
             </react_native_1.Pressable>
           </common_components_1.Row>) : undefined}
         <react_native_gesture_handler_1.GestureDetector gesture={gesture}>
-          <SelectTimeRangeHint hintActionDone={hintActionDone} unsetHintActionDone={unsetHintActionDone}>
+          <SelectTimeRangeHint customRef={selectTimeRangeHint}>
             <react_native_1.View onLayout={onLayout} style={{ height: size, width: size }}>
               <Hand_1.default active={step === DateTimePicker_common_1.Step.hours} index={hours} indexFrom={hoursFrom} length={hourHandLength} width1={hourHandWidth1} width2={hourHandWidth2}/>
               <Hand_1.default active={step === DateTimePicker_common_1.Step.minutes} index={minutes} indexFrom={minutesFrom} length={minuteHandLength} width1={minuteHandWidth1} width2={minuteHandWidth2}/>

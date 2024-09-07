@@ -146,6 +146,12 @@ Renames and re-exports [Mode](../components/DateTimePicker/DateTimePicker-common
 
 ***
 
+### DateTimePickerStep
+
+Renames and re-exports [Step](../components/DateTimePicker/DateTimePicker-common/enumerations/Step.md)
+
+***
+
 ### DeleteError
 
 Re-exports [DeleteError](../functions/react-native-firebase/interfaces/DeleteError.md)

@@ -4,6 +4,7 @@ const tslib_1 = require("tslib");
 const common_components_1 = require("../../common-components");
 const react_native_gesture_handler_1 = require("react-native-gesture-handler");
 const types_1 = require("../../../types");
+const typescript_misc_1 = require("typescript-misc");
 const react_misc_1 = require("react-misc");
 const react_native_reanimated_1 = require("react-native-reanimated");
 const hooks_1 = require("../../../hooks");
@@ -12,7 +13,6 @@ const Day_1 = tslib_1.__importDefault(require("./Day"));
 const react_1 = tslib_1.__importDefault(require("react"));
 const SelectionRow_1 = tslib_1.__importDefault(require("./SelectionRow"));
 const react_native_svg_1 = require("react-native-svg");
-const typescript_misc_1 = require("typescript-misc");
 const react_native_1 = require("react-native");
 const core_1 = require("../../../core");
 const icons_1 = require("../../../icons");
@@ -23,7 +23,6 @@ exports.default = (0, react_misc_1.memo)("Calendar", ({ SelectDateRangeHint = co
     const { colors } = (0, contexts_1.useThemeExtended)();
     const datetime = (0, react_misc_1.useDatetime)();
     const firstDay = react_1.default.useMemo(() => datetime.create(month).setStartOfWeek(weekStartsOn), [datetime, month, weekStartsOn]);
-    const [hintActionDone, setHintActionDone, unsetHintActionDone] = (0, react_misc_1.useBoolean)();
     const initialSelection = react_1.default.useMemo(() => date > dateFrom && datetime.create(date).isStartOfDay()
         ? datetime
             .create(date)
@@ -33,6 +32,7 @@ exports.default = (0, react_misc_1.memo)("Calendar", ({ SelectDateRangeHint = co
         : datetime.create(date).setStartOfDay().differenceInDays(firstDay), [date, dateFrom, datetime, firstDay]);
     const initialSelectionFrom = react_1.default.useMemo(() => datetime.create(dateFrom).setStartOfDay().differenceInDays(firstDay), [dateFrom, datetime, firstDay]);
     const { layout, onLayout } = (0, hooks_1.useLayoutReanimated)();
+    const selectDateRangeHint = react_1.default.useRef((0, typescript_misc_1.neverDemand)());
     const selection1 = (0, react_native_reanimated_1.useSharedValue)(initialSelection);
     const selection2 = (0, react_native_reanimated_1.useSharedValue)(initialSelectionFrom);
     const back = react_1.default.useCallback(() => {
@@ -55,15 +55,8 @@ exports.default = (0, react_misc_1.memo)("Calendar", ({ SelectDateRangeHint = co
             // Skip
         }
         else
-            setHintActionDone();
-    }, [
-        firstDay,
-        initialSelection,
-        initialSelectionFrom,
-        onChange,
-        pickHours,
-        setHintActionDone
-    ]);
+            selectDateRangeHint.current.setSeen();
+    }, [firstDay, initialSelection, initialSelectionFrom, onChange, pickHours]);
     const setRange = react_1.default.useCallback((x, y, step) => {
         "worklet";
         if (layout.value) {
@@ -114,7 +107,7 @@ exports.default = (0, react_misc_1.memo)("Calendar", ({ SelectDateRangeHint = co
               </common_components_1.Text>))}
           </common_components_1.Row>
           <react_native_gesture_handler_1.GestureDetector gesture={gesture}>
-            <SelectDateRangeHint hintActionDone={hintActionDone} unsetHintActionDone={unsetHintActionDone}>
+            <SelectDateRangeHint customRef={selectDateRangeHint}>
               <react_native_1.View onLayout={onLayout} style={{ height: size * maxWeeks, width: size * daysInWeek }}>
                 <react_native_svg_1.Svg height={size * maxWeeks} style={{ position: types_1.Position.absolute, start: 0, top: 0 }} width={size * daysInWeek}>
                   {weeks.map(({ week }) => (<SelectionRow_1.default key={week} selection1={selection1} selection2={selection2} week={week}/>))}

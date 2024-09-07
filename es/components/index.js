@@ -2,7 +2,7 @@ export { default as Balloon } from "./Balloon";
 export { CandlestickChart } from "./CandlestickChart";
 export { default as CheckboxRow } from "./CheckboxRow";
 export { default as Chip } from "./Chip";
-export { default as DateTimePicker, Mode as DateTimePickerMode } from "./DateTimePicker";
+export { default as DateTimePicker, Mode as DateTimePickerMode, Step as DateTimePickerStep } from "./DateTimePicker";
 import * as Dense_1 from "./Dense";
 export { Dense_1 as Dense };
 export * from "./Drawer";

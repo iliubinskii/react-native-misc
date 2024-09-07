@@ -3,12 +3,12 @@ import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { JustifyContent, TextVariant, VerticalAlign } from "../../../types";
 import { Mode, Step } from "../DateTimePicker-common";
 import { Pressable, View } from "react-native";
-import { memo, useBoolean, useDatetime, useLang, useRealEffect } from "react-misc";
+import { TimeUnit, neverDemand } from "typescript-misc";
+import { memo, useDatetime, useLang, useRealEffect } from "react-misc";
 import { runOnJS, useSharedValue } from "react-native-reanimated";
 import Hand from "./Hand";
 import Numbers from "./Numbers";
 import React from "react";
-import { TimeUnit } from "typescript-misc";
 import { consts } from "../../../core";
 import { useIcons } from "../../../icons";
 import { useLayoutReanimated } from "../../../hooks";
@@ -20,7 +20,6 @@ export default memo("Clock", ({ SelectTimeRangeHint = Dummy, date, dateFormat, d
     const datetime = useDatetime();
     const dt = React.useMemo(() => datetime.create(date), [date, datetime]);
     const dtFrom = React.useMemo(() => datetime.create(dateFrom), [dateFrom, datetime]);
-    const [hintActionDone, setHintActionDone, unsetHintActionDone] = useBoolean();
     const initialHours = dt.hours() % 12;
     const initialHoursFrom = dtFrom.hours() % 12;
     const initialMinutes = Math.floor(dt.minutes() / minutesStep);
@@ -30,6 +29,7 @@ export default memo("Clock", ({ SelectTimeRangeHint = Dummy, date, dateFormat, d
     const hoursFrom = useSharedValue(initialHoursFrom);
     const minutes = useSharedValue(initialMinutes);
     const minutesFrom = useSharedValue(initialMinutesFrom);
+    const selectTimeRangeHint = React.useRef(neverDemand());
     const nextDay = React.useCallback(() => {
         onChange(dt.add(1, TimeUnit.day).toString(), dtFrom.add(1, TimeUnit.day).toString(), fullDaysMode);
     }, [dt, dtFrom, fullDaysMode, onChange]);
@@ -91,7 +91,7 @@ export default memo("Clock", ({ SelectTimeRangeHint = Dummy, date, dateFormat, d
             // Skip
         }
         else
-            setHintActionDone();
+            selectTimeRangeHint.current.setSeen();
     }, [
         dt,
         dtFrom,
@@ -102,7 +102,6 @@ export default memo("Clock", ({ SelectTimeRangeHint = Dummy, date, dateFormat, d
         initialMinutesFrom,
         onChange,
         pickMinutes,
-        setHintActionDone,
         step
     ]);
     const setRange = React.useCallback((x, y, gestureStep) => {
@@ -212,7 +211,7 @@ export default memo("Clock", ({ SelectTimeRangeHint = Dummy, date, dateFormat, d
             </Pressable>
           </Row>) : undefined}
         <GestureDetector gesture={gesture}>
-          <SelectTimeRangeHint hintActionDone={hintActionDone} unsetHintActionDone={unsetHintActionDone}>
+          <SelectTimeRangeHint customRef={selectTimeRangeHint}>
             <View onLayout={onLayout} style={{ height: size, width: size }}>
               <Hand active={step === Step.hours} index={hours} indexFrom={hoursFrom} length={hourHandLength} width1={hourHandWidth1} width2={hourHandWidth2}/>
               <Hand active={step === Step.minutes} index={minutes} indexFrom={minutesFrom} length={minuteHandLength} width1={minuteHandWidth1} width2={minuteHandWidth2}/>

@@ -26,6 +26,7 @@
 - [components/DateTimePicker/Clock/Hand](components/DateTimePicker/Clock/Hand/index.md)
 - [components/DateTimePicker/Clock/Numbers](components/DateTimePicker/Clock/Numbers/index.md)
 - [components/DateTimePicker/DateTimePicker-common](components/DateTimePicker/DateTimePicker-common/index.md)
+- [components/DateTimePicker/DateTimePicker-core](components/DateTimePicker/DateTimePicker-core/index.md)
 - [components/Dense](components/Dense/index.md)
 - [components/Dense/Button](components/Dense/Button/index.md)
 - [components/Dense/Container](components/Dense/Container/index.md)

@@ -1,6 +1,6 @@
+import type { HintProps } from "../DateTimePicker-core";
 import { Mode, Step } from "../DateTimePicker-common";
 import type { FunctionComponent } from "react-misc";
-import type { HintProps } from "../DateTimePicker-common";
 declare global {
     namespace facades {
         namespace lang {

@@ -12,7 +12,7 @@
 
 ### SelectTimeRangeHint?
 
-> `readonly` `optional` **SelectTimeRangeHint**: `FunctionComponent`\<[`HintProps`](../../DateTimePicker-common/interfaces/HintProps.md)\>
+> `readonly` `optional` **SelectTimeRangeHint**: `FunctionComponent`\<[`HintProps`](../../DateTimePicker-core/interfaces/HintProps.md)\>
 
 ***
 

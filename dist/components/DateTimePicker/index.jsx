@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Mode = exports.Clock = exports.Calendar = void 0;
+exports.Step = exports.Mode = exports.Clock = exports.Calendar = void 0;
 const tslib_1 = require("tslib");
 const common_components_1 = require("../common-components");
 const DateTimePicker_common_1 = require("./DateTimePicker-common");
@@ -148,6 +148,7 @@ var Clock_2 = require("./Clock");
 Object.defineProperty(exports, "Clock", { enumerable: true, get: function () { return tslib_1.__importDefault(Clock_2).default; } });
 var DateTimePicker_common_2 = require("./DateTimePicker-common");
 Object.defineProperty(exports, "Mode", { enumerable: true, get: function () { return DateTimePicker_common_2.Mode; } });
+Object.defineProperty(exports, "Step", { enumerable: true, get: function () { return DateTimePicker_common_2.Step; } });
 const { duration, height, width } = core_1.consts.DateTimePicker;
 const entering = react_native_reanimated_1.FadeIn.duration(duration);
 const exiting = react_native_reanimated_1.FadeOut.duration(duration);

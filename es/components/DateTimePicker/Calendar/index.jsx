@@ -1,7 +1,8 @@
 import { Dummy, IconButton, Row, Text } from "../../common-components";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { JustifyContent, Position, TextAlign, TextVariant, VerticalAlign } from "../../../types";
-import { memo, useBoolean, useDatetime, useRealEffect } from "react-misc";
+import { TimeUnit, neverDemand } from "typescript-misc";
+import { memo, useDatetime, useRealEffect } from "react-misc";
 import { runOnJS, useSharedValue } from "react-native-reanimated";
 import { useCalendar, useLayoutReanimated } from "../../../hooks";
 import Circle from "./Circle";
@@ -9,7 +10,6 @@ import Day from "./Day";
 import React from "react";
 import SelectionRow from "./SelectionRow";
 import { Svg } from "react-native-svg";
-import { TimeUnit } from "typescript-misc";
 import { View } from "react-native";
 import { consts } from "../../../core";
 import { useIcons } from "../../../icons";
@@ -20,7 +20,6 @@ export default memo("Calendar", ({ SelectDateRangeHint = Dummy, date, dateFrom, 
     const { colors } = useThemeExtended();
     const datetime = useDatetime();
     const firstDay = React.useMemo(() => datetime.create(month).setStartOfWeek(weekStartsOn), [datetime, month, weekStartsOn]);
-    const [hintActionDone, setHintActionDone, unsetHintActionDone] = useBoolean();
     const initialSelection = React.useMemo(() => date > dateFrom && datetime.create(date).isStartOfDay()
         ? datetime
             .create(date)
@@ -30,6 +29,7 @@ export default memo("Calendar", ({ SelectDateRangeHint = Dummy, date, dateFrom, 
         : datetime.create(date).setStartOfDay().differenceInDays(firstDay), [date, dateFrom, datetime, firstDay]);
     const initialSelectionFrom = React.useMemo(() => datetime.create(dateFrom).setStartOfDay().differenceInDays(firstDay), [dateFrom, datetime, firstDay]);
     const { layout, onLayout } = useLayoutReanimated();
+    const selectDateRangeHint = React.useRef(neverDemand());
     const selection1 = useSharedValue(initialSelection);
     const selection2 = useSharedValue(initialSelectionFrom);
     const back = React.useCallback(() => {
@@ -52,15 +52,8 @@ export default memo("Calendar", ({ SelectDateRangeHint = Dummy, date, dateFrom, 
             // Skip
         }
         else
-            setHintActionDone();
-    }, [
-        firstDay,
-        initialSelection,
-        initialSelectionFrom,
-        onChange,
-        pickHours,
-        setHintActionDone
-    ]);
+            selectDateRangeHint.current.setSeen();
+    }, [firstDay, initialSelection, initialSelectionFrom, onChange, pickHours]);
     const setRange = React.useCallback((x, y, step) => {
         "worklet";
         if (layout.value) {
@@ -111,7 +104,7 @@ export default memo("Calendar", ({ SelectDateRangeHint = Dummy, date, dateFrom, 
               </Text>))}
           </Row>
           <GestureDetector gesture={gesture}>
-            <SelectDateRangeHint hintActionDone={hintActionDone} unsetHintActionDone={unsetHintActionDone}>
+            <SelectDateRangeHint customRef={selectDateRangeHint}>
               <View onLayout={onLayout} style={{ height: size * maxWeeks, width: size * daysInWeek }}>
                 <Svg height={size * maxWeeks} style={{ position: Position.absolute, start: 0, top: 0 }} width={size * daysInWeek}>
                   {weeks.map(({ week }) => (<SelectionRow key={week} selection1={selection1} selection2={selection2} week={week}/>))}

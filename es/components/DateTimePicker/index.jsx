@@ -140,7 +140,7 @@ export default memo("DateTimePicker", ({ SelectDateRangeHint, SelectTimeRangeHin
 });
 export { default as Calendar } from "./Calendar";
 export { default as Clock } from "./Clock";
-export { Mode } from "./DateTimePicker-common";
+export { Mode, Step } from "./DateTimePicker-common";
 const { duration, height, width } = consts.DateTimePicker;
 const entering = FadeIn.duration(duration);
 const exiting = FadeOut.duration(duration);

@@ -34,3 +34,9 @@ Renames and re-exports [default](Clock/functions/default.md)
 ### Mode
 
 Re-exports [Mode](DateTimePicker-common/enumerations/Mode.md)
+
+***
+
+### Step
+
+Re-exports [Step](DateTimePicker-common/enumerations/Step.md)

@@ -1,7 +1,7 @@
 import type { CommonProps, FunctionComponent } from "react-misc";
 import { Mode } from "./DateTimePicker-common";
 import type { booleanU, numberU, stringU } from "typescript-misc";
-import type { HintProps } from "./DateTimePicker-common";
+import type { HintProps } from "./DateTimePicker-core";
 declare global {
     namespace facades {
         namespace lang {
@@ -53,5 +53,5 @@ export interface ScopedWord {
 }
 export { default as Calendar } from "./Calendar";
 export { default as Clock } from "./Clock";
-export { Mode } from "./DateTimePicker-common";
+export { Mode, Step } from "./DateTimePicker-common";
 //# sourceMappingURL=index.d.ts.map

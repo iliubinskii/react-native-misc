@@ -86,6 +86,12 @@ Renames and re-exports [Mode](DateTimePicker/DateTimePicker-common/enumerations/
 
 ***
 
+### DateTimePickerStep
+
+Renames and re-exports [Step](DateTimePicker/DateTimePicker-common/enumerations/Step.md)
+
+***
+
 ### Dense
 
 Renames and re-exports [components/Dense](Dense/index.md)

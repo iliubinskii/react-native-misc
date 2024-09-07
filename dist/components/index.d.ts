@@ -4,7 +4,7 @@ export { CandlestickChart } from "./CandlestickChart";
 export type { Candlestick, Candlesticks, VerticalLabel, VerticalLabels } from "./CandlestickChart";
 export { default as CheckboxRow } from "./CheckboxRow";
 export { default as Chip } from "./Chip";
-export { default as DateTimePicker, Mode as DateTimePickerMode } from "./DateTimePicker";
+export { default as DateTimePicker, Mode as DateTimePickerMode, Step as DateTimePickerStep } from "./DateTimePicker";
 export * as Dense from "./Dense";
 export * from "./Drawer";
 export { default as Drawer, DrawerPosition } from "./Drawer";

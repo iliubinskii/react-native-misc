@@ -1,5 +1,5 @@
+import type { HintProps } from "../DateTimePicker-core";
 import type { FunctionComponent } from "react-misc";
-import type { HintProps } from "../DateTimePicker-common";
 declare global {
     namespace reactNativeMisc {
         interface Icon extends ScopedIcon {
